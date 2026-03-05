@@ -161,14 +161,14 @@ function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.faqItem} onClick={() => setOpen(!open)}>
-      <button className={styles.faqQuestion}>
+    <div className={styles.faqItem}>
+      <button className={styles.faqQuestion} onClick={() => setOpen(!open)}>
         <span className={styles.faqQuestionText}>{question}</span>
         <span className={`${styles.faqChevron} ${open ? styles.faqChevronOpen : ""}`}>
           <ChevronDown />
         </span>
       </button>
-      {open && answer && <p className={styles.faqAnswer}>{answer}</p>}
+      {open && <p className={styles.faqAnswer}>{answer}</p>}
     </div>
   );
 }
@@ -229,7 +229,8 @@ const product = {
   faqs: [
     {
       question: "What makes GECO Tilebond better than traditional cement mortar?",
-      answer: null,
+      answer:
+        "Unlike traditional cement mortar, GECO TILEBOND CLASSIC uses advanced polymer modification that delivers superior adhesion with no air pockets. It is self-curing, requires less water, reduces shrinkage, and can be applied in a thin bed — resulting in stronger tile anchoring, faster installation, and less material waste overall.",
     },
     {
       question: "Do tile adhesives contribute to long-lasting tile installations?",
@@ -238,20 +239,23 @@ const product = {
     },
     {
       question: "What makes TILEBOND CLASSIC suitable for light-coloured tiles?",
-      answer: null,
+      answer:
+        "TILEBOND CLASSIC is formulated with a white cement base. This prevents any dark or grey bleed-through that standard grey-cement adhesives can cause beneath translucent or light-coloured tiles, preserving their natural tone and enhancing the final aesthetic finish.",
     },
     {
-      question:
-        "Lorem ipsum dolor sit amet consectetur. Pellentesque urna vel morbi nec aliquam morbi et. Mi aliquam non.",
-      answer: null,
+      question: "Can TILEBOND CLASSIC be used in wet and submerged areas?",
+      answer:
+        "Yes. TILEBOND CLASSIC is water resistant and suitable for use in wet areas such as bathrooms, kitchens, swimming pool surrounds, and other submerged or high-humidity environments, making it a versatile choice for both interior and exterior applications.",
     },
     {
       question: "What kinds of tiles can be fixed using TILEBOND CLASSIC?",
-      answer: null,
+      answer:
+        "TILEBOND CLASSIC is suitable for fixing all types of light-coloured ceramic, vitrified, glass mosaic, and stone tiles up to 600 × 600 mm in size, as well as natural stones. It also supports tile-on-tile application, making it ideal for renovation projects.",
     },
     {
       question: "Does TILEBOND CLASSIC offer strong durability?",
-      answer: null,
+      answer:
+        "Yes. TILEBOND CLASSIC is engineered for enhanced durability. Its polymer-modified formula reduces shrinkage, improves resistance to water and thermal movement, and complies with IS 15477:2019 – Type 2T Adhesive standards, ensuring long-term performance in both residential and commercial projects.",
     },
   ],
   relatedProducts: [

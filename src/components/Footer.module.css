@@ -39,14 +39,6 @@
   text-decoration: none;
 }
 
-.logoText {
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-weight: 800;
-  font-size: 40px;
-  color: #1f1f1f;
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
 
 .contactInfo {
   display: flex;
@@ -260,9 +252,6 @@
     padding-bottom: 32px;
   }
 
-  .logoText {
-    font-size: 32px;
-  }
 
   .desktopLinks,
   .followCol {

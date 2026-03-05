@@ -27,14 +27,6 @@
   flex-shrink: 0;
 }
 
-.logoText {
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-weight: 800;
-  font-size: 40px;
-  color: #97d700;
-  letter-spacing: 0.02em;
-  line-height: 1;
-}
 
 /* ---- Desktop Nav ---- */
 .desktopNav {
@@ -86,6 +78,45 @@
 .chevron {
   display: flex;
   align-items: center;
+}
+
+/* ---- Products Dropdown ---- */
+.navDropdownWrap {
+  position: relative;
+}
+
+.productDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 240px;
+  background-color: #ffffff;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 1px 4px 0px rgba(12, 12, 13, 0.18);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 12px 16px;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1f1f1f;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdownItem:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.dropdownItem:hover {
+  background-color: #97d700;
 }
 
 /* ---- Desktop Icons ---- */
@@ -215,7 +246,4 @@
     display: flex;
   }
 
-  .logoText {
-    font-size: 32px;
-  }
 }

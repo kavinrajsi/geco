@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 
 const navLinks = [
@@ -11,6 +12,13 @@ const navLinks = [
   { label: "Products", href: "/products", hasDropdown: true },
   { label: "Blogs", href: "/blogs" },
   { label: "Contact", href: "/contact" },
+];
+
+const productCategories = [
+  { label: "Tile Adhesives", href: "/products" },
+  { label: "Tile Grouts", href: "/products" },
+  { label: "Sealants", href: "/products" },
+  { label: "Tapes", href: "/products" },
 ];
 
 function SearchIcon() {
@@ -88,32 +96,69 @@ function CloseIcon() {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const activeLink = "Contact";
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoText}>GECO</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="233" height="60" fill="none" viewBox="0 0 233 60" aria-label="GECO">
+            <g clipPath="url(#a)">
+              <path fill="#8BD40A" d="M143.43 60c-8.674 0-15.842-2.895-21.517-8.652-5.643-5.777-8.468-12.886-8.468-21.345 0-8.46 2.825-15.649 8.468-21.4C127.582 2.87 134.75 0 143.43 0c5.221 0 10.037 1.201 14.467 3.654 4.424 2.446 7.859 5.77 10.341 9.928l-9.8 5.69c-1.45-2.577-3.484-4.6-6.104-6.057-2.638-1.457-5.606-2.185-8.904-2.185-5.594 0-10.124 1.774-13.546 5.272-3.435 3.518-5.146 8.08-5.146 13.689 0 5.608 1.711 10.084 5.146 13.6 3.422 3.518 7.952 5.273 13.546 5.273 3.298 0 6.272-.716 8.935-2.191 2.67-1.45 4.692-3.442 6.079-5.97l9.801 5.69c-2.483 4.183-5.912 7.482-10.305 9.922-4.392 2.453-9.227 3.679-14.504 3.679m80.828-8.702c-5.818 5.813-12.911 8.702-21.224 8.702s-15.413-2.895-21.187-8.702c-5.799-5.79-8.699-12.898-8.699-21.295 0-8.397 2.9-15.518 8.699-21.307 5.78-5.802 12.861-8.696 21.187-8.696 8.325 0 15.406 2.888 21.224 8.696C230.082 14.473 233 21.58 233 29.997c0 8.416-2.918 15.506-8.736 21.295Zm-34.484-7.738c3.572 3.542 8.002 5.322 13.253 5.322 5.252 0 9.657-1.78 13.241-5.322 3.578-3.548 5.352-8.073 5.352-13.55 0-5.479-1.78-10.035-5.352-13.608-3.577-3.573-7.989-5.36-13.241-5.36-5.251 0-9.681 1.78-13.253 5.36-3.565 3.573-5.351 8.104-5.351 13.607s1.786 10.003 5.351 13.551ZM40.096 27.843v.013C29.37 27.918 27.41 37.902 27.41 37.902h20.378c-1.045 3.411-3.018 6.094-5.886 8.049-2.9 1.936-6.546 2.925-10.926 2.925-5.937 0-10.697-1.78-14.293-5.322-3.596-3.548-5.401-8.036-5.401-13.482 0-5.447 1.773-10.04 5.314-13.633 3.54-3.591 8.064-5.403 13.546-5.403 3.416 0 6.515.741 9.265 2.229 2.781 1.469 4.866 3.411 6.228 5.77l9.726-5.614c-2.483-4.071-5.93-7.315-10.385-9.767C40.52 1.2 35.61-.006 30.228-.006c-8.568 0-15.743 2.9-21.548 8.727C2.912 14.56 0 21.668 0 30.07c0 8.404 2.924 15.432 8.773 21.227C14.63 57.112 22.021 60 30.906 60c8.332 0 15.158-2.558 20.428-7.669 5.283-5.098 7.902-11.79 7.902-20.006v-4.476h-19.14v-.006Zm60.313 20.125H77.866V35.026h27.925V24.32H77.866V12.045h22.145c6.689-.274 7.716-6.704 7.852-9.555V1.152H66.498v57.69h41.751s.753-10.532-7.846-10.874"/>
+            </g>
+            <defs>
+              <clipPath id="a">
+                <path fill="#fff" d="M0 0h233v60H0z"/>
+              </clipPath>
+            </defs>
+          </svg>
         </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav} aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`${styles.navLink} ${link.label === activeLink ? styles.navLinkActive : ""}`}
-            >
-              {link.label}
-              {link.hasDropdown && (
-                <span className={styles.chevron}>
-                  <ChevronDownIcon />
-                </span>
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.hasDropdown ? (
+              <div
+                key={link.label}
+                className={styles.navDropdownWrap}
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                <Link
+                  href={link.href}
+                  className={`${styles.navLink} ${pathname.startsWith(link.href) ? styles.navLinkActive : ""}`}
+                >
+                  {link.label}
+                  <span className={styles.chevron}>
+                    <ChevronDownIcon />
+                  </span>
+                </Link>
+                {dropdownOpen && (
+                  <div className={styles.productDropdown}>
+                    {productCategories.map((cat) => (
+                      <Link
+                        key={cat.label}
+                        href={cat.href}
+                        className={styles.dropdownItem}
+                      >
+                        {cat.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`${styles.navLink} ${pathname === link.href ? styles.navLinkActive : ""}`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Desktop Icons */}
@@ -161,7 +206,7 @@ export default function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className={`${styles.mobileNavLink} ${link.label === activeLink ? styles.mobileNavLinkActive : ""}`}
+              className={`${styles.mobileNavLink} ${pathname === link.href ? styles.mobileNavLinkActive : ""}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.label}
