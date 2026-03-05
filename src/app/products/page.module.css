@@ -1,0 +1,184 @@
+/* =============================================
+   Products listing page
+   ============================================= */
+
+.main {
+  background: #ffffff;
+}
+
+/* ---- Hero ---- */
+.hero {
+  background-color: #10069f;
+  padding: 80px 0 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Filter tabs ---- */
+.filtersWrap {
+  display: flex;
+  justify-content: center;
+  padding: 48px 40px 0;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filterBtn {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1f1f1f;
+  background: transparent;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.filterBtn:hover {
+  background-color: rgba(151, 215, 0, 0.2);
+}
+
+.filterBtnActive {
+  background-color: #97d700;
+  color: #1f1f1f;
+}
+
+/* ---- Product grid ---- */
+.gridWrap {
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* ---- Product card ---- */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardImageWrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardCategory {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6b727a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cardName {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #1f1f1f;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 1340px) {
+  .gridWrap {
+    padding: 48px 40px 80px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .filtersWrap {
+    padding: 32px 20px 0;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+
+  .filterBtn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .gridWrap {
+    padding: 32px 20px 48px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .cardName {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
