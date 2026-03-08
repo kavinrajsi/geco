@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blog_tables",
+  "info": {
+    "displayName": "Table",
+    "icon": "table",
+    "description": "Table content as markdown or HTML"
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

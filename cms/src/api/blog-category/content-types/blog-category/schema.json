@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_categories",
+  "info": {
+    "singularName": "blog-category",
+    "pluralName": "blog-categories",
+    "displayName": "Blog Category",
+    "description": "Blog categories"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "mappedBy": "blogCategories"
+    }
+  }
+}

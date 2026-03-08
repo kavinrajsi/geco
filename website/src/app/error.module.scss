@@ -1,0 +1,51 @@
+@use "../styles/fluid" as *;
+
+.error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $space-section $space-gutter;
+  text-align: center;
+}
+
+.error__code {
+  font-size: fluid(80, 160);
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.1;
+}
+
+.error__title {
+  font-size: $font-h1;
+  font-weight: 700;
+  margin-top: -8px;
+}
+
+.error__description {
+  font-size: $font-body;
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+.error__button {
+  background: var(--foreground);
+  border: none;
+  border-radius: 6px;
+  color: var(--background);
+  cursor: pointer;
+  font-size: $font-body-sm;
+  font-weight: 500;
+  margin-top: 24px;
+  padding: 12px 24px;
+  transition: opacity 0.2s;
+
+  @media (min-width: $bp-md) {
+    margin-top: 32px;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

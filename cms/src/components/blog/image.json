@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blog_images",
+  "info": {
+    "displayName": "Image",
+    "icon": "picture",
+    "description": "Image block with optional caption"
+  },
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "caption": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "string"
+    }
+  }
+}

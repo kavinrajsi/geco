@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Product detail page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "tagline": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "brochure": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "productCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-category.product-category",
+      "inversedBy": "products"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.feature"
+    },
+    "areasOfApplication": {
+      "type": "blocks"
+    },
+    "standardCompliance": {
+      "type": "blocks"
+    },
+    "howToUse": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.how-to-use-step"
+    },
+    "highlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product.highlight"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.faq"
+    }
+  }
+}

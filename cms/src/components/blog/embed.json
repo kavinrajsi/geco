@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blog_embeds",
+  "info": {
+    "displayName": "Embed",
+    "icon": "code",
+    "description": "Embed external content (iframe, tweet, etc.)"
+  },
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

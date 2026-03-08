@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_product_faqs",
+  "info": {
+    "displayName": "FAQ",
+    "icon": "question-circle",
+    "description": "Frequently asked question with answer"
+  },
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

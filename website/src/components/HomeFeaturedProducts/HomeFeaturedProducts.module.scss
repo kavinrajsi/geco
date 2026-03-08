@@ -1,0 +1,131 @@
+@use "../../styles/fluid" as *;
+
+.featured-products {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px $space-gutter;
+}
+
+.featured-products__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.featured-products__title {
+  color: #1f1f1f;
+  font-family: "Archivo Expanded", sans-serif;
+  font-size: fluid(28, 32);
+  font-weight: 900;
+  line-height: fluid(32, 40);
+  text-transform: uppercase;
+}
+
+.featured-products__subtitle {
+  color: #6b727a;
+  font-size: fluid(16, 18);
+  line-height: fluid(24, 26);
+}
+
+.featured-products__slider {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 100%;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    align-items: center;
+  }
+}
+
+.featured-products__swiper {
+  max-width: 100%;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    max-width: 1290px;
+  }
+}
+
+.featured-products__slide {
+  width: 300px;
+}
+
+/* Card */
+.featured-products__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.featured-products__card-image {
+  background: #e9e9e9;
+  border-radius: 10px;
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .featured-products__card:hover & img {
+    transform: scale(1.03);
+  }
+}
+
+.featured-products__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featured-products__card-category {
+  color: #6b727a;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.featured-products__card-name {
+  color: #1f1f1f;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+/* Nav arrows */
+.featured-products__nav {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+  padding-right: 20px;
+
+  @media (min-width: $bp-lg) {
+    display: none;
+  }
+}
+
+.featured-products__nav-btn {
+  align-items: center;
+  background: white;
+  border: 1px solid #e9e9e9;
+  border-radius: 1000px;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+
+  &:hover {
+    border-color: #a0a0a0;
+  }
+}

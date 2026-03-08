@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_product_features",
+  "info": {
+    "displayName": "Feature",
+    "icon": "check-circle",
+    "description": "Product feature with icon and text"
+  },
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

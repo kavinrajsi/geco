@@ -1,0 +1,22 @@
+@use "../../styles/fluid" as *;
+
+.about {
+  margin: 0 auto;
+  padding: $space-section $space-gutter;
+
+  @media (min-width: $bp-lg) {
+    max-width: $bp-xl;
+  }
+}
+
+.about__title {
+  font-size: $font-h1;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.about__description {
+  font-size: $font-body;
+  line-height: 1.7;
+  opacity: 0.8;
+}

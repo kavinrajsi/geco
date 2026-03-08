@@ -1,0 +1,75 @@
+@use "../styles/fluid" as *;
+
+.not-found {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $space-section $space-gutter;
+  text-align: center;
+}
+
+.not-found__code {
+  color: #1f1f1f;
+  font-family: var(--font-instrument-sans);
+  font-size: 100px;
+  font-weight: 600;
+  line-height: 112px;
+  text-transform: capitalize;
+
+  @media (min-width: $bp-md) {
+    font-size: 140px;
+    line-height: 152px;
+  }
+}
+
+.not-found__title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  margin-top: 8px;
+  text-transform: capitalize;
+
+  @media (min-width: $bp-md) {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+.not-found__description {
+  color: #6b727a;
+  font-family: var(--font-archivo);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 8px;
+  text-align: center;
+
+  @media (min-width: $bp-md) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.not-found__link {
+  background: var(--foreground);
+  border-radius: 6px;
+  color: var(--background);
+  display: inline-block;
+  font-size: $font-body-sm;
+  font-weight: 500;
+  margin-top: 24px;
+  padding: 12px 24px;
+  transition: opacity 0.2s;
+
+  @media (min-width: $bp-md) {
+    margin-top: 32px;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

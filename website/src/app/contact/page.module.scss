@@ -1,0 +1,105 @@
+@use "../../styles/fluid" as *;
+
+.contact {
+  margin: 0 auto;
+  padding: $space-section $space-gutter;
+
+  @media (min-width: $bp-lg) {
+    max-width: $bp-xl;
+  }
+}
+
+/* Two-column layout */
+.contact__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: $bp-lg) {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.contact__form {
+  flex: 1;
+}
+
+/* Info sidebar */
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: $bp-lg) {
+    flex-shrink: 0;
+    width: 410px;
+  }
+}
+
+.contact__address {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__address-title {
+  color: #1f1f1f;
+  font-size: fluid(18, 20);
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.contact__address-text {
+  color: #1f1f1f;
+  font-size: $font-body;
+  line-height: 26px;
+}
+
+/* Phone & Email buttons */
+.contact__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__btn {
+  align-items: center;
+  background: #97d700;
+  border-radius: 50px;
+  color: #1f1f1f;
+  display: inline-flex;
+  font-size: fluid(14, 16);
+  font-weight: 600;
+  gap: 8px;
+  line-height: 26px;
+  padding: 16px 40px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  width: fit-content;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Full-width Google Map */
+.contact__map {
+  margin-left: calc(-1 * $space-gutter);
+  margin-right: calc(-1 * $space-gutter);
+  margin-top: $space-section;
+
+  @media (min-width: $bp-lg) {
+    margin-left: calc(-50vw + $bp-xl / 2 - $space-gutter);
+    margin-right: calc(-50vw + $bp-xl / 2 - $space-gutter);
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+  }
+}

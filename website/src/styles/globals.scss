@@ -1,0 +1,35 @@
+@use "reset";
+@use "fluid" as *;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: $font-body;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  main {
+    flex: 1;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

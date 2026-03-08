@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blog_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "play",
+    "description": "Video embed via URL"
+  },
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

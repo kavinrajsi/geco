@@ -1,0 +1,116 @@
+// Fluid typography & spacing utilities
+// Inspired by https://www.madebymike.com.au/writing/non-linear-interpolation-in-css/
+
+// Breakpoints (mobile-first: use min-width)
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1290px;
+
+// Viewport bounds for fluid scaling
+$fluid-min-width: 375;
+$fluid-max-width: 1200;
+
+// Linear fluid value: smoothly scales between min and max across viewport range
+@function fluid($min-size, $max-size, $min-width: $fluid-min-width, $max-width: $fluid-max-width) {
+  $slope: calc(($max-size - $min-size) / ($max-width - $min-width));
+  $intercept: calc($min-size - $slope * $min-width);
+
+  @return clamp(#{$min-size}px, #{$intercept}px + #{$slope * 100}vw, #{$max-size}px);
+}
+
+// Non-linear interpolation mixin
+// Creates multiple "bending points" between min/max to simulate easing curves
+// $property: CSS property to interpolate
+// $min-vw, $min-size: starting viewport and value
+// $max-vw, $max-size: ending viewport and value
+// $points: number of intermediate steps (more = smoother curve)
+// $ease: easing type - "ease-in", "ease-out", "ease-in-out"
+@mixin interpolate($property, $min-vw, $min-size, $max-vw, $max-size, $ease: "ease-in-out", $points: 3) {
+  // Fallback
+  #{$property}: #{$min-size}px;
+
+  $values: ();
+
+  @for $i from 0 through $points {
+    $t: calc($i / $points);
+
+    // Apply easing function to the progress
+    @if $ease == "ease-in" {
+      $t: $t * $t;
+    } @else if $ease == "ease-out" {
+      $t: 1 - (1 - $t) * (1 - $t);
+    } @else if $ease == "ease-in-out" {
+      @if $t < 0.5 {
+        $t: 2 * $t * $t;
+      } @else {
+        $t: 1 - calc((-2 * $t + 2) * (-2 * $t + 2) / 2);
+      }
+    }
+
+    $size: $min-size + ($max-size - $min-size) * $t;
+    $vw: $min-vw + ($max-vw - $min-vw) * calc($i / $points);
+
+    $values: append($values, "#{$vw}px #{$size}px", comma);
+  }
+
+  // Generate media query breakpoints for each bending point
+  @for $i from 0 to $points {
+    $t-current: calc($i / $points);
+    $t-next: calc(($i + 1) / $points);
+
+    $vw-start: $min-vw + ($max-vw - $min-vw) * $t-current;
+    $vw-end: $min-vw + ($max-vw - $min-vw) * $t-next;
+
+    // Apply easing to size values
+    $et-current: $t-current;
+    $et-next: $t-next;
+
+    @if $ease == "ease-in" {
+      $et-current: $t-current * $t-current;
+      $et-next: $t-next * $t-next;
+    } @else if $ease == "ease-out" {
+      $et-current: 1 - (1 - $t-current) * (1 - $t-current);
+      $et-next: 1 - (1 - $t-next) * (1 - $t-next);
+    } @else if $ease == "ease-in-out" {
+      @if $t-current < 0.5 {
+        $et-current: 2 * $t-current * $t-current;
+      } @else {
+        $et-current: 1 - calc((-2 * $t-current + 2) * (-2 * $t-current + 2) / 2);
+      }
+      @if $t-next < 0.5 {
+        $et-next: 2 * $t-next * $t-next;
+      } @else {
+        $et-next: 1 - calc((-2 * $t-next + 2) * (-2 * $t-next + 2) / 2);
+      }
+    }
+
+    $size-start: $min-size + ($max-size - $min-size) * $et-current;
+    $size-end: $min-size + ($max-size - $min-size) * $et-next;
+
+    @media (min-width: #{$vw-start}px) and (max-width: #{$vw-end}px) {
+      #{$property}: #{fluid($size-start, $size-end, $vw-start, $vw-end)};
+    }
+  }
+
+  // Final value above max viewport
+  @media (min-width: #{$max-vw}px) {
+    #{$property}: #{$max-size}px;
+  }
+}
+
+// Preset fluid type scale using clamp() for simplicity
+// Use these for most text; reserve @include interpolate() for hero headings
+
+$font-display: #{fluid(36, 56)};     // Hero / display headings
+$font-h1: #{fluid(28, 40)};          // Page titles
+$font-h2: #{fluid(22, 32)};          // Section headings
+$font-h3: #{fluid(18, 24)};          // Card titles
+$font-body: #{fluid(15, 18)};        // Body text
+$font-body-sm: #{fluid(13, 16)};     // Small body / captions
+$font-label: #{fluid(13, 14)};       // Labels, nav items
+
+// Fluid spacing
+$space-section: #{fluid(32, 64)};    // Section padding
+$space-page-x: #{fluid(16, 24)};     // Horizontal page padding
+$space-gutter: #{fluid(20, 30)};     // Container gutter (20px mobile → 30px desktop)

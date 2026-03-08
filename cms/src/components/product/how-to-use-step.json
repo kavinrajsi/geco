@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_product_how_to_use_steps",
+  "info": {
+    "displayName": "How To Use Step",
+    "icon": "list-ol",
+    "description": "Step in the how-to-use guide"
+  },
+  "attributes": {
+    "stepNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

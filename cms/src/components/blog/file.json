@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blog_files",
+  "info": {
+    "displayName": "File",
+    "icon": "paperclip",
+    "description": "Downloadable file attachment"
+  },
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["files"]
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

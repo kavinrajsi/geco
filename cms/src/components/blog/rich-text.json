@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blog_rich_texts",
+  "info": {
+    "displayName": "Rich Text",
+    "icon": "align-left",
+    "description": "Text content block"
+  },
+  "attributes": {
+    "body": {
+      "type": "blocks"
+    }
+  }
+}
