@@ -12,7 +12,11 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "transfer:push": "node scripts/transfer.js push",
+    "transfer:pull": "node scripts/transfer.js pull",
+    "transfer:push:content": "node scripts/transfer.js push content",
+    "transfer:push:files": "node scripts/transfer.js push files"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.38.0",
@@ -24,7 +28,6 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
