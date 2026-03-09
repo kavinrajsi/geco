@@ -26,6 +26,10 @@
       "required": true,
       "allowedTypes": ["images"]
     },
+    "publishingDate": {
+      "type": "date",
+      "required": true
+    },
     "excerpt": {
       "type": "text",
       "maxLength": 300
