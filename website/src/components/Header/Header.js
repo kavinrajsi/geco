@@ -87,11 +87,11 @@ export default function Header({ productCategories = [] }) {
                   {submenuOpen && (
                     <div className={styles["header__submenu"]}>
                       {productCategories.map((cat) => {
-                        const catActive = pathname === `/products/${cat.slug}`;
+                        const catActive = pathname === `/products/category/${cat.slug}`;
                         return (
                           <Link
                             key={cat.slug}
-                            href={`/products/${cat.slug}`}
+                            href={`/products/category/${cat.slug}`}
                             className={`${styles["header__submenu-link"]} ${catActive ? styles["header__submenu-link--active"] : ""}`}
                           >
                             {cat.name}
@@ -221,7 +221,7 @@ export default function Header({ productCategories = [] }) {
                       {productCategories.map((cat) => (
                         <Link
                           key={cat.slug}
-                          href={`/products/${cat.slug}`}
+                          href={`/products/category/${cat.slug}`}
                           className={styles["mobile-menu__sublink"]}
                           onClick={() => setMenuOpen(false)}
                         >

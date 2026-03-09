@@ -6,8 +6,8 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./ProductGrid.module.scss";
 
-export default function ProductGrid({ products, categories }) {
-  const [activeCategory, setActiveCategory] = useState("All");
+export default function ProductGrid({ products, categories, defaultCategory }) {
+  const [activeCategory, setActiveCategory] = useState(defaultCategory || "All");
 
   const filteredProducts =
     activeCategory === "All"

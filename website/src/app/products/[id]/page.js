@@ -11,14 +11,7 @@ import styles from "./page.module.scss";
 async function getProduct(slug) {
   const data = await fetchStrapi("/products", {
     "filters[slug][$eq]": slug,
-    "populate[0]": "image",
-    "populate[1]": "secondaryImage",
-    "populate[2]": "brochure",
-    "populate[3]": "productCategory",
-    "populate[4]": "features",
-    "populate[5]": "highlight.image",
-    "populate[6]": "howToUse.image",
-    "populate[7]": "faqs",
+    "populate": "*",
   });
   return data?.data?.[0] || null;
 }
@@ -26,8 +19,7 @@ async function getProduct(slug) {
 async function getRelatedProducts(currentSlug) {
   const data = await fetchStrapi("/products", {
     "filters[slug][$ne]": currentSlug,
-    "populate[0]": "image",
-    "populate[1]": "productCategory",
+    "populate": "*",
     "fields[0]": "name",
     "fields[1]": "slug",
     "sort": "name:asc",
