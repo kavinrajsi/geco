@@ -11,12 +11,27 @@ async function getCategory(slug) {
   return data?.data?.[0] || null;
 }
 
-async function getProducts() {
+async function getProductsByCategory(categorySlug) {
   const data = await fetchStrapi("/products", {
-    "populate": "*",
+    "filters[productCategory][slug][$eq]": categorySlug,
+    "populate[image][fields][0]": "url",
+    "populate[productCategory][fields][0]": "name",
+    "populate[productCategory][fields][1]": "slug",
+    "fields[0]": "name",
+    "fields[1]": "slug",
+    "fields[2]": "tagline",
     "sort": "name:asc",
   });
   return data?.data || [];
+}
+
+async function getAllCategories() {
+  const data = await fetchStrapi("/product-categories", {
+    "fields[0]": "name",
+    "fields[1]": "slug",
+    "sort": "name:asc",
+  });
+  return (data?.data || []).map((cat) => ({ name: cat.name, slug: cat.slug }));
 }
 
 export async function generateStaticParams() {
@@ -59,23 +74,18 @@ export default async function ProductCategoryPage({ params }) {
     notFound();
   }
 
-  const allProducts = await getProducts();
-
-  const categories = [
-    ...new Set(
-      allProducts
-        .map((p) => p.productCategory?.name)
-        .filter(Boolean)
-    ),
-  ];
+  const [products, categories] = await Promise.all([
+    getProductsByCategory(slug),
+    getAllCategories(),
+  ]);
 
   return (
     <>
       <PageHeader title={category.name} />
       <ProductGrid
-        products={allProducts}
+        products={products}
         categories={categories}
-        defaultCategory={category.name}
+        activeCategory={slug}
       />
     </>
   );

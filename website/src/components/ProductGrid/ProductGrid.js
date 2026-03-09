@@ -1,49 +1,37 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./ProductGrid.module.scss";
 
-export default function ProductGrid({ products, categories, defaultCategory }) {
-  const [activeCategory, setActiveCategory] = useState(defaultCategory || "All");
-
-  const filteredProducts =
-    activeCategory === "All"
-      ? products
-      : products.filter(
-          (p) => p.productCategory?.name === activeCategory
-        );
-
+export default function ProductGrid({ products, categories, activeCategory }) {
   return (
     <div className={styles["product-grid"]}>
       <div className={styles["product-grid__filters"]}>
         <div className={styles["product-grid__menu"]}>
-          <button
+          <Link
+            href="/products"
             className={`${styles["product-grid__filter"]} ${
-              activeCategory === "All" ? styles["product-grid__filter--active"] : ""
+              !activeCategory ? styles["product-grid__filter--active"] : ""
             }`}
-            onClick={() => setActiveCategory("All")}
           >
             All
-          </button>
+          </Link>
           {categories.map((cat) => (
-            <button
-              key={cat}
+            <Link
+              key={cat.slug}
+              href={`/products/category/${cat.slug}`}
               className={`${styles["product-grid__filter"]} ${
-                activeCategory === cat ? styles["product-grid__filter--active"] : ""
+                activeCategory === cat.slug ? styles["product-grid__filter--active"] : ""
               }`}
-              onClick={() => setActiveCategory(cat)}
             >
-              {cat}
-            </button>
+              {cat.name}
+            </Link>
           ))}
         </div>
       </div>
 
       <div className={styles["product-grid__list"]}>
-        {filteredProducts.map((product) => {
+        {products.map((product) => {
           const imageUrl = getStrapiMedia(product.image?.url);
           const categoryName = product.productCategory?.name || "";
           return (

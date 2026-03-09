@@ -18,21 +18,26 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-  const productsData = await fetchStrapi("/products", {
-    "populate": "*",
-    "sort": "name:asc",
-  });
+  const [productsData, categoriesData] = await Promise.all([
+    fetchStrapi("/products", {
+      "fields[0]": "name",
+      "fields[1]": "slug",
+      "populate[image][fields][0]": "url",
+      "populate[productCategory][fields][0]": "name",
+      "sort": "name:asc",
+    }),
+    fetchStrapi("/product-categories", {
+      "fields[0]": "name",
+      "fields[1]": "slug",
+      "sort": "name:asc",
+    }),
+  ]);
 
   const products = productsData?.data || [];
-
-  // Extract unique category names
-  const categories = [
-    ...new Set(
-      products
-        .map((p) => p.productCategory?.name)
-        .filter(Boolean)
-    ),
-  ];
+  const categories = (categoriesData?.data || []).map((cat) => ({
+    name: cat.name,
+    slug: cat.slug,
+  }));
 
   return (
     <>

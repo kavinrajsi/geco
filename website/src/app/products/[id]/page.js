@@ -16,19 +16,10 @@ async function getProduct(slug) {
   return data?.data?.[0] || null;
 }
 
-async function getRelatedProducts(currentSlug) {
+async function getOtherProducts(currentSlug, currentId) {
   const data = await fetchStrapi("/products", {
-    "filters[slug][$ne]": currentSlug,
-    "populate": "*",
-    "fields[0]": "name",
-    "fields[1]": "slug",
-    "sort": "name:asc",
-  });
-  return data?.data || [];
-}
-
-async function getAdjacentProducts(currentId) {
-  const data = await fetchStrapi("/products", {
+    "populate[image][fields][0]": "url",
+    "populate[productCategory][fields][0]": "name",
     "fields[0]": "name",
     "fields[1]": "slug",
     "sort": "name:asc",
@@ -36,6 +27,7 @@ async function getAdjacentProducts(currentId) {
   const products = data?.data || [];
   const idx = products.findIndex((p) => p.documentId === currentId || p.id === currentId);
   return {
+    related: products.filter((p) => p.slug !== currentSlug),
     prev: idx > 0 ? products[idx - 1] : null,
     next: idx < products.length - 1 ? products[idx + 1] : null,
   };
@@ -139,8 +131,7 @@ export default async function ProductDetailPage({ params }) {
   const imageUrl = getStrapiMedia(product.image?.url);
   const secondaryImageUrl = getStrapiMedia(product.secondaryImage?.url);
   const brochureUrl = getStrapiMedia(product.brochure?.url);
-  const { prev, next } = await getAdjacentProducts(product.documentId || product.id);
-  const relatedProducts = await getRelatedProducts(id);
+  const { related: relatedProducts, prev, next } = await getOtherProducts(id, product.documentId || product.id);
 
   return (
     <>

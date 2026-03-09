@@ -4,7 +4,10 @@ import styles from "./HomeFeaturedProducts.module.scss";
 
 export default async function HomeFeaturedProducts() {
   const productsData = await fetchStrapi("/products", {
-    "populate": "*",
+    "fields[0]": "name",
+    "fields[1]": "slug",
+    "populate[image][fields][0]": "url",
+    "populate[productCategory][fields][0]": "name",
     "sort": "createdAt:desc",
     "pagination[limit]": "4",
   });

@@ -13,6 +13,12 @@ function getStrapiHeaders() {
   return headers;
 }
 
+// Derive a cache tag from the API path, e.g. "/products" → "strapi-products"
+function getCacheTag(path) {
+  const segment = path.split("/").filter(Boolean)[0] || "strapi";
+  return `strapi-${segment}`;
+}
+
 export async function fetchStrapi(path, params = {}) {
   const queryString = Object.entries(params)
     .map(([key, value]) => `${key}=${value}`)
@@ -20,11 +26,9 @@ export async function fetchStrapi(path, params = {}) {
 
   const url = `${STRAPI_URL}/api${path}${queryString ? `?${queryString}` : ""}`;
 
-  console.log("Fetching Strapi:", url);
-
   const res = await fetch(url, {
     headers: getStrapiHeaders(),
-    next: { revalidate: 60 },
+    next: { tags: [getCacheTag(path)] },
   });
 
   if (!res.ok) {

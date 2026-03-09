@@ -4,7 +4,10 @@ import styles from "./HomeBlogSection.module.scss";
 
 export default async function HomeBlogSection() {
   const blogsData = await fetchStrapi("/blogs", {
-    "populate": "*",
+    "fields[0]": "title",
+    "fields[1]": "slug",
+    "populate[featureImage][fields][0]": "url",
+    "populate[blogCategories][fields][0]": "name",
     "sort": "createdAt:desc",
     "pagination[limit]": "4",
   });
