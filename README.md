@@ -136,3 +136,7 @@ For file uploads in production, use a cloud provider like Cloudinary:
 cd cms
 npm install @strapi/provider-upload-cloudinary
 ```
+
+## TODO
+
+- [ ] Implement a fallback strategy (e.g. CDN caching, Redis, or Contentful) so the website remains available if Strapi goes down
