@@ -1,22 +1,133 @@
 @use "../../styles/fluid" as *;
 
-.about {
-  margin: 0 auto;
-  padding: $space-section $space-gutter;
+/* Video Hero */
+.about__video {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 
-  @media (min-width: $bp-lg) {
-    max-width: $bp-xl;
+  video {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 }
 
-.about__title {
-  font-size: $font-h1;
-  font-weight: 700;
-  margin-bottom: 16px;
+/* Section wrapper */
+.about__section {
+  padding: 60px 0;
+
+  @media (min-width: $bp-lg) {
+    padding: 80px 0;
+  }
+
+  &--green {
+    background: #f8ffe1;
+  }
+
+  &--gray {
+    background: #f7f7f7;
+  }
 }
 
-.about__description {
-  font-size: $font-body;
-  line-height: 1.7;
-  opacity: 0.8;
+/* Container */
+.about__container {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 0 $space-gutter;
+
+  @media (min-width: $bp-lg) {
+    padding: 0;
+  }
+}
+
+/* Heading */
+.about__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 32px;
+  margin-bottom: 28px;
+
+  @media (min-width: $bp-md) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+/* Body text */
+.about__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  p {
+    color: #1f1f1f;
+    font-family: var(--font-archivo), "Archivo", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+
+    @media (min-width: $bp-md) {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+}
+
+.about__tagline {
+  font-weight: 700;
+}
+
+/* Split layout (text + image side by side) */
+.about__split {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: $bp-xl;
+
+  @media (min-width: $bp-lg) {
+    flex-direction: row;
+    gap: 30px;
+    padding: 0 #{fluid(0, 60)};
+  }
+}
+
+.about__split--reverse {
+  @media (min-width: $bp-lg) {
+    flex-direction: row-reverse;
+  }
+}
+
+.about__split-text {
+  flex: 1;
+  min-width: 0;
+
+  @media (min-width: $bp-lg) {
+    max-width: 510px;
+  }
+}
+
+.about__split-image {
+  border-radius: 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    height: 418px;
+    width: 630px;
+  }
+
+  img {
+    border-radius: 16px;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
 }
