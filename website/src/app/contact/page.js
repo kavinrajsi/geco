@@ -40,7 +40,8 @@ const jsonLd = {
         addressRegion: "Tamil Nadu",
         postalCode: "600028",
         addressCountry: "IN",
-        streetAddress: "VNC Electrodes, 11/4, Janaki Avenue, MRC Nagar, Raja Annamalai Puram",
+        streetAddress:
+          "VNC Electrodes, 11/4, Janaki Avenue, MRC Nagar, Raja Annamalai Puram",
       },
     ],
     contactPoint: {
@@ -63,59 +64,88 @@ export default function ContactPage() {
       <PageHeader title="Contact" />
       <div className={styles["contact"]}>
         <div className={styles["contact__grid"]}>
-        {/* Form */}
-        <div className={styles["contact__form"]}>
-          <ContactForm />
+          {/* Form */}
+          <div className={styles["contact__form"]}>
+            <ContactForm />
+          </div>
+
+          {/* Info */}
+          <div className={styles["contact__info"]}>
+            <div className={styles["contact__address"]}>
+              <h2 className={styles["contact__address-title"]}>
+                REGISTERED OFFICE
+              </h2>
+              <p className={styles["contact__address-text"]}>
+                VNC Electrodes, 3, Industrial Estate,
+                <br />
+                S.Vellalapatti, Karur - 639004,
+                <br />
+                Tamil Nadu, India
+              </p>
+            </div>
+
+            <div className={styles["contact__address"]}>
+              <h2 className={styles["contact__address-title"]}>CHENNAI</h2>
+              <p className={styles["contact__address-text"]}>
+                VNC Electrodes, 11/4, Janaki Avenue,
+                <br />
+                MRC Nagar, Raja Annamalai Puram,
+                <br />
+                Chennai - 600028, Tamil Nadu, India
+              </p>
+            </div>
+
+            <div className={styles["contact__buttons"]}>
+              <a href="tel:18005993939" className={styles["contact__btn"]}>
+                <span className={styles["contact__btn-icon"]}>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M0.08676 5.54927C1.11037 10.0896 8.01977 17.1523 12.3701 17.909C14.1614 18.1613 15.441 17.909 16.4646 16.9001C17.2323 16.3956 18 14.8821 18 13.6209C17.7441 12.8642 17.2323 12.612 16.4646 12.3597C15.9528 12.1075 13.3937 11.3508 12.8819 11.3508C11.6024 11.3508 12.1142 14.1254 10.3229 12.8642C8.01977 11.3508 6.74025 10.3418 5.20483 7.81943C4.94893 7.06271 4.69302 6.55823 5.20483 6.30599C6.99615 5.0448 7.25206 5.54927 6.48435 3.02688C6.22844 2.5224 5.97254 1.76568 5.71664 1.00896C5.46073 0.50448 5.20483 0 4.43712 0C1.36628 0 -0.425047 2.5224 0.08676 5.54927Z"
+                      fill="#1F1F1F"
+                    />
+                  </svg>
+                </span>
+                <span className={styles["contact__btn-text"]}>1800 599 3939</span>
+              </a>
+              <a
+                href="mailto:contactus@vncgroup.com"
+                className={styles["contact__btn"]}
+              >
+                <span className={styles["contact__btn-icon"]}>
+                  <svg
+                    width="18"
+                    height="14"
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M1.95349 0H15.907C17.0233 0 18 0.865979 18 2.02062V11.9794C18 13.134 17.0233 14 15.907 14H1.95349C0.837209 14 0 13.134 0 11.9794V2.02062C0 0.865979 0.837209 0 1.95349 0ZM2.7907 1.87629L9.06977 7.07217L15.2093 1.87629C15.3488 1.58763 15.6279 1.73196 15.7674 1.87629C15.907 1.87629 15.907 2.02062 15.907 2.16495C15.907 2.30928 15.907 2.45361 15.7674 2.59794L9.34884 8.08247C9.2093 8.08247 9.06977 8.2268 9.06977 8.2268C8.93023 8.2268 8.7907 8.08247 8.65116 8.08247L2.23256 2.59794C2.09302 2.45361 2.09302 2.30928 2.09302 2.16495C2.09302 2.02062 2.09302 1.87629 2.23256 1.87629C2.37209 1.73196 2.65116 1.58763 2.7907 1.87629Z"
+                      fill="#1F1F1F"
+                    />
+                  </svg>
+                </span>
+                <span className={styles["contact__btn-text"]}>contactus@vncgroup.com</span>
+              </a>
+            </div>
+          </div>
         </div>
-
-        {/* Info */}
-        <div className={styles["contact__info"]}>
-          <div className={styles["contact__address"]}>
-            <h2 className={styles["contact__address-title"]}>
-              REGISTERED OFFICE
-            </h2>
-            <p className={styles["contact__address-text"]}>
-              VNC Electrodes, 3, Industrial Estate,
-              <br />
-              S.Vellalapatti, Karur - 639004,
-              <br />
-              Tamil Nadu, India
-            </p>
-          </div>
-
-          <div className={styles["contact__address"]}>
-            <h2 className={styles["contact__address-title"]}>CHENNAI</h2>
-            <p className={styles["contact__address-text"]}>
-              VNC Electrodes, 11/4, Janaki Avenue,
-              <br />
-              MRC Nagar, Raja Annamalai Puram,
-              <br />
-              Chennai - 600028, Tamil Nadu, India
-            </p>
-          </div>
-
-          <div className={styles["contact__buttons"]}>
-            <a href="tel:18005993939" className={styles["contact__btn"]}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.6893 13.7691 20.7861 11.19 19.262C8.80303 17.837 6.79614 15.8299 5.37002 13.443C3.80002 10.8492 2.89729 7.85797 2.67002 4.76201C2.64502 4.48573 2.67751 4.20755 2.76451 3.94468C2.85152 3.6818 2.99116 3.43825 3.17512 3.23344C3.35908 3.02864 3.58354 2.86503 3.83283 2.75286C4.08213 2.64069 4.35282 2.58262 4.62702 2.58201H7.62702C8.10768 2.57754 8.57423 2.74621 8.94127 3.05768C9.30831 3.36914 9.55127 3.80219 9.62702 4.278C9.76748 5.22794 10.0231 6.15787 10.389 7.048C10.5277 7.38233 10.5686 7.74804 10.5073 8.10374C10.446 8.45944 10.2847 8.79078 10.042 9.058L8.78402 10.316C10.1249 12.7184 12.0986 14.6917 14.501 16.032L15.759 14.774C16.0279 14.5313 16.3593 14.37 16.715 14.3087C17.0707 14.2473 17.4364 14.2883 17.7707 14.427C18.6608 14.7929 19.5907 15.0485 20.5407 15.189C21.0216 15.2654 21.4585 15.513 21.7709 15.8863C22.0832 16.2597 22.248 16.732 22.237 17.216L22 16.92Z" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              1800 599 3939
-            </a>
-            <a href="mailto:contactus@vncgroup.com" className={styles["contact__btn"]}>
-              <svg width="18" height="14" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 4L8.912 8.614C9.2364 8.82315 9.6141 8.93419 10 8.93419C10.3859 8.93419 10.7636 8.82315 11.088 8.614L18 4M4 14H16C16.5304 14 17.0391 13.7893 17.4142 13.4142C17.7893 13.0391 18 12.5304 18 12V4C18 3.46957 17.7893 2.96086 17.4142 2.58579C17.0391 2.21071 16.5304 2 16 2H4C3.46957 2 2.96086 2.21071 2.58579 2.58579C2.21071 2.96086 2 3.46957 2 4V12C2 12.5304 2.21071 13.0391 2.58579 13.4142C2.96086 13.7893 3.46957 14 4 14Z" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              contactus@vncgroup.com
-            </a>
-          </div>
-        </div>
-      </div>
       </div>
 
       {/* Google Map */}
       <div className={styles["contact__map"]}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.123456789!2d78.0767!3d10.9601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2e0f0e0e0e0f%3A0x0!2sVNC+Group!5e0!3m2!1sen!2sin!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.5412270581921!2d78.10737619839473!3d10.957144100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd8bde0da75%3A0xabc8b2bcf9c5e9c8!2sVNC%20Group!5e0!3m2!1sen!2sin!4v1773037744267!5m2!1sen!2sin"
           title="VNC Group Location"
           width="100%"
           height="600"

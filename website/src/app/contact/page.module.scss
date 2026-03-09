@@ -2,8 +2,7 @@
 
 .contact {
   margin: 0 auto;
-  padding: $space-section $space-gutter;
-
+  padding: 0;
   @media (min-width: $bp-lg) {
     max-width: $bp-xl;
   }
@@ -14,6 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding: 0 $space-gutter;
 
   @media (min-width: $bp-lg) {
     flex-direction: row;
@@ -30,7 +30,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-
   @media (min-width: $bp-lg) {
     flex-shrink: 0;
     width: 410px;
@@ -45,14 +44,23 @@
 
 .contact__address-title {
   color: #1f1f1f;
-  font-size: fluid(18, 20);
-  font-weight: 700;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
   line-height: 28px;
+
+  @media (min-width: $bp-md) {
+    font-weight: 700;
+  }
 }
 
 .contact__address-text {
   color: #1f1f1f;
-  font-size: $font-body;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
   line-height: 26px;
 }
 
@@ -75,13 +83,10 @@
   line-height: 26px;
   padding: 16px 40px;
   text-decoration: none;
-  transition: opacity 0.2s;
   width: fit-content;
-
-  &:hover {
-    opacity: 0.85;
+  .contact__btn-icon {
+    display: inline-flex;
   }
-
   svg {
     flex-shrink: 0;
   }

@@ -1,21 +1,12 @@
 import Script from "next/script";
-import { Geist, Geist_Mono, Archivo, Instrument_Sans } from "next/font/google";
+import { Archivo, Instrument_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
 import "@/styles/globals.scss";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -28,6 +19,13 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
   weight: ["600"],
+});
+
+const archivoExpanded = localFont({
+  src: "../../public/font/ArchivoExpanded-Black.woff2",
+  variable: "--font-archivo-expanded",
+  weight: "900",
+  display: "swap",
 });
 
 export const metadata = {
@@ -80,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       )}
-      <body className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${instrumentSans.variable}`}>
+      <body className={`${archivo.variable} ${instrumentSans.variable} ${archivoExpanded.variable}`}>
         {GTM_ID && (
           <noscript>
             <iframe

@@ -111,6 +111,6 @@ $font-body-sm: #{fluid(13, 16)};     // Small body / captions
 $font-label: #{fluid(13, 14)};       // Labels, nav items
 
 // Fluid spacing
-$space-section: #{fluid(32, 64)};    // Section padding
+$space-section: #{fluid(32, 80)};    // Section padding
 $space-page-x: #{fluid(16, 24)};     // Horizontal page padding
 $space-gutter: #{fluid(20, 30)};     // Container gutter (20px mobile → 30px desktop)

@@ -5,13 +5,16 @@
   background: #10069f;
   display: flex;
   justify-content: center;
-  padding: 80px $space-gutter 120px;
+  padding: 40px $space-gutter 80px;
   margin-bottom: 80px;
+  @media (min-width: $bp-md) {
+    padding: 80px $space-gutter 120px;
+  }
 }
 
 .page-header__title {
   color: #fff;
-  font-family: "Archivo Expanded", "Archivo", sans-serif;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
   font-size: 28px;
   font-style: normal;
   font-weight: 900;

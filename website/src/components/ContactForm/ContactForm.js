@@ -99,148 +99,137 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className={styles["contact-form__success"]}>
-        <h2 className={styles["contact-form__success-title"]}>Thank you!</h2>
-        <p className={styles["contact-form__success-message"]}>
-          Your message has been sent. We&apos;ll get back to you soon.
-        </p>
+      <div className={styles["contact-form__card"]}>
+        <div className={styles["contact-form__success"]}>
+          <h2 className={styles["contact-form__success-title"]}>Thank you!</h2>
+          <p className={styles["contact-form__success-message"]}>
+            Your message has been sent. We&apos;ll get back to you soon.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <form
-      className={styles["contact-form"]}
-      onSubmit={handleSubmit}
-      noValidate
-    >
-      {/* Honeypot — visually hidden, bots fill it */}
-      <div className={styles["contact-form__honeypot"]} aria-hidden="true">
-        <label htmlFor="honeypot">Leave this empty</label>
-        <input
-          type="text"
-          id="honeypot"
-          name="honeypot"
-          value={form.honeypot}
-          onChange={handleChange}
-          tabIndex={-1}
-          autoComplete="off"
-        />
-      </div>
+    <div className={styles["contact-form__card"]}>
+      <h2 className={styles["contact-form__title"]}>Get in touch with us</h2>
 
-      <div className={styles["contact-form__field"]}>
-        <label
-          className={styles["contact-form__label"]}
-          htmlFor="name"
-        >
-          Name *
-        </label>
-        <input
-          className={errors.name ? styles["contact-form__input--error"] : styles["contact-form__input"]}
-          type="text"
-          id="name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        {errors.name && (
-          <span className={styles["contact-form__error"]}>{errors.name}</span>
-        )}
-      </div>
-
-      <div className={styles["contact-form__field"]}>
-        <label
-          className={styles["contact-form__label"]}
-          htmlFor="email"
-        >
-          Email *
-        </label>
-        <input
-          className={errors.email ? styles["contact-form__input--error"] : styles["contact-form__input"]}
-          type="email"
-          id="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-        />
-        {errors.email && (
-          <span className={styles["contact-form__error"]}>{errors.email}</span>
-        )}
-      </div>
-
-      <div className={styles["contact-form__field"]}>
-        <label
-          className={styles["contact-form__label"]}
-          htmlFor="phone"
-        >
-          Phone *
-        </label>
-        <input
-          className={errors.phone ? styles["contact-form__input--error"] : styles["contact-form__input"]}
-          type="tel"
-          id="phone"
-          name="phone"
-          value={form.phone}
-          onChange={handleChange}
-        />
-        {errors.phone && (
-          <span className={styles["contact-form__error"]}>{errors.phone}</span>
-        )}
-      </div>
-
-      <div className={styles["contact-form__field"]}>
-        <label
-          className={styles["contact-form__label"]}
-          htmlFor="company"
-        >
-          Company
-        </label>
-        <input
-          className={errors.company ? styles["contact-form__input--error"] : styles["contact-form__input"]}
-          type="text"
-          id="company"
-          name="company"
-          value={form.company}
-          onChange={handleChange}
-        />
-        {errors.company && (
-          <span className={styles["contact-form__error"]}>{errors.company}</span>
-        )}
-      </div>
-
-      <div className={styles["contact-form__field"]}>
-        <label
-          className={styles["contact-form__label"]}
-          htmlFor="message"
-        >
-          Message *
-        </label>
-        <textarea
-          className={errors.message ? styles["contact-form__textarea--error"] : styles["contact-form__textarea"]}
-          id="message"
-          name="message"
-          rows={5}
-          value={form.message}
-          onChange={handleChange}
-        />
-        {errors.message && (
-          <span className={styles["contact-form__error"]}>
-            {errors.message}
-          </span>
-        )}
-      </div>
-
-      {serverError && (
-        <p className={styles["contact-form__server-error"]}>{serverError}</p>
-      )}
-
-      <button
-        className={styles["contact-form__submit"]}
-        type="submit"
-        disabled={status === "submitting"}
+      <form
+        className={styles["contact-form"]}
+        onSubmit={handleSubmit}
+        noValidate
       >
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </button>
-    </form>
+        {/* Honeypot — visually hidden, bots fill it */}
+        <div className={styles["contact-form__honeypot"]} aria-hidden="true">
+          <label htmlFor="honeypot">Leave this empty</label>
+          <input
+            type="text"
+            id="honeypot"
+            name="honeypot"
+            value={form.honeypot}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
+        {/* Row 1: Name + Email */}
+        <div className={styles["contact-form__row"]}>
+          <div className={styles["contact-form__field"]}>
+            <input
+              className={errors.name ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name*"
+              value={form.name}
+              onChange={handleChange}
+            />
+            {errors.name && (
+              <span className={styles["contact-form__error"]}>{errors.name}</span>
+            )}
+          </div>
+          <div className={styles["contact-form__field"]}>
+            <input
+              className={errors.email ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+            />
+            {errors.email && (
+              <span className={styles["contact-form__error"]}>{errors.email}</span>
+            )}
+          </div>
+        </div>
+
+        {/* Row 2: Phone + Company */}
+        <div className={styles["contact-form__row"]}>
+          <div className={styles["contact-form__field"]}>
+            <input
+              className={errors.phone ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Phone Number*"
+              value={form.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && (
+              <span className={styles["contact-form__error"]}>{errors.phone}</span>
+            )}
+          </div>
+          <div className={styles["contact-form__field"]}>
+            <input
+              className={errors.company ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Company"
+              value={form.company}
+              onChange={handleChange}
+            />
+            {errors.company && (
+              <span className={styles["contact-form__error"]}>{errors.company}</span>
+            )}
+          </div>
+        </div>
+
+        {/* Message */}
+        <div className={styles["contact-form__field"]}>
+          <textarea
+            className={errors.message ? styles["contact-form__textarea--error"] : styles["contact-form__textarea"]}
+            id="message"
+            name="message"
+            placeholder="Your Message*"
+            rows={5}
+            value={form.message}
+            onChange={handleChange}
+          />
+          {errors.message && (
+            <span className={styles["contact-form__error"]}>
+              {errors.message}
+            </span>
+          )}
+        </div>
+
+        {serverError && (
+          <p className={styles["contact-form__server-error"]}>{serverError}</p>
+        )}
+
+        {/* Footer: Submit button */}
+        <div className={styles["contact-form__footer"]}>
+          <button
+            className={styles["contact-form__submit"]}
+            type="submit"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "Sending..." : "Send Message"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
