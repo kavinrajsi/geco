@@ -44,7 +44,7 @@ export default function ProductGrid({ products, categories }) {
 
       <div className={styles["product-grid__list"]}>
         {filteredProducts.map((product) => {
-          const imageUrl = getStrapiMedia(product.featureImage?.url);
+          const imageUrl = getStrapiMedia(product.image?.url);
           const categoryName = product.productCategory?.name || "";
           return (
             <Link

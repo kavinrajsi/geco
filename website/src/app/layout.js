@@ -1,7 +1,7 @@
 import Script from "next/script";
 import { Archivo, Instrument_Sans } from "next/font/google";
 import localFont from "next/font/local";
-import Header from "@/components/Header/Header";
+import HeaderWrapper from "@/components/Header/HeaderWrapper";
 import Footer from "@/components/Footer/Footer";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
 import "@/styles/globals.scss";
@@ -90,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         <RecaptchaProvider>
-          <Header />
+          <HeaderWrapper />
           <main>{children}</main>
           <Footer />
         </RecaptchaProvider>

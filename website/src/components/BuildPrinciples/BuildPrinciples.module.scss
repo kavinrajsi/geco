@@ -1,0 +1,124 @@
+@use "../../styles/fluid" as *;
+
+.principles {
+  align-items: center;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px $space-gutter;
+
+  @media (min-width: $bp-lg) {
+    background: none;
+    padding: 120px 0 60px;
+  }
+}
+
+.principles__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    width: 630px;
+  }
+}
+
+.principles__title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 32px;
+  text-transform: uppercase;
+
+  @media (min-width: $bp-lg) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.principles__subtitle {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  @media (min-width: $bp-lg) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.principles__grid {
+  display: grid;
+  gap: 56px 20px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: $bp-xl;
+  }
+}
+
+.principles__card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.principles__card-icon {
+  height: 75px;
+  position: relative;
+  width: auto;
+
+  img {
+    height: 100%;
+    object-fit: contain;
+    width: auto;
+  }
+
+  @media (min-width: $bp-lg) {
+    height: 100px;
+  }
+}
+
+.principles__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.principles__card-title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  text-transform: capitalize;
+
+  @media (min-width: $bp-lg) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.principles__card-description {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  @media (min-width: $bp-lg) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}

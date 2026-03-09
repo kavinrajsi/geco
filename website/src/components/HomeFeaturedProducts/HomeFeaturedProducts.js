@@ -11,7 +11,7 @@ export default async function HomeFeaturedProducts() {
 
   const products = (productsData?.data || []).map((product) => ({
     ...product,
-    featureImageUrl: getStrapiMedia(product.featureImage?.url),
+    imageUrl: getStrapiMedia(product.image?.url),
   }));
 
   if (products.length === 0) return null;
@@ -23,8 +23,8 @@ export default async function HomeFeaturedProducts() {
           Featured Products
         </h2>
         <p className={styles["featured-products__subtitle"]}>
-          Explore our top-quality products designed for durability and
-          performance.
+          Inspired by the gecko&apos;s remarkable sticking ability, our products
+          stand for strength, reliability, and continuous innovation.
         </p>
       </div>
       <FeaturedProductsSlider products={products} />

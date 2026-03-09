@@ -6,7 +6,7 @@ export default async function HomeBlogSection() {
   const blogsData = await fetchStrapi("/blogs", {
     "populate": "*",
     "sort": "createdAt:desc",
-    "pagination[limit]": "3",
+    "pagination[limit]": "4",
   });
 
   const blogs = (blogsData?.data || []).map((blog) => ({

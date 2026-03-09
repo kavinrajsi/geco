@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
@@ -13,9 +13,21 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Header() {
+export default function Header({ productCategories = [] }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const submenuTimeout = useRef(null);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+
+  const handleSubmenuEnter = () => {
+    clearTimeout(submenuTimeout.current);
+    setSubmenuOpen(true);
+  };
+
+  const handleSubmenuLeave = () => {
+    submenuTimeout.current = setTimeout(() => setSubmenuOpen(false), 150);
+  };
 
   useEffect(() => {
     setMenuOpen(false);
@@ -57,6 +69,41 @@ export default function Header() {
           {navLinks.map(({ href, label }) => {
             const isActive =
               href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+            if (label === "Products" && productCategories.length > 0) {
+              return (
+                <div
+                  key={href}
+                  className={styles["header__nav-item"]}
+                  onMouseEnter={handleSubmenuEnter}
+                  onMouseLeave={handleSubmenuLeave}
+                >
+                  <Link
+                    href={href}
+                    className={`${styles["header__nav-link"]} ${isActive ? styles["header__nav-link--active"] : ""}`}
+                  >
+                    {label}
+                  </Link>
+                  {submenuOpen && (
+                    <div className={styles["header__submenu"]}>
+                      {productCategories.map((cat) => {
+                        const catActive = pathname === `/products/${cat.slug}`;
+                        return (
+                          <Link
+                            key={cat.slug}
+                            href={`/products/${cat.slug}`}
+                            className={`${styles["header__submenu-link"]} ${catActive ? styles["header__submenu-link--active"] : ""}`}
+                          >
+                            {cat.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={href}
@@ -142,6 +189,51 @@ export default function Header() {
           {navLinks.map(({ href, label }) => {
             const isActive =
               href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+            if (label === "Products" && productCategories.length > 0) {
+              return (
+                <div key={href} className={styles["mobile-menu__group"]}>
+                  <button
+                    className={`${styles["mobile-menu__link"]} ${isActive ? styles["mobile-menu__link--active"] : ""}`}
+                    onClick={() => setMobileProductsOpen((v) => !v)}
+                  >
+                    <span>{label}</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{ transform: mobileProductsOpen ? "rotate(90deg)" : "none", transition: "transform 0.2s" }}
+                    >
+                      <path d="M9 18L15 12L9 6" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  {mobileProductsOpen && (
+                    <div className={styles["mobile-menu__sublinks"]}>
+                      <Link
+                        href="/products"
+                        className={styles["mobile-menu__sublink"]}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        All Products
+                      </Link>
+                      {productCategories.map((cat) => (
+                        <Link
+                          key={cat.slug}
+                          href={`/products/${cat.slug}`}
+                          className={styles["mobile-menu__sublink"]}
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {cat.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={href}

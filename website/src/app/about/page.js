@@ -21,7 +21,7 @@ export default function AboutPage() {
     <>
       {/* Video Hero */}
       <div className={styles["about__video"]}>
-        <video autoPlay muted loop playsInline>
+        <video autoPlay muted loop playsInline preload="auto">
           <source src="/video/geco-about.mp4" type="video/mp4" />
         </video>
       </div>

@@ -34,6 +34,12 @@
       "required": true,
       "allowedTypes": ["images"]
     },
+    "secondaryImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
     "brochure": {
       "type": "media",
       "multiple": false,
