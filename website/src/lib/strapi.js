@@ -19,6 +19,9 @@ function getCacheTag(path) {
   return `strapi-${segment}`;
 }
 
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 3000;
+
 export async function fetchStrapi(path, params = {}) {
   const queryString = Object.entries(params)
     .map(([key, value]) => `${key}=${value}`)
@@ -26,19 +29,26 @@ export async function fetchStrapi(path, params = {}) {
 
   const url = `${STRAPI_URL}/api${path}${queryString ? `?${queryString}` : ""}`;
 
-  const res = await fetch(url, {
-    headers: getStrapiHeaders(),
-    next: { tags: [getCacheTag(path)] },
-  });
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    const res = await fetch(url, {
+      headers: getStrapiHeaders(),
+      next: { tags: [getCacheTag(path)] },
+    });
 
-  if (!res.ok) {
+    if (res.ok) {
+      return await res.json();
+    }
+
+    if (res.status === 503 && attempt < MAX_RETRIES) {
+      console.warn(`Strapi 503 on ${path}, retrying in ${RETRY_DELAY / 1000}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+      await new Promise((r) => setTimeout(r, RETRY_DELAY));
+      continue;
+    }
+
     const body = await res.text();
     console.error(`Strapi fetch error: ${res.status} ${res.statusText}`, body);
     return null;
   }
-
-  const json = await res.json();
-  return json;
 }
 
 export function getStrapiMedia(url) {
