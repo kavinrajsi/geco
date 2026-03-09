@@ -9,7 +9,7 @@ import styles from "./HomeFeaturedProducts.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function FeaturedProductsSlider({ products, getStrapiMediaUrl }) {
+export default function FeaturedProductsSlider({ products }) {
   return (
     <div className={styles["featured-products__slider"]}>
       <Swiper
@@ -28,7 +28,7 @@ export default function FeaturedProductsSlider({ products, getStrapiMediaUrl }) 
         className={styles["featured-products__swiper"]}
       >
         {products.map((product) => {
-          const imageUrl = getStrapiMediaUrl(product.featureImage?.url);
+          const imageUrl = product.featureImageUrl;
           const categoryName = product.productCategory?.name || "";
           return (
             <SwiperSlide

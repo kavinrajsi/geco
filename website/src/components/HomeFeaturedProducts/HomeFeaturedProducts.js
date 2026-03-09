@@ -9,7 +9,10 @@ export default async function HomeFeaturedProducts() {
     "pagination[limit]": "4",
   });
 
-  const products = productsData?.data || [];
+  const products = (productsData?.data || []).map((product) => ({
+    ...product,
+    featureImageUrl: getStrapiMedia(product.featureImage?.url),
+  }));
 
   if (products.length === 0) return null;
 
@@ -24,10 +27,7 @@ export default async function HomeFeaturedProducts() {
           performance.
         </p>
       </div>
-      <FeaturedProductsSlider
-        products={products}
-        getStrapiMediaUrl={getStrapiMedia}
-      />
+      <FeaturedProductsSlider products={products} />
     </section>
   );
 }

@@ -9,14 +9,17 @@ export default async function HomeBlogSection() {
     "pagination[limit]": "3",
   });
 
-  const blogs = blogsData?.data || [];
+  const blogs = (blogsData?.data || []).map((blog) => ({
+    ...blog,
+    featureImageUrl: getStrapiMedia(blog.featureImage?.url),
+  }));
 
   if (blogs.length === 0) return null;
 
   return (
     <section className={styles["home-blogs"]}>
       <h2 className={styles["home-blogs__title"]}>Blogs</h2>
-      <BlogSlider blogs={blogs} getStrapiMediaUrl={getStrapiMedia} />
+      <BlogSlider blogs={blogs} />
     </section>
   );
 }

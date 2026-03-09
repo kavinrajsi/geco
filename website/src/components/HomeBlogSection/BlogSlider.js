@@ -9,7 +9,7 @@ import styles from "./HomeBlogSection.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function BlogSlider({ blogs, getStrapiMediaUrl }) {
+export default function BlogSlider({ blogs }) {
   return (
     <div className={styles["home-blogs__slider"]}>
       <Swiper
@@ -28,7 +28,7 @@ export default function BlogSlider({ blogs, getStrapiMediaUrl }) {
         className={styles["home-blogs__swiper"]}
       >
         {blogs.map((blog) => {
-          const imageUrl = getStrapiMediaUrl(blog.featureImage?.url);
+          const imageUrl = blog.featureImageUrl;
           const category = blog.blogCategories?.[0]?.name;
           return (
             <SwiperSlide
