@@ -19,10 +19,11 @@
 /* Article wrapper */
 .blog-detail {
   margin: 0 auto;
-  padding: fluid(32, 40) $space-gutter $space-section;
+  padding: fluid(32, 80) $space-gutter $space-section;
 
   @media (min-width: $bp-lg) {
     max-width: 850px;
+    padding: fluid(32, 64) $space-gutter $space-section;
   }
 }
 
@@ -37,7 +38,7 @@
 .blog-detail__categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .blog-detail__tag {
@@ -343,6 +344,14 @@
 }
 
 .blog-detail__tags-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.blog-detail__tags-group {
   align-items: center;
   display: flex;
   gap: 12px;

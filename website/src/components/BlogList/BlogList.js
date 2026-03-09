@@ -8,9 +8,10 @@ import styles from "./BlogList.module.scss";
 
 const BLOGS_PER_PAGE = 4;
 
-export default function BlogList({ blogs, categories }) {
+export default function BlogList({ blogs, categories, tags }) {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState(null);
+  const [activeTag, setActiveTag] = useState(null);
   const [visibleCount, setVisibleCount] = useState(BLOGS_PER_PAGE);
 
   const filtered = useMemo(() => {
@@ -18,6 +19,11 @@ export default function BlogList({ blogs, categories }) {
     if (activeCategory) {
       result = result.filter((b) =>
         b.blogCategories?.some((c) => c.name === activeCategory)
+      );
+    }
+    if (activeTag) {
+      result = result.filter((b) =>
+        b.blogTags?.some((t) => t.name === activeTag)
       );
     }
     if (search.trim()) {
@@ -29,7 +35,7 @@ export default function BlogList({ blogs, categories }) {
       );
     }
     return result;
-  }, [blogs, activeCategory, search]);
+  }, [blogs, activeCategory, activeTag, search]);
 
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
@@ -109,22 +115,22 @@ export default function BlogList({ blogs, categories }) {
           </div>
         )}
 
-        {categories.length > 0 && (
+        {tags.length > 0 && (
           <div className={styles["blog-list__section"]}>
             <h3 className={styles["blog-list__section-title"]}>Tags Cloud</h3>
             <div className={styles["blog-list__tags"]}>
-              {categories.map((cat) => (
+              {tags.map((tag) => (
                 <button
-                  key={cat}
+                  key={tag}
                   className={`${styles["blog-list__tag"]} ${
-                    activeCategory === cat ? styles["blog-list__tag--active"] : ""
+                    activeTag === tag ? styles["blog-list__tag--active"] : ""
                   }`}
                   onClick={() => {
-                    setActiveCategory(activeCategory === cat ? null : cat);
+                    setActiveTag(activeTag === tag ? null : tag);
                     setVisibleCount(BLOGS_PER_PAGE);
                   }}
                 >
-                  {cat}
+                  {tag}
                 </button>
               ))}
             </div>

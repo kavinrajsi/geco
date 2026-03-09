@@ -1,0 +1,42 @@
+@use "../../styles/fluid" as *;
+
+.share {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.share__label {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.share__icons {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.share__icon {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  transition: background 0.2s;
+  width: 48px;
+
+  &:hover {
+    background: #f7f7f7;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}

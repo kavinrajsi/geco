@@ -194,7 +194,6 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 16px;
   min-width: 0;
 }
 
@@ -211,14 +210,24 @@
 }
 
 .blog-list__card-title {
+  padding-top: 8px;
   color: #1f1f1f;
-  font-size: fluid(20, 28);
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-style: normal;
   font-weight: 600;
-  line-height: fluid(28, 36);
-  text-transform: capitalize;
+  font-size: 20px;
+  line-height: 28px;
+
+  @media (min-width: $bp-md) {
+    font-size: 28px;
+    line-height: 36px;
+    text-transform: capitalize;
+  }
 }
 
 .blog-list__card-excerpt {
+  padding-top: 16px;
+  margin-bottom: 16px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   color: #6b727a;

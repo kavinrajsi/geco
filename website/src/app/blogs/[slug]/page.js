@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
+import ShareButtons from "@/components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
 
 async function getBlog(slug) {
@@ -350,18 +351,21 @@ export default async function BlogDetailPage({ params }) {
 
         {/* Tags & Nav */}
         <div className={styles["blog-detail__tags-section"]}>
-          {blog.blogCategories?.length > 0 && (
-            <div className={styles["blog-detail__tags-row"]}>
-              <span className={styles["blog-detail__tags-label"]}>Tag:</span>
-              <div className={styles["blog-detail__tags"]}>
-                {blog.blogCategories.map((cat) => (
-                  <span key={cat.id} className={styles["blog-detail__blog-tag"]}>
-                    {cat.name}
-                  </span>
-                ))}
+          <div className={styles["blog-detail__tags-row"]}>
+            {blog.blogCategories?.length > 0 && (
+              <div className={styles["blog-detail__tags-group"]}>
+                <span className={styles["blog-detail__tags-label"]}>Tag:</span>
+                <div className={styles["blog-detail__tags"]}>
+                  {blog.blogCategories.map((cat) => (
+                    <span key={cat.id} className={styles["blog-detail__blog-tag"]}>
+                      {cat.name}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+            <ShareButtons title={blog.title} />
+          </div>
 
           {(prev || next) && (
             <div className={styles["blog-detail__nav"]}>
