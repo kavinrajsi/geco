@@ -1,7 +1,11 @@
+import HeroSlider from "@/components/HeroSlider/HeroSlider";
 import HomeFeaturedProducts from "@/components/HomeFeaturedProducts/HomeFeaturedProducts";
+import EngineeredPrecision from "@/components/EngineeredPrecision/EngineeredPrecision";
+import ExploreCategories from "@/components/ExploreCategories/ExploreCategories";
 import BuildPrinciples from "@/components/BuildPrinciples/BuildPrinciples";
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import HomeBlogSection from "@/components/HomeBlogSection/HomeBlogSection";
+import InstagramFeed from "@/components/InstagramFeed/InstagramFeed";
 
 export const metadata = {
   title: "Home | Geco",
@@ -21,12 +25,16 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <HomeFeaturedProducts />
+      <HeroSlider />
+      <ExploreCategories />
+      <EngineeredPrecision />
       <BuildPrinciples />
+      <HomeFeaturedProducts />
       <WatchOurStories
         title="Watch Our Stories"
         subtitle="Lorem ipsum dolor sit amet consectetur. Donec nisi purus urna eu vel. Egestas molestie enim est eu Donec nisi purus urna eu"
-        videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        videoSrc="/video/geco-about.mp4"
+        poster="/video/geco-about-poster.png"
       />
       <HomeBlogSection />
     </>

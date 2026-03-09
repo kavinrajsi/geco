@@ -1,7 +1,7 @@
 import styles from "./WatchOurStories.module.scss";
 
-export default function WatchOurStories({ title, subtitle, videoUrl }) {
-  if (!videoUrl) return null;
+export default function WatchOurStories({ title, subtitle, videoUrl, videoSrc, poster }) {
+  if (!videoUrl && !videoSrc) return null;
 
   return (
     <section className={styles["stories"]}>
@@ -12,12 +12,24 @@ export default function WatchOurStories({ title, subtitle, videoUrl }) {
         )}
       </div>
       <div className={styles["stories__video"]}>
-        <iframe
-          src={videoUrl}
-          title={title || "Watch Our Stories"}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        {videoSrc ? (
+          <video
+            src={videoSrc}
+            poster={poster}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          <iframe
+            src={videoUrl}
+            title={title || "Watch Our Stories"}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
       </div>
     </section>
   );

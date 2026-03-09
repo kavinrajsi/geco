@@ -19,9 +19,10 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
+      <link rel="preload" as="image" href="/images/geco-about-poster.png" />
       {/* Video Hero */}
       <div className={styles["about__video"]}>
-        <video autoPlay muted loop playsInline preload="auto">
+        <video autoPlay muted loop playsInline preload="auto" poster="/images/geco-about-poster.png">
           <source src="/video/geco-about.mp4" type="video/mp4" />
         </video>
       </div>

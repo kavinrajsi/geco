@@ -1,0 +1,56 @@
+@use "../../styles/fluid" as *;
+
+.hero-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-slider__swiper {
+  width: 100%;
+
+  :global(.swiper-pagination) {
+    bottom: 16px;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    opacity: 0.5;
+    transition: opacity 0.3s, width 0.3s;
+    border-radius: 5px;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    opacity: 1;
+    width: 24px;
+  }
+}
+
+.hero-slider__slide {
+  position: relative;
+  width: 100%;
+}
+
+.hero-slider__image--desktop,
+.hero-slider__image--mobile {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-slider__image--desktop {
+  display: none;
+
+  @media (min-width: $bp-md) {
+    display: block;
+  }
+}
+
+.hero-slider__image--mobile {
+  display: block;
+
+  @media (min-width: $bp-md) {
+    display: none;
+  }
+}
