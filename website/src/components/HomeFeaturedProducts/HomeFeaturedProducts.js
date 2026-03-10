@@ -21,7 +21,9 @@ export default async function HomeFeaturedProducts() {
     .sort((a, b) => {
       const ai = categoryOrder.indexOf(a.productCategory?.name?.toLowerCase());
       const bi = categoryOrder.indexOf(b.productCategory?.name?.toLowerCase());
-      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      const catDiff = (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      if (catDiff !== 0) return catDiff;
+      return (a.name || "").localeCompare(b.name || "");
     });
 
   if (products.length === 0) return null;
