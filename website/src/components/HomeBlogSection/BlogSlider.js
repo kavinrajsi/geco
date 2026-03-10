@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
@@ -10,15 +11,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function BlogSlider({ blogs }) {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [swiperReady, setSwiperReady] = useState(false);
+
   return (
     <div className={styles["home-blogs__slider"]}>
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView="auto"
-        navigation={{
-          prevEl: `.${styles["home-blogs__nav-btn--prev"]}`,
-          nextEl: `.${styles["home-blogs__nav-btn--next"]}`,
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+          setSwiperReady(true);
         }}
         breakpoints={{
           1024: {
@@ -76,7 +84,8 @@ export default function BlogSlider({ blogs }) {
       </Swiper>
       <div className={styles["home-blogs__nav"]}>
         <button
-          className={`${styles["home-blogs__nav-btn"]} ${styles["home-blogs__nav-btn--prev"]}`}
+          ref={prevRef}
+          className={styles["home-blogs__nav-btn"]}
           aria-label="Previous"
         >
           <svg
@@ -96,7 +105,8 @@ export default function BlogSlider({ blogs }) {
           </svg>
         </button>
         <button
-          className={`${styles["home-blogs__nav-btn"]} ${styles["home-blogs__nav-btn--next"]}`}
+          ref={nextRef}
+          className={styles["home-blogs__nav-btn"]}
           aria-label="Next"
         >
           <svg
