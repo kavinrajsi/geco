@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 export default function FeaturedProductsSlider({ products }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
   const [swiperReady, setSwiperReady] = useState(false);
 
   return (
@@ -22,6 +23,7 @@ export default function FeaturedProductsSlider({ products }) {
         spaceBetween={30}
         slidesPerView="auto"
         onInit={(swiper) => {
+          swiperRef.current = swiper;
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
@@ -95,6 +97,28 @@ export default function FeaturedProductsSlider({ products }) {
           <path d="M9 5L16 12L9 19" stroke="#1F1F1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
+
+      {/* Mobile bottom arrows */}
+      <div className={styles["featured-products__nav-mobile"]}>
+        <button
+          className={styles["featured-products__nav-btn"]}
+          onClick={() => swiperRef.current?.slidePrev()}
+          aria-label="Previous"
+        >
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 1L1 5M1 5L5 9M1 5H17" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+        <button
+          className={styles["featured-products__nav-btn"]}
+          onClick={() => swiperRef.current?.slideNext()}
+          aria-label="Next"
+        >
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L17 5M17 5L13 9M17 5H1" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ async function getProduct(slug) {
     "populate[secondaryImage][fields][0]": "url",
     "populate[brochure][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
-    "populate[features][populate]": "*",
+    "populate[features][populate]": "icon",
     "populate[faqs][populate]": "*",
     "populate[highlight][populate]": "image",
     "populate[howToUse][populate]": "image",
@@ -243,14 +243,27 @@ export default async function ProductDetailPage({ params }) {
         {product.features?.length > 0 && (
           <CollapsibleSection title="Features" defaultOpen>
             <ul className={styles["product-detail__features"]}>
-              {product.features.map((feature) => (
-                <li key={feature.id} className={styles["product-detail__feature"]}>
-                  <svg className={styles["product-detail__feature-icon"]} width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M3 9L7.5 13.5L15 4.5" stroke="#97D700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className={styles["product-detail__feature-text"]}>{feature.text}</span>
-                </li>
-              ))}
+              {product.features.map((feature) => {
+                const featureIconUrl = getStrapiMedia(feature.icon?.url);
+                return (
+                  <li key={feature.id} className={styles["product-detail__feature"]}>
+                    {featureIconUrl ? (
+                      <FallbackImage
+                        src={featureIconUrl}
+                        alt={feature.text}
+                        width={24}
+                        height={24}
+                        className={styles["product-detail__feature-icon"]}
+                      />
+                    ) : (
+                      <svg className={styles["product-detail__feature-icon"]} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M3 9L7.5 13.5L15 4.5" stroke="#97D700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    <span className={styles["product-detail__feature-text"]}>{feature.text}</span>
+                  </li>
+                );
+              })}
             </ul>
           </CollapsibleSection>
         )}
