@@ -12,7 +12,7 @@ export default async function HomeFeaturedProducts() {
     "pagination[pageSize]": "100",
   });
 
-  const categoryOrder = ["tile adhesives", "title grouts", "sealants", "tapes"];
+  const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
   const products = (productsData?.data || [])
     .map((product) => ({
       ...product,
