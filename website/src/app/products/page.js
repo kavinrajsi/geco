@@ -37,12 +37,12 @@ export default async function ProductsPage() {
   ]);
 
   const products = productsData?.data || [];
-  const categoryOrder = ["Tile Adhesives", "Tile Grouts", "Sealants", "Tapes"];
+  const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
   const categories = (categoriesData?.data || [])
     .map((cat) => ({ name: cat.name, slug: cat.slug }))
     .sort((a, b) => {
-      const ai = categoryOrder.indexOf(a.name);
-      const bi = categoryOrder.indexOf(b.name);
+      const ai = categoryOrder.indexOf(a.name.toLowerCase());
+      const bi = categoryOrder.indexOf(b.name.toLowerCase());
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
 

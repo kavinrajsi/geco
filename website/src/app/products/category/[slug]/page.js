@@ -25,7 +25,7 @@ async function getProductsByCategory(categorySlug) {
   return data?.data || [];
 }
 
-const categoryOrder = ["Tile Adhesives", "Tile Grouts", "Sealants", "Tapes"];
+const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
 
 async function getAllCategories() {
   const data = await fetchStrapi("/product-categories", {
@@ -36,8 +36,8 @@ async function getAllCategories() {
   return (data?.data || [])
     .map((cat) => ({ name: cat.name, slug: cat.slug }))
     .sort((a, b) => {
-      const ai = categoryOrder.indexOf(a.name);
-      const bi = categoryOrder.indexOf(b.name);
+      const ai = categoryOrder.indexOf(a.name.toLowerCase());
+      const bi = categoryOrder.indexOf(b.name.toLowerCase());
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
 }
