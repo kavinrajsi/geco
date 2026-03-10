@@ -9,7 +9,7 @@
   width: 100%;
 
   :global(.swiper-pagination) {
-    bottom: 36px;
+    bottom: 36px !important;
   }
 
   :global(.swiper-pagination-bullet) {
@@ -21,7 +21,7 @@
     transition: background 0.3s, border-color 0.3s;
     border-radius: 50%;
     position: relative;
-    margin: 0 5px !important;
+    margin: 0 10px !important;
   }
 
   :global(.swiper-pagination-bullet-active) {
