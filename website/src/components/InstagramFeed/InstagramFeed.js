@@ -1,11 +1,13 @@
+import Image from "next/image";
 import styles from "./InstagramFeed.module.scss";
 
-// TODO: Replace with real Instagram Graph API data
-const placeholderPosts = Array.from({ length: 8 }, (_, i) => ({
-  id: `placeholder-${i + 1}`,
-  permalink: "https://instagram.com",
-  thumbnail: null,
-}));
+const posts = [
+  { id: 1, image: "/images/instagram/1.png" },
+  { id: 2, image: "/images/instagram/2.png" },
+  { id: 3, image: "/images/instagram/3.png" },
+  { id: 4, image: "/images/instagram/4.png" },
+  { id: 5, image: "/images/instagram/5.png" },
+];
 
 export default function InstagramFeed() {
   return (
@@ -27,19 +29,21 @@ export default function InstagramFeed() {
         <h2 className={styles["instagram__title"]}>Follow Us on Instagram</h2>
       </div>
       <div className={styles["instagram__grid"]}>
-        {placeholderPosts.map((post) => (
+        {posts.map((post) => (
           <a
             key={post.id}
-            href={post.permalink}
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             className={styles["instagram__post"]}
           >
-            {post.thumbnail ? (
-              <img src={post.thumbnail} alt="Instagram post" loading="lazy" />
-            ) : (
-              <div className={styles["instagram__placeholder"]} />
-            )}
+            <Image
+              src={post.image}
+              alt="Instagram post"
+              width={300}
+              height={300}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           </a>
         ))}
       </div>

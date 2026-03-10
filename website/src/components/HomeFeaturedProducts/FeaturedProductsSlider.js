@@ -32,6 +32,7 @@ export default function FeaturedProductsSlider({ products }) {
         }}
         breakpoints={{
           1024: {
+            slidesPerView: 4,
             spaceBetween: 30,
           },
         }}

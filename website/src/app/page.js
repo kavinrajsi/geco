@@ -36,6 +36,7 @@ export default function Home() {
         videoSrc="/video/geco-about.mp4"
         poster="/video/geco-about-poster.png"
       />
+      <InstagramFeed />
       <HomeBlogSection />
     </>
   );

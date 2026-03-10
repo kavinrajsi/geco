@@ -78,7 +78,7 @@
   width: calc(100vw - 40px);
 
   @media (min-width: $bp-lg) {
-    width: 300px;
+    width: auto;
   }
 }
 
