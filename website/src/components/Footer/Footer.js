@@ -111,10 +111,10 @@ export default function Footer() {
               </svg>
             </summary>
             <div className={styles["footer__links"]}>
-              <Link href="/products/tile-adhesives">Tile Adhesives</Link>
-              <Link href="/products/tile-grouts">Tile Grouts</Link>
-              <Link href="/products/sealants">Sealants</Link>
-              <Link href="/products/tapes">Tapes</Link>
+              <Link href="/products/category/tile-adhesives">Tile Adhesives</Link>
+              <Link href="/products/category/tile-grouts">Tile Grouts</Link>
+              <Link href="/products/category/sealants">Sealants</Link>
+              <Link href="/products/category/tapes">Tapes</Link>
             </div>
           </details>
 

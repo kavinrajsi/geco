@@ -5,10 +5,16 @@ import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import ShareButtons from "@/components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
 
+export const revalidate = 60;
+
 async function getBlog(slug) {
   const data = await fetchStrapi("/blogs", {
     "filters[slug][$eq]": slug,
-    "populate": "*",
+    "populate[featureImage][fields][0]": "url",
+    "populate[featureImage][fields][1]": "alternativeText",
+    "populate[blogCategories][fields][0]": "name",
+    "populate[blogTags][fields][0]": "name",
+    "populate[content][populate]": "*",
   });
   return data?.data?.[0] || null;
 }

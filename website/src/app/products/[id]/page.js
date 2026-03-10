@@ -8,6 +8,8 @@ import CollapsibleSection from "@/components/CollapsibleSection/CollapsibleSecti
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import styles from "./page.module.scss";
 
+export const revalidate = 60;
+
 async function getProduct(slug) {
   const data = await fetchStrapi("/products", {
     "filters[slug][$eq]": slug,

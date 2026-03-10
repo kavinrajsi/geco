@@ -17,9 +17,16 @@ export const metadata = {
   },
 };
 
+export const revalidate = 60;
+
 export default async function BlogsPage() {
   const blogsData = await fetchStrapi("/blogs", {
-    "populate": "*",
+    "populate[featureImage][fields][0]": "url",
+    "populate[blogCategories][fields][0]": "name",
+    "populate[blogTags][fields][0]": "name",
+    "fields[0]": "title",
+    "fields[1]": "slug",
+    "fields[2]": "excerpt",
     "sort": "createdAt:desc",
   });
 
