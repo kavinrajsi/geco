@@ -19,8 +19,8 @@ function getCacheTag(path) {
   return `strapi-${segment}`;
 }
 
-const MAX_RETRIES = 3;
-const RETRY_DELAY = 3000;
+const MAX_RETRIES = 4;
+const RETRY_DELAY = 5000;
 
 export async function fetchStrapi(path, params = {}) {
   const queryString = Object.entries(params)

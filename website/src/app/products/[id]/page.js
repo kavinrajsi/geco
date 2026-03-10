@@ -11,7 +11,14 @@ import styles from "./page.module.scss";
 async function getProduct(slug) {
   const data = await fetchStrapi("/products", {
     "filters[slug][$eq]": slug,
-    "populate": "*",
+    "populate[image][fields][0]": "url",
+    "populate[secondaryImage][fields][0]": "url",
+    "populate[brochure][fields][0]": "url",
+    "populate[productCategory][fields][0]": "name",
+    "populate[features][populate]": "*",
+    "populate[faqs][populate]": "*",
+    "populate[highlight][populate]": "image",
+    "populate[howToUse][populate]": "image",
   });
   return data?.data?.[0] || null;
 }
