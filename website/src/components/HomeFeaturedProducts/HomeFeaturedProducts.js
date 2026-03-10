@@ -12,19 +12,22 @@ export default async function HomeFeaturedProducts() {
     "pagination[pageSize]": "100",
   });
 
-  const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
+  const featuredNames = [
+    "geco tilebond classic",
+    "geco jointfill epoxy",
+    "geco durafill max",
+    "geco uniseal gp pro",
+  ];
   const products = (productsData?.data || [])
+    .filter((p) => featuredNames.includes(p.name?.toLowerCase()))
     .map((product) => ({
       ...product,
       imageUrl: getStrapiMedia(product.image?.url),
     }))
-    .sort((a, b) => {
-      const ai = categoryOrder.indexOf(a.productCategory?.name?.toLowerCase());
-      const bi = categoryOrder.indexOf(b.productCategory?.name?.toLowerCase());
-      const catDiff = (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-      if (catDiff !== 0) return catDiff;
-      return (a.name || "").localeCompare(b.name || "");
-    });
+    .sort((a, b) =>
+      featuredNames.indexOf(a.name?.toLowerCase()) -
+      featuredNames.indexOf(b.name?.toLowerCase())
+    );
 
   if (products.length === 0) return null;
 
