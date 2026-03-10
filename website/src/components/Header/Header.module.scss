@@ -47,10 +47,21 @@
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: opacity 0.2s;
 
-  &:hover {
-    opacity: 0.85;
+  &::after {
+    background: #97d700;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+    width: 100%;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
   }
 }
 
@@ -67,13 +78,7 @@
 
 .header__nav-link--active {
   &::after {
-    background: #97d700;
-    bottom: 0;
-    content: "";
-    height: 2px;
-    left: 0;
-    position: absolute;
-    width: 100%;
+    transform: scaleX(1);
   }
 }
 
