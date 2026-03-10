@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import FaqAccordion from "@/components/FaqAccordion/FaqAccordion";
 import RelatedProducts from "@/components/RelatedProducts/RelatedProducts";
@@ -186,7 +186,7 @@ export default async function ProductDetailPage({ params }) {
         <div className={styles["product-detail__images"]}>
           <div className={styles["product-detail__image"]}>
             {imageUrl && (
-              <Image
+              <FallbackImage
                 src={imageUrl}
                 alt={product.name}
                 width={520}
@@ -197,7 +197,7 @@ export default async function ProductDetailPage({ params }) {
           </div>
           {secondaryImageUrl && (
             <div className={styles["product-detail__image"]}>
-              <Image
+              <FallbackImage
                 src={secondaryImageUrl}
                 alt={`${product.name} - secondary`}
                 width={520}
@@ -284,7 +284,7 @@ export default async function ProductDetailPage({ params }) {
           <div className={styles["highlight__card"]}>
             <div className={styles["highlight__image"]}>
               {highlightImageUrl && (
-                <Image
+                <FallbackImage
                   src={highlightImageUrl}
                   alt={product.highlight.title}
                   width={630}
@@ -336,7 +336,7 @@ export default async function ProductDetailPage({ params }) {
               <div key={step.id} className={styles["product-detail__step"]}>
                 {stepImageUrl && (
                   <div className={styles["product-detail__step-image"]}>
-                    <Image
+                    <FallbackImage
                       src={stepImageUrl}
                       alt={step.title}
                       width={300}

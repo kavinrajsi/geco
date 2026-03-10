@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./RelatedProducts.module.scss";
 
@@ -46,7 +46,7 @@ export default function RelatedProducts({ products }) {
               >
                 <div className={styles["related__card-image"]}>
                   {imageUrl && (
-                    <Image
+                    <FallbackImage
                       src={imageUrl}
                       alt={product.name}
                       width={300}

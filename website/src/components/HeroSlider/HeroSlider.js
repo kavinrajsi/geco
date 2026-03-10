@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HeroSlider.module.scss";
 
 import "swiper/css";
@@ -34,7 +34,7 @@ export default function HeroSlider() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className={styles["hero-slider__slide"]}>
-              <Image
+              <FallbackImage
                 src={slide.desktop}
                 alt={slide.alt}
                 width={1920}
@@ -42,7 +42,7 @@ export default function HeroSlider() {
                 priority={index === 0}
                 className={styles["hero-slider__image--desktop"]}
               />
-              <Image
+              <FallbackImage
                 src={slide.mobile}
                 alt={slide.alt}
                 width={1080}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./ProductGrid.module.scss";
 
@@ -42,7 +42,7 @@ export default function ProductGrid({ products, categories, activeCategory }) {
             >
               <div className={styles["product-grid__card-image"]}>
                 {imageUrl && (
-                  <Image
+                  <FallbackImage
                     src={imageUrl}
                     alt={product.name}
                     width={300}

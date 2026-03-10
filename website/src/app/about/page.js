@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./page.module.scss";
 
 export const metadata = {
@@ -116,7 +116,7 @@ export default function AboutPage() {
           className={`${styles["about__container"]} ${styles["about__split"]} ${styles["about__split--reverse"]}`}
         >
           <div className={styles["about__split-image"]}>
-            <Image
+            <FallbackImage
               src="/images/your-foundation-desktop.png"
               alt="GECO products"
               width={630}
@@ -164,7 +164,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className={styles["about__split-image"]}>
-            <Image
+            <FallbackImage
               src="/images/geco-vnc-desktop.png"
               alt="VNC Group"
               width={630}

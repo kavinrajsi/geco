@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HomeFeaturedProducts.module.scss";
 
 export default function FeaturedProductsSlider({ products }) {
@@ -42,7 +42,7 @@ export default function FeaturedProductsSlider({ products }) {
             >
               <div className={styles["featured-products__card-image"]}>
                 {imageUrl && (
-                  <Image
+                  <FallbackImage
                     src={imageUrl}
                     alt={product.name}
                     width={300}

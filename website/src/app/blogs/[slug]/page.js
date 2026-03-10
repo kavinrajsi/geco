@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import ShareButtons from "@/components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
@@ -153,7 +153,7 @@ function renderBlock(block, i) {
     if (!imgUrl) return null;
     return (
       <figure key={i} className={styles["blog-detail__figure--center"]}>
-        <Image
+        <FallbackImage
           src={imgUrl}
           alt={block.image?.alternativeText || ""}
           width={850}
@@ -206,7 +206,7 @@ function DynamicZone({ content }) {
           styles[`blog-detail__figure--${align}`] || styles["blog-detail__figure"];
         return (
           <figure key={i} className={figureClass}>
-            <Image
+            <FallbackImage
               src={imgUrl}
               alt={block.alt || imgData?.alternativeText || block.caption || ""}
               width={850}
@@ -319,7 +319,7 @@ export default async function BlogDetailPage({ params }) {
       {/* Full-width feature image */}
       {featureImageUrl && (
         <div className={styles["blog-detail__feature-image"]}>
-          <Image
+          <FallbackImage
             src={featureImageUrl}
             alt={blog.title}
             width={1920}

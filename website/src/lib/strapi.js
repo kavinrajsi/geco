@@ -30,24 +30,34 @@ export async function fetchStrapi(path, params = {}) {
   const url = `${STRAPI_URL}/api${path}${queryString ? `?${queryString}` : ""}`;
 
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-    const res = await fetch(url, {
-      headers: getStrapiHeaders(),
-      next: { tags: [getCacheTag(path)] },
-    });
+    try {
+      const res = await fetch(url, {
+        headers: getStrapiHeaders(),
+        next: { tags: [getCacheTag(path)] },
+      });
 
-    if (res.ok) {
-      return await res.json();
+      if (res.ok) {
+        return await res.json();
+      }
+
+      if (res.status === 503 && attempt < MAX_RETRIES) {
+        console.warn(`Strapi 503 on ${path}, retrying in ${RETRY_DELAY / 1000}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        await new Promise((r) => setTimeout(r, RETRY_DELAY));
+        continue;
+      }
+
+      const body = await res.text();
+      console.error(`Strapi fetch error: ${res.status} ${res.statusText}`, body);
+      return null;
+    } catch (err) {
+      if (attempt < MAX_RETRIES) {
+        console.warn(`Strapi connection error on ${path}, retrying in ${RETRY_DELAY / 1000}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        await new Promise((r) => setTimeout(r, RETRY_DELAY));
+        continue;
+      }
+      console.error(`Strapi connection failed on ${path}:`, err.message);
+      return null;
     }
-
-    if (res.status === 503 && attempt < MAX_RETRIES) {
-      console.warn(`Strapi 503 on ${path}, retrying in ${RETRY_DELAY / 1000}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
-      await new Promise((r) => setTimeout(r, RETRY_DELAY));
-      continue;
-    }
-
-    const body = await res.text();
-    console.error(`Strapi fetch error: ${res.status} ${res.statusText}`, body);
-    return null;
   }
 }
 

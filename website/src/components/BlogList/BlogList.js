@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./BlogList.module.scss";
 
@@ -152,7 +152,7 @@ export default function BlogList({ blogs, categories, tags }) {
               >
                 {imageUrl && (
                   <div className={styles["blog-list__card-image"]}>
-                    <Image
+                    <FallbackImage
                       src={imageUrl}
                       alt={blog.title}
                       width={520}

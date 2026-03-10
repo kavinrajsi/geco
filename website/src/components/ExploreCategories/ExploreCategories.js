@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import Link from "next/link";
 import styles from "./ExploreCategories.module.scss";
 
@@ -43,7 +43,7 @@ export default function ExploreCategories() {
             href={`/products/category/${category.slug}`}
             className={styles["explore__card"]}
           >
-            <Image
+            <FallbackImage
               src={category.image}
               alt={category.name}
               width={455}

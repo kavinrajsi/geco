@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import Link from "next/link";
 import styles from "./EngineeredPrecision.module.scss";
 
@@ -6,14 +6,14 @@ export default function EngineeredPrecision() {
   return (
     <section className={styles["engineered"]}>
       <div className={styles["engineered__bg"]}>
-        <Image
+        <FallbackImage
           src="/images/engineered-precision/desktop-bg.png"
           alt="Geco products — Tilebond, Jointfill Epoxy, and Sealant"
           width={1902}
           height={760}
           className={styles["engineered__bg-desktop"]}
         />
-        <Image
+        <FallbackImage
           src="/images/engineered-precision/mobile-bg.png"
           alt="Geco products — Tilebond, Jointfill Epoxy, and Sealant"
           width={1080}

@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
-import Image from "next/image";
+import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HomeBlogSection.module.scss";
 
 import "swiper/css";
@@ -41,7 +41,7 @@ export default function BlogSlider({ blogs }) {
               >
                 <div className={styles["home-blogs__card-image"]}>
                   {imageUrl && (
-                    <Image
+                    <FallbackImage
                       src={imageUrl}
                       alt={blog.title}
                       width={410}
