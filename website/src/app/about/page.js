@@ -113,7 +113,7 @@ export default function AboutPage() {
         className={`${styles["about__section"]} ${styles["about__section--gray"]}`}
       >
         <div
-          className={`${styles["about__container"]} ${styles["about__split"]} ${styles["about__split--reverse"]}`}
+          className={`${styles["about__container"]} ${styles["about__split"]}`}
         >
           <div className={styles["about__split-image"]}>
             <FallbackImage

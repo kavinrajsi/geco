@@ -84,7 +84,13 @@
 }
 
 .about__tagline {
-  font-weight: 700;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  text-transform: capitalize;
+  color: #1f1f1f;
 }
 
 /* Split layout (text + image side by side) */
