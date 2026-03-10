@@ -21,6 +21,10 @@ async function getProduct(slug) {
     "populate[faqs][populate]": "*",
     "populate[highlight][populate]": "image",
     "populate[howToUse][populate]": "image",
+    "populate[relatedProducts][fields][0]": "name",
+    "populate[relatedProducts][fields][1]": "slug",
+    "populate[relatedProducts][populate][image][fields][0]": "url",
+    "populate[relatedProducts][populate][productCategory][fields][0]": "name",
   });
   return data?.data?.[0] || null;
 }
@@ -178,11 +182,14 @@ export default async function ProductDetailPage({ params }) {
   const imageUrl = getStrapiMedia(product.image?.url);
   const secondaryImageUrl = getStrapiMedia(product.secondaryImage?.url);
   const brochureUrl = getStrapiMedia(product.brochure?.url);
-  const {
-    related: relatedProducts,
-    prev,
-    next,
-  } = await getOtherProducts(id, product.documentId || product.id);
+  const { prev, next, related: fallbackRelated } = await getOtherProducts(
+    id,
+    product.documentId || product.id,
+  );
+  const relatedProducts =
+    product.relatedProducts?.length > 0
+      ? product.relatedProducts.slice(0, 8)
+      : fallbackRelated;
 
   return (
     <>
