@@ -9,7 +9,7 @@ export default async function HomeFeaturedProducts() {
     "populate[image][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
     "sort": "createdAt:desc",
-    "pagination[limit]": "4",
+    "pagination[pageSize]": "100",
   });
 
   const products = (productsData?.data || []).map((product) => ({
