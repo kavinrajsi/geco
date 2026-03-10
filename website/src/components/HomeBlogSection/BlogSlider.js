@@ -63,6 +63,11 @@ export default function BlogSlider({ blogs }) {
                   <h3 className={styles["home-blogs__card-name"]}>
                     {blog.title}
                   </h3>
+                  {blog.excerpt && (
+                    <p className={styles["home-blogs__card-excerpt"]}>
+                      {blog.excerpt}
+                    </p>
+                  )}
                 </div>
               </Link>
             </SwiperSlide>

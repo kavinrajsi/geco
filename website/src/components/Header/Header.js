@@ -80,9 +80,19 @@ export default function Header({ productCategories = [] }) {
                 >
                   <Link
                     href={href}
-                    className={`${styles["header__nav-link"]} ${isActive ? styles["header__nav-link--active"] : ""}`}
+                    className={`${styles["header__nav-link"]} ${styles["header__nav-link--dropdown"]} ${isActive ? styles["header__nav-link--active"] : ""}`}
                   >
                     {label}
+                    <svg
+                      className={styles["header__chevron"]}
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M6 9L12 15L18 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </Link>
                   {submenuOpen && (
                     <div className={styles["header__submenu"]}>

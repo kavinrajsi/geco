@@ -54,6 +54,17 @@
   }
 }
 
+.header__nav-link--dropdown {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.header__chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
 .header__nav-link--active {
   &::after {
     background: #97d700;

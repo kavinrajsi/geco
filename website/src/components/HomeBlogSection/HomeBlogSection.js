@@ -6,6 +6,7 @@ export default async function HomeBlogSection() {
   const blogsData = await fetchStrapi("/blogs", {
     "fields[0]": "title",
     "fields[1]": "slug",
+    "fields[2]": "excerpt",
     "populate[featureImage][fields][0]": "url",
     "populate[blogCategories][fields][0]": "name",
     "sort": "createdAt:desc",

@@ -61,11 +61,13 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  padding: 0 $space-gutter;
 
   @media (min-width: $bp-lg) {
     flex-direction: row;
     justify-content: center;
-    max-width: $bp-xl;
+    max-width: none;
+    padding: 0 $space-gutter;
   }
 }
 
@@ -114,4 +116,9 @@
   font-weight: 600;
   line-height: 28px;
   text-align: center;
+  transition: background 0.3s;
+
+  .explore__card:hover & {
+    background: #97D700;
+  }
 }
