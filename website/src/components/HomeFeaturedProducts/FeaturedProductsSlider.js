@@ -1,34 +1,23 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HomeFeaturedProducts.module.scss";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 export default function FeaturedProductsSlider({ products }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
   const swiperRef = useRef(null);
-  const [swiperReady, setSwiperReady] = useState(false);
 
   return (
     <div className={styles["featured-products__slider"]}>
       <Swiper
-        modules={[Navigation]}
         spaceBetween={30}
         slidesPerView="auto"
-        onInit={(swiper) => {
+        onSwiper={(swiper) => {
           swiperRef.current = swiper;
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-          setSwiperReady(true);
         }}
         breakpoints={{
           1024: {
@@ -81,8 +70,8 @@ export default function FeaturedProductsSlider({ products }) {
 
       {/* Desktop side arrows */}
       <button
-        ref={prevRef}
         className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--prev"]}`}
+        onClick={() => swiperRef.current?.slidePrev()}
         aria-label="Previous"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -90,8 +79,8 @@ export default function FeaturedProductsSlider({ products }) {
         </svg>
       </button>
       <button
-        ref={nextRef}
         className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--next"]}`}
+        onClick={() => swiperRef.current?.slideNext()}
         aria-label="Next"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

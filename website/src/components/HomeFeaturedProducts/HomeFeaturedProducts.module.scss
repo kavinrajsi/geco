@@ -76,10 +76,6 @@
 
 .featured-products__slide {
   width: calc(100vw - 40px);
-
-  @media (min-width: $bp-lg) {
-    width: auto;
-  }
 }
 
 /* Card */
