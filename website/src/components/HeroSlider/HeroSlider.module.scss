@@ -24,7 +24,8 @@
 
   :global(.swiper-pagination-bullet-active) {
     background: #97D700;
-    border-color: #97D700;
+    border-color: transparent;
+    box-shadow: 0 0 0 3px #1F1F1F;
   }
 }
 

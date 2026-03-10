@@ -92,9 +92,18 @@
 
 .home-blogs__card-name {
   color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @media (min-width: $bp-lg) {
+    -webkit-line-clamp: 2;
+  }
 }
 
 .home-blogs__card-excerpt {

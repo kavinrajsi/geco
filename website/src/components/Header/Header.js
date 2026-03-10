@@ -214,9 +214,9 @@ export default function Header({ productCategories = [] }) {
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      style={{ transform: mobileProductsOpen ? "rotate(90deg)" : "none", transition: "transform 0.2s" }}
+                      style={{ transform: mobileProductsOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}
                     >
-                      <path d="M9 18L15 12L9 6" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M6 9L12 15L18 9" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
                   {mobileProductsOpen && (
@@ -252,9 +252,6 @@ export default function Header({ productCategories = [] }) {
                 onClick={() => setMenuOpen(false)}
               >
                 <span>{label}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
               </Link>
             );
           })}
