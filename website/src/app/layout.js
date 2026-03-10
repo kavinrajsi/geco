@@ -3,6 +3,7 @@ import { Archivo, Instrument_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import HeaderWrapper from "@/components/Header/HeaderWrapper";
 import Footer from "@/components/Footer/Footer";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
 import "@/styles/globals.scss";
 
@@ -90,6 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         <RecaptchaProvider>
+          <ScrollToTop />
           <HeaderWrapper />
           <main>{children}</main>
           <Footer />
