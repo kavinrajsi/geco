@@ -152,4 +152,10 @@
   &:hover {
     border-color: #a0a0a0;
   }
+
+  &--disabled {
+    cursor: default;
+    opacity: 0.35;
+    pointer-events: none;
+  }
 }

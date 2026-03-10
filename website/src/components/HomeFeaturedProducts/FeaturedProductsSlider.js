@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
@@ -10,6 +10,13 @@ import "swiper/css";
 
 export default function FeaturedProductsSlider({ products }) {
   const swiperRef = useRef(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = (swiper) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
     <div className={styles["featured-products__slider"]}>
@@ -18,7 +25,12 @@ export default function FeaturedProductsSlider({ products }) {
         slidesPerView="auto"
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+          setIsBeginning(swiper.isBeginning);
+          setIsEnd(swiper.isEnd);
         }}
+        onSlideChange={handleSlideChange}
+        onReachBeginning={() => setIsBeginning(true)}
+        onReachEnd={() => setIsEnd(true)}
         breakpoints={{
           1024: {
             slidesPerView: 4,
@@ -70,8 +82,9 @@ export default function FeaturedProductsSlider({ products }) {
 
       {/* Desktop side arrows */}
       <button
-        className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--prev"]}`}
+        className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--prev"]} ${isBeginning ? styles["featured-products__nav-btn--disabled"] : ""}`}
         onClick={() => swiperRef.current?.slidePrev()}
+        disabled={isBeginning}
         aria-label="Previous"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -79,8 +92,9 @@ export default function FeaturedProductsSlider({ products }) {
         </svg>
       </button>
       <button
-        className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--next"]}`}
+        className={`${styles["featured-products__nav-btn"]} ${styles["featured-products__nav-btn--next"]} ${isEnd ? styles["featured-products__nav-btn--disabled"] : ""}`}
         onClick={() => swiperRef.current?.slideNext()}
+        disabled={isEnd}
         aria-label="Next"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -91,8 +105,9 @@ export default function FeaturedProductsSlider({ products }) {
       {/* Mobile bottom arrows */}
       <div className={styles["featured-products__nav-mobile"]}>
         <button
-          className={styles["featured-products__nav-btn"]}
+          className={`${styles["featured-products__nav-btn"]} ${isBeginning ? styles["featured-products__nav-btn--disabled"] : ""}`}
           onClick={() => swiperRef.current?.slidePrev()}
+          disabled={isBeginning}
           aria-label="Previous"
         >
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,8 +115,9 @@ export default function FeaturedProductsSlider({ products }) {
           </svg>
         </button>
         <button
-          className={styles["featured-products__nav-btn"]}
+          className={`${styles["featured-products__nav-btn"]} ${isEnd ? styles["featured-products__nav-btn--disabled"] : ""}`}
           onClick={() => swiperRef.current?.slideNext()}
+          disabled={isEnd}
           aria-label="Next"
         >
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">

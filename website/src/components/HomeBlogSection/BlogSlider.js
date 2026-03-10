@@ -2,32 +2,35 @@
 
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HomeBlogSection.module.scss";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 export default function BlogSlider({ blogs }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const [swiperReady, setSwiperReady] = useState(false);
+  const swiperRef = useRef(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = (swiper) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
     <div className={styles["home-blogs__slider"]}>
       <Swiper
-        modules={[Navigation]}
         spaceBetween={20}
         slidesPerView="auto"
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-          setSwiperReady(true);
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          setIsBeginning(swiper.isBeginning);
+          setIsEnd(swiper.isEnd);
         }}
+        onSlideChange={handleSlideChange}
+        onReachBeginning={() => setIsBeginning(true)}
+        onReachEnd={() => setIsEnd(true)}
         breakpoints={{
           1024: {
             spaceBetween: 30,
@@ -84,45 +87,23 @@ export default function BlogSlider({ blogs }) {
       </Swiper>
       <div className={styles["home-blogs__nav"]}>
         <button
-          ref={prevRef}
-          className={styles["home-blogs__nav-btn"]}
+          className={`${styles["home-blogs__nav-btn"]} ${isBeginning ? styles["home-blogs__nav-btn--disabled"] : ""}`}
+          onClick={() => swiperRef.current?.slidePrev()}
+          disabled={isBeginning}
           aria-label="Previous"
         >
-          <svg
-            width="18"
-            height="10"
-            viewBox="0 0 18 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 1L1 5M1 5L5 9M1 5H17"
-              stroke="#1f1f1f"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 1L1 5M1 5L5 9M1 5H17" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
         <button
-          ref={nextRef}
-          className={styles["home-blogs__nav-btn"]}
+          className={`${styles["home-blogs__nav-btn"]} ${isEnd ? styles["home-blogs__nav-btn--disabled"] : ""}`}
+          onClick={() => swiperRef.current?.slideNext()}
+          disabled={isEnd}
           aria-label="Next"
         >
-          <svg
-            width="18"
-            height="10"
-            viewBox="0 0 18 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13 1L17 5M17 5L13 9M17 5H1"
-              stroke="#1f1f1f"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L17 5M17 5L13 9M17 5H1" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
