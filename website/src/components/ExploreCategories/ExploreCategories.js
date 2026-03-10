@@ -10,7 +10,7 @@ const categories = [
   },
   {
     name: "Tile Grouts",
-    slug: "title-grouts",
+    slug: "tile-grouts",
     image: "/images/categories/tile-grouts.png",
   },
   {
