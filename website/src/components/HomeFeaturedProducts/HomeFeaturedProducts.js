@@ -12,10 +12,17 @@ export default async function HomeFeaturedProducts() {
     "pagination[pageSize]": "100",
   });
 
-  const products = (productsData?.data || []).map((product) => ({
-    ...product,
-    imageUrl: getStrapiMedia(product.image?.url),
-  }));
+  const categoryOrder = ["tile adhesives", "title grouts", "sealants", "tapes"];
+  const products = (productsData?.data || [])
+    .map((product) => ({
+      ...product,
+      imageUrl: getStrapiMedia(product.image?.url),
+    }))
+    .sort((a, b) => {
+      const ai = categoryOrder.indexOf(a.productCategory?.name?.toLowerCase());
+      const bi = categoryOrder.indexOf(b.productCategory?.name?.toLowerCase());
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
 
   if (products.length === 0) return null;
 
