@@ -135,7 +135,7 @@ const principles = [
       </svg>
     ),
     title: "Continuous Evolution",
-    description: "Always Improving, Never Settling",
+    description: <>Always Improving, Never<br />Settling</>,
   },
 ];
 
