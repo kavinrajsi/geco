@@ -44,7 +44,7 @@
 
 .contact__address-title {
   color: #1f1f1f;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-family: var(--font-archivo), sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -52,12 +52,13 @@
 
   @media (min-width: $bp-md) {
     font-weight: 700;
+    font-weight: 600;
   }
 }
 
 .contact__address-text {
   color: #1f1f1f;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-family: var(--font-archivo), sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -81,7 +82,7 @@
   font-weight: 600;
   gap: 8px;
   line-height: 26px;
-  padding: 16px 40px;
+  padding: 8px 16px;
   text-decoration: none;
   width: fit-content;
   .contact__btn-icon {

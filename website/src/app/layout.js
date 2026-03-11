@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { Archivo, Instrument_Sans } from "next/font/google";
+import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
 import HeaderWrapper from "@/components/Header/HeaderWrapper";
 import Footer from "@/components/Footer/Footer";
@@ -14,12 +14,6 @@ const archivo = Archivo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "900"],
   stretch: "expanded",
-});
-
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
-  subsets: ["latin"],
-  weight: ["600"],
 });
 
 const archivoExpanded = localFont({
@@ -79,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       )}
-      <body className={`${archivo.variable} ${instrumentSans.variable} ${archivoExpanded.variable}`}>
+      <body className={`${archivo.variable} ${archivoExpanded.variable}`}>
         {GTM_ID && (
           <noscript>
             <iframe

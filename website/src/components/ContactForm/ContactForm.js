@@ -1,34 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useState, useRef } from "react";
 import styles from "./ContactForm.module.scss";
 
 const initialForm = {
-  name: "",
-  email: "",
-  phone: "",
-  company: "",
-  message: "",
-  honeypot: "",
+  "Last Name": "",
+  Email: "",
+  Mobile: "",
+  Company: "",
+  Description: "",
 };
 
 function validate(form) {
   const errors = {};
-  if (!form.name.trim() || form.name.trim().length < 2 || !/^[a-zA-Z\s]+$/.test(form.name.trim())) {
-    errors.name = "Name must be at least 2 characters and contain only letters.";
+  if (
+    !form["Last Name"].trim() ||
+    form["Last Name"].trim().length < 2 ||
+    !/^[a-zA-Z\s]+$/.test(form["Last Name"].trim())
+  ) {
+    errors["Last Name"] =
+      "Name must be at least 2 characters and contain only letters.";
   }
-  if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    errors.email = "Please enter a valid email address.";
+  if (
+    form.Email.trim() &&
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.Email)
+  ) {
+    errors.Email = "Please enter a valid email address.";
   }
-  if (form.company.trim() && !/^[a-zA-Z0-9\s]+$/.test(form.company.trim())) {
-    errors.company = "Company must contain only letters, numbers, and spaces.";
+  if (
+    form.Company.trim() &&
+    !/^[a-zA-Z0-9\s]+$/.test(form.Company.trim())
+  ) {
+    errors.Company = "Company must contain only letters, numbers, and spaces.";
   }
-  if (!form.phone.trim() || !/^\d{10}$/.test(form.phone.trim())) {
-    errors.phone = "Please enter a valid 10-digit phone number.";
+  if (!form.Mobile.trim() || !/^\d{10}$/.test(form.Mobile.trim())) {
+    errors.Mobile = "Please enter a valid 10-digit phone number.";
   }
-  if (!form.message.trim() || form.message.trim().length < 10 || !/^[a-zA-Z0-9\s.,!?'"\-]+$/.test(form.message.trim())) {
-    errors.message = "Message must be at least 10 characters and contain no special characters.";
+  if (
+    !form.Description.trim() ||
+    form.Description.trim().length < 10
+  ) {
+    errors.Description = "Message must be at least 10 characters.";
   }
   return errors;
 }
@@ -36,9 +48,8 @@ function validate(form) {
 export default function ContactForm() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | submitting | success
-  const [serverError, setServerError] = useState("");
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [status, setStatus] = useState("idle");
+  const formRef = useRef(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -52,9 +63,8 @@ export default function ContactForm() {
     }
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setServerError("");
 
     const validationErrors = validate(form);
     if (Object.keys(validationErrors).length > 0) {
@@ -64,37 +74,21 @@ export default function ContactForm() {
 
     setStatus("submitting");
 
-    let recaptchaToken = "";
-    if (executeRecaptcha) {
-      try {
-        recaptchaToken = await executeRecaptcha("contact_form");
-      } catch {
-        setServerError("reCAPTCHA verification failed. Please try again.");
-        setStatus("idle");
-        return;
-      }
-    }
+    // Submit via hidden iframe to avoid redirect
+    const iframe = document.createElement("iframe");
+    iframe.name = "zoho_submit_frame";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, recaptchaToken }),
-      });
+    const nativeForm = formRef.current;
+    nativeForm.target = "zoho_submit_frame";
+    nativeForm.submit();
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setServerError(data.error || "Something went wrong. Please try again.");
-        setStatus("idle");
-        return;
-      }
-
+    // Show success after a brief delay
+    setTimeout(() => {
       setStatus("success");
-    } catch {
-      setServerError("Network error. Please try again.");
-      setStatus("idle");
-    }
+      document.body.removeChild(iframe);
+    }, 2000);
   }
 
   if (status === "success") {
@@ -115,52 +109,62 @@ export default function ContactForm() {
       <h2 className={styles["contact-form__title"]}>Get in touch with us</h2>
 
       <form
+        ref={formRef}
         className={styles["contact-form"]}
+        action="https://crm.zoho.in/crm/WebToLeadForm"
+        method="POST"
+        acceptCharset="UTF-8"
         onSubmit={handleSubmit}
         noValidate
       >
-        {/* Honeypot — visually hidden, bots fill it */}
+        {/* Zoho hidden fields — Do not remove */}
+        <input type="hidden" name="xnQsjsdp" value="1579facf6ddd3e40505f6961ceecb2843d6dbfa3dd93e8fb6601fe72fe42dfbf" />
+        <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+        <input type="hidden" name="xmIwtLD" value="13d988973c391fe6685def9be0587e38a622b7a4cb211366c8a3097a78fc33616d59b19459219d523ac090aeed6fee61" />
+        <input type="hidden" name="actionType" value="TGVhZHM=" />
+        <input type="hidden" name="returnURL" value="null" />
+
+        {/* Default values */}
+        <input type="hidden" name="Lead Status" value="Raw leads" />
+        <input type="hidden" name="LEADCF18" value="Geco Website" />
+        <input type="hidden" name="Lead Source" value="Website" />
+        <input type="hidden" name="LEADCF15" value="GECO" />
+
+        {/* Honeypot — Do not remove */}
         <div className={styles["contact-form__honeypot"]} aria-hidden="true">
-          <label htmlFor="honeypot">Leave this empty</label>
-          <input
-            type="text"
-            id="honeypot"
-            name="honeypot"
-            value={form.honeypot}
-            onChange={handleChange}
-            tabIndex={-1}
-            autoComplete="off"
-          />
+          <input type="text" name="aG9uZXlwb3Q" defaultValue="" tabIndex={-1} autoComplete="off" />
         </div>
 
         {/* Row 1: Name + Email */}
         <div className={styles["contact-form__row"]}>
           <div className={styles["contact-form__field"]}>
             <input
-              className={errors.name ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              className={errors["Last Name"] ? styles["contact-form__input--error"] : styles["contact-form__input"]}
               type="text"
-              id="name"
-              name="name"
+              id="Last_Name"
+              name="Last Name"
               placeholder="Your Name*"
-              value={form.name}
+              maxLength={80}
+              value={form["Last Name"]}
               onChange={handleChange}
             />
-            {errors.name && (
-              <span className={styles["contact-form__error"]}>{errors.name}</span>
+            {errors["Last Name"] && (
+              <span className={styles["contact-form__error"]}>{errors["Last Name"]}</span>
             )}
           </div>
           <div className={styles["contact-form__field"]}>
             <input
-              className={errors.email ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              className={errors.Email ? styles["contact-form__input--error"] : styles["contact-form__input"]}
               type="email"
-              id="email"
-              name="email"
+              id="Email"
+              name="Email"
               placeholder="Your Email"
-              value={form.email}
+              maxLength={100}
+              value={form.Email}
               onChange={handleChange}
             />
-            {errors.email && (
-              <span className={styles["contact-form__error"]}>{errors.email}</span>
+            {errors.Email && (
+              <span className={styles["contact-form__error"]}>{errors.Email}</span>
             )}
           </div>
         </div>
@@ -169,30 +173,32 @@ export default function ContactForm() {
         <div className={styles["contact-form__row"]}>
           <div className={styles["contact-form__field"]}>
             <input
-              className={errors.phone ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              className={errors.Mobile ? styles["contact-form__input--error"] : styles["contact-form__input"]}
               type="tel"
-              id="phone"
-              name="phone"
+              id="Mobile"
+              name="Mobile"
               placeholder="Phone Number*"
-              value={form.phone}
+              maxLength={30}
+              value={form.Mobile}
               onChange={handleChange}
             />
-            {errors.phone && (
-              <span className={styles["contact-form__error"]}>{errors.phone}</span>
+            {errors.Mobile && (
+              <span className={styles["contact-form__error"]}>{errors.Mobile}</span>
             )}
           </div>
           <div className={styles["contact-form__field"]}>
             <input
-              className={errors.company ? styles["contact-form__input--error"] : styles["contact-form__input"]}
+              className={errors.Company ? styles["contact-form__input--error"] : styles["contact-form__input"]}
               type="text"
-              id="company"
-              name="company"
+              id="Company"
+              name="Company"
               placeholder="Company"
-              value={form.company}
+              maxLength={200}
+              value={form.Company}
               onChange={handleChange}
             />
-            {errors.company && (
-              <span className={styles["contact-form__error"]}>{errors.company}</span>
+            {errors.Company && (
+              <span className={styles["contact-form__error"]}>{errors.Company}</span>
             )}
           </div>
         </div>
@@ -200,24 +206,20 @@ export default function ContactForm() {
         {/* Message */}
         <div className={styles["contact-form__field"]}>
           <textarea
-            className={errors.message ? styles["contact-form__textarea--error"] : styles["contact-form__textarea"]}
-            id="message"
-            name="message"
+            className={errors.Description ? styles["contact-form__textarea--error"] : styles["contact-form__textarea"]}
+            id="Description"
+            name="Description"
             placeholder="Your Message*"
             rows={5}
-            value={form.message}
+            value={form.Description}
             onChange={handleChange}
           />
-          {errors.message && (
+          {errors.Description && (
             <span className={styles["contact-form__error"]}>
-              {errors.message}
+              {errors.Description}
             </span>
           )}
         </div>
-
-        {serverError && (
-          <p className={styles["contact-form__server-error"]}>{serverError}</p>
-        )}
 
         {/* Footer: Submit button */}
         <div className={styles["contact-form__footer"]}>
