@@ -10,12 +10,12 @@ import "swiper/css/pagination";
 
 const slides = [
   {
-    desktop: "/images/slider/slider-desktop-1.png",
+    desktop: "/images/slider/geo-home-slider-1.png",
     mobile: "/images/slider/slider-mobile-1.png",
     alt: "Geco slide 1",
   },
   {
-    desktop: "/images/slider/slider-desktop-2.png",
+    desktop: "/images/slider/geo-home-slider-2.png",
     mobile: "/images/slider/slider-mobile-2.png",
     alt: "Geco slide 2",
   },

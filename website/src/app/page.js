@@ -7,6 +7,8 @@ import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import HomeBlogSection from "@/components/HomeBlogSection/HomeBlogSection";
 import InstagramFeed from "@/components/InstagramFeed/InstagramFeed";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Home | Geco",
   description: "Welcome to Geco. Building great experiences.",
