@@ -1,4 +1,4 @@
-import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
+import { fetchStrapi, getStrapiMedia, extractTextFromContent } from "@/lib/strapi";
 import BlogSlider from "./BlogSlider";
 import styles from "./HomeBlogSection.module.scss";
 
@@ -9,12 +9,14 @@ export default async function HomeBlogSection() {
     "fields[2]": "excerpt",
     "populate[featureImage][fields][0]": "url",
     "populate[blogCategories][fields][0]": "name",
+    "populate[content][populate]": "*",
     "sort": "createdAt:desc",
     "pagination[limit]": "4",
   });
 
   const blogs = (blogsData?.data || []).map((blog) => ({
     ...blog,
+    excerpt: blog.excerpt || extractTextFromContent(blog.content),
     featureImageUrl: getStrapiMedia(blog.featureImage?.url),
   }));
 

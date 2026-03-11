@@ -61,6 +61,31 @@ export async function fetchStrapi(path, params = {}) {
   }
 }
 
+/**
+ * Extract plain text from a blog's dynamic zone content.
+ * Looks for blog.rich-text components and pulls text from the body blocks.
+ */
+export function extractTextFromContent(content, maxLength = 108) {
+  if (!content || !Array.isArray(content)) return "";
+  let text = "";
+  for (const block of content) {
+    if (block.__component === "blog.rich-text" && Array.isArray(block.body)) {
+      for (const node of block.body) {
+        if (node.children) {
+          for (const child of node.children) {
+            if (child.text) text += child.text + " ";
+          }
+        }
+        if (text.trim().length >= maxLength) break;
+      }
+    }
+    if (text.trim().length >= maxLength) break;
+  }
+  const trimmed = text.trim();
+  if (trimmed.length <= maxLength) return trimmed;
+  return trimmed.slice(0, maxLength).trimEnd() + "...";
+}
+
 export function getStrapiMedia(url) {
   if (!url) return null;
   if (url.startsWith("http") || url.startsWith("//")) return url;

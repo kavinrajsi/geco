@@ -1,4 +1,4 @@
-import { fetchStrapi } from "@/lib/strapi";
+import { fetchStrapi, extractTextFromContent } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import BlogList from "@/components/BlogList/BlogList";
 
@@ -27,10 +27,14 @@ export default async function BlogsPage() {
     "fields[0]": "title",
     "fields[1]": "slug",
     "fields[2]": "excerpt",
+    "populate[content][populate]": "*",
     "sort": "createdAt:desc",
   });
 
-  const blogs = blogsData?.data || [];
+  const blogs = (blogsData?.data || []).map((blog) => ({
+    ...blog,
+    excerpt: blog.excerpt || extractTextFromContent(blog.content),
+  }));
 
   const categories = [
     ...new Set(
