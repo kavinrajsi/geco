@@ -27,6 +27,10 @@ body {
   main {
     flex: 1;
   }
+
+ *  {
+  outline: 1px solid red;
+  }
 }
 
 a {
