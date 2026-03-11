@@ -26,6 +26,11 @@
     },
     "buttonLink": {
       "type": "string"
+    },
+    "linkedBlog": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog.blog"
     }
   }
 }

@@ -19,7 +19,8 @@ async function getProduct(slug) {
     "populate[productCategory][fields][0]": "name",
     "populate[features][populate]": "icon",
     "populate[faqs][populate]": "*",
-    "populate[highlight][populate]": "image",
+    "populate[highlight][populate][image][fields][0]": "url",
+    "populate[highlight][populate][linkedBlog][fields][0]": "slug",
     "populate[howToUse][populate]": "image",
     "populate[relatedProducts][fields][0]": "name",
     "populate[relatedProducts][fields][1]": "slug",
@@ -451,9 +452,9 @@ export default async function ProductDetailPage({ params }) {
                       <BlocksRenderer content={product.highlight.description} />
                     </div>
                   </div>
-                  {product.highlight.buttonLink && (
+                  {(product.highlight.linkedBlog?.slug || product.highlight.buttonLink) && (
                     <Link
-                      href={product.highlight.buttonLink}
+                      href={product.highlight.linkedBlog?.slug ? `/blogs/${product.highlight.linkedBlog.slug}` : product.highlight.buttonLink}
                       className={styles["highlight__btn"]}
                     >
                       {product.highlight.buttonText || "Learn more"}

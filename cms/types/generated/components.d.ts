@@ -131,6 +131,7 @@ export interface ProductHighlight extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Learn more'>;
     description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'videos'>;
+    linkedBlog: Schema.Attribute.Relation<'oneToOne', 'api::blog.blog'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
