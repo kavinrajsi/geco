@@ -134,6 +134,7 @@ build
 cms/.tmp
 cms/build
 cms/.cache
+cms/public/uploads_backup_*
 website/.next
 website/src/styles/_test.scss
 .next
