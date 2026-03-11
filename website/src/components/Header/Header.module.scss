@@ -188,6 +188,29 @@
   }
 }
 
+// Mobile menu backdrop
+.mobile-menu__backdrop {
+  background-color: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.15s linear;
+  width: 100vw;
+  z-index: 199;
+
+  @media (min-width: $bp-md) {
+    display: none;
+  }
+}
+
+.mobile-menu__backdrop--visible {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
 // Mobile menu overlay
 .mobile-menu {
   display: flex;

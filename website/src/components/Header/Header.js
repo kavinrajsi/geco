@@ -170,6 +170,10 @@ export default function Header({ productCategories = [] }) {
       </div>
 
       {/* Mobile Menu Overlay */}
+      <div
+        className={`${styles["mobile-menu__backdrop"]} ${menuOpen ? styles["mobile-menu__backdrop--visible"] : ""}`}
+        onClick={() => setMenuOpen(false)}
+      />
       <div className={`${styles["mobile-menu"]} ${menuOpen ? styles["mobile-menu--open"] : ""}`}>
         <div className={styles["mobile-menu__header"]}>
           <Link href="/" className={styles["header__logo"]} aria-label="Geco Home" onClick={() => setMenuOpen(false)}>

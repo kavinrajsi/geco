@@ -146,10 +146,13 @@
   line-height: 20px;
   padding: 16px 40px;
   text-transform: uppercase;
-  transition: opacity 0.2s;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  border: 1px solid #97d700;
 
   &:hover:not(:disabled) {
-    opacity: 0.85;
+    background: #10069f;
+    border: 1px solid #97d700;
+    color: #fff;
   }
 
   &:disabled {
