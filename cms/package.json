@@ -8,7 +8,7 @@
     "console": "strapi console",
     "deploy": "strapi deploy",
     "dev": "strapi develop",
-    "develop": "strapi develop",
+    "develop": "strapi develop",x₹
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
@@ -19,16 +19,13 @@
     "transfer:push:files": "node scripts/transfer.js push files"
   },
   "dependencies": {
-    "@strapi-community/plugin-seo": "^2.1.1",
-    "@strapi/plugin-cloud": "^5.18.0",
-    "@strapi/plugin-users-permissions": "^5.36.1",
-    "@strapi/provider-upload-cloudinary": "^5.38.0",
-    "@strapi/strapi": "^5.36.1",
+    "@strapi/plugin-cloud": "5.38.0",
+    "@strapi/plugin-users-permissions": "5.38.0",
+    "@strapi/strapi": "5.38.0",
     "better-sqlite3": "12.4.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "strapi-plugin-config-sync": "^2.1.0",
     "styled-components": "^6.0.0"
   },
   "engines": {

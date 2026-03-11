@@ -616,6 +616,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product-category.product-category'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    relatedProducts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product.product'
+    >;
     secondaryImage: Schema.Attribute.Media<'images'>;
     slug: Schema.Attribute.UID<'name'>;
     standardCompliance: Schema.Attribute.Blocks;
