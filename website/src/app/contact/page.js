@@ -1,6 +1,9 @@
+import { fetchStrapi } from "@/lib/strapi";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import styles from "./page.module.scss";
+
+export const revalidate = 60;
 
 export const metadata = {
   title: "Contact",
@@ -17,51 +20,63 @@ export const metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  mainEntity: {
-    "@type": "Organization",
-    name: "Geco (VNC Electrodes)",
-    telephone: "+91-1800-599-3939",
-    email: "contactus@vncgroup.com",
-    address: [
-      {
-        "@type": "PostalAddress",
-        addressLocality: "Karur",
-        addressRegion: "Tamil Nadu",
-        postalCode: "639004",
-        addressCountry: "IN",
-        streetAddress: "VNC Electrodes, 3, Industrial Estate, S.Vellalapatti",
-      },
-      {
-        "@type": "PostalAddress",
-        addressLocality: "Chennai",
-        addressRegion: "Tamil Nadu",
-        postalCode: "600028",
-        addressCountry: "IN",
-        streetAddress:
-          "VNC Electrodes, 11/4, Janaki Avenue, MRC Nagar, Raja Annamalai Puram",
-      },
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+91-1800-599-3939",
-      contactType: "customer service",
-      email: "contactus@vncgroup.com",
-      availableLanguage: ["English", "Tamil"],
-    },
-  },
-};
+export default async function ContactPage() {
+  const data = await fetchStrapi("/contact-page");
+  const page = data?.data || {};
 
-export default function ContactPage() {
+  const pageTitle = page.pageTitle || "Contact";
+  const address1Title = page.address1Title || "REGISTERED OFFICE";
+  const address1Text = page.address1Text || "VNC Electrodes, 3, Industrial Estate,\nS.Vellalapatti, Karur - 639004,\nTamil Nadu, India";
+  const address2Title = page.address2Title || "CHENNAI";
+  const address2Text = page.address2Text || "VNC Electrodes, 11/4, Janaki Avenue,\nMRC Nagar, Raja Annamalai Puram,\nChennai - 600028, Tamil Nadu, India";
+  const phone = page.phone || "1800 599 3939";
+  const phoneHref = page.phoneHref || "tel:18005993939";
+  const email = page.email || "contactus@vncgroup.com";
+  const mapEmbedUrl = page.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.5412270581921!2d78.10737619839473!3d10.957144100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd8bde0da75%3A0xabc8b2bcf9c5e9c8!2sVNC%20Group!5e0!3m2!1sen!2sin!4v1773037744267!5m2!1sen!2sin";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Geco (VNC Electrodes)",
+      telephone: phone,
+      email: email,
+      address: [
+        {
+          "@type": "PostalAddress",
+          addressLocality: "Karur",
+          addressRegion: "Tamil Nadu",
+          postalCode: "639004",
+          addressCountry: "IN",
+          streetAddress: "VNC Electrodes, 3, Industrial Estate, S.Vellalapatti",
+        },
+        {
+          "@type": "PostalAddress",
+          addressLocality: "Chennai",
+          addressRegion: "Tamil Nadu",
+          postalCode: "600028",
+          addressCountry: "IN",
+          streetAddress: "VNC Electrodes, 11/4, Janaki Avenue, MRC Nagar, Raja Annamalai Puram",
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: phone,
+        contactType: "customer service",
+        email: email,
+        availableLanguage: ["English", "Tamil"],
+      },
+    },
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PageHeader title="Contact" />
+      <PageHeader title={pageTitle} />
       <div className={styles["contact"]}>
         <div className={styles["contact__grid"]}>
           {/* Form */}
@@ -73,30 +88,26 @@ export default function ContactPage() {
           <div className={styles["contact__info"]}>
             <div className={styles["contact__address"]}>
               <h2 className={styles["contact__address-title"]}>
-                REGISTERED OFFICE
+                {address1Title}
               </h2>
               <p className={styles["contact__address-text"]}>
-                VNC Electrodes, 3, Industrial Estate,
-                <br />
-                S.Vellalapatti, Karur - 639004,
-                <br />
-                Tamil Nadu, India
+                {address1Text.split("\n").map((line, i, arr) => (
+                  <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                ))}
               </p>
             </div>
 
             <div className={styles["contact__address"]}>
-              <h2 className={styles["contact__address-title"]}>CHENNAI</h2>
+              <h2 className={styles["contact__address-title"]}>{address2Title}</h2>
               <p className={styles["contact__address-text"]}>
-                VNC Electrodes, 11/4, Janaki Avenue,
-                <br />
-                MRC Nagar, Raja Annamalai Puram,
-                <br />
-                Chennai - 600028, Tamil Nadu, India
+                {address2Text.split("\n").map((line, i, arr) => (
+                  <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                ))}
               </p>
             </div>
 
             <div className={styles["contact__buttons"]}>
-              <a href="tel:18005993939" className={styles["contact__btn"]}>
+              <a href={phoneHref} className={styles["contact__btn"]}>
                 <span className={styles["contact__btn-icon"]}>
                   <svg
                     width="18"
@@ -113,12 +124,9 @@ export default function ContactPage() {
                     />
                   </svg>
                 </span>
-                <span className={styles["contact__btn-text"]}>1800 599 3939</span>
+                <span className={styles["contact__btn-text"]}>{phone}</span>
               </a>
-              <a
-                href="mailto:contactus@vncgroup.com"
-                className={styles["contact__btn"]}
-              >
+              <a href={`mailto:${email}`} className={styles["contact__btn"]}>
                 <span className={styles["contact__btn-icon"]}>
                   <svg
                     width="18"
@@ -135,7 +143,7 @@ export default function ContactPage() {
                     />
                   </svg>
                 </span>
-                <span className={styles["contact__btn-text"]}>contactus@vncgroup.com</span>
+                <span className={styles["contact__btn-text"]}>{email}</span>
               </a>
             </div>
           </div>
@@ -145,7 +153,7 @@ export default function ContactPage() {
       {/* Google Map */}
       <div className={styles["contact__map"]}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.5412270581921!2d78.10737619839473!3d10.957144100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd8bde0da75%3A0xabc8b2bcf9c5e9c8!2sVNC%20Group!5e0!3m2!1sen!2sin!4v1773037744267!5m2!1sen!2sin"
+          src={mapEmbedUrl}
           title="VNC Group Location"
           width="100%"
           height="600"
