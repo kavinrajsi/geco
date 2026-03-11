@@ -33,6 +33,7 @@ export default function ProductGrid({ products, categories, activeCategory }) {
       <div className={styles["product-grid__list"]}>
         {products.map((product) => {
           const imageUrl = getStrapiMedia(product.image?.url);
+          const secondaryImageUrl = getStrapiMedia(product.secondaryImage?.url);
           const categoryName = product.productCategory?.name || "";
           return (
             <Link
@@ -47,7 +48,16 @@ export default function ProductGrid({ products, categories, activeCategory }) {
                     alt={product.name}
                     width={300}
                     height={400}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    className={styles["product-grid__card-img-primary"]}
+                  />
+                )}
+                {secondaryImageUrl && (
+                  <FallbackImage
+                    src={secondaryImageUrl}
+                    alt={`${product.name} - alternate`}
+                    width={300}
+                    height={400}
+                    className={styles["product-grid__card-img-secondary"]}
                   />
                 )}
               </div>

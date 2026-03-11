@@ -15,6 +15,7 @@ async function getProductsByCategory(categorySlug) {
   const data = await fetchStrapi("/products", {
     "filters[productCategory][slug][$eq]": categorySlug,
     "populate[image][fields][0]": "url",
+    "populate[secondaryImage][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
     "populate[productCategory][fields][1]": "slug",
     "fields[0]": "name",

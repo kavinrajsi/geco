@@ -25,6 +25,7 @@ export default async function ProductsPage() {
       "fields[0]": "name",
       "fields[1]": "slug",
       "populate[image][fields][0]": "url",
+      "populate[secondaryImage][fields][0]": "url",
       "populate[productCategory][fields][0]": "name",
       "sort": "name:asc",
       "pagination[pageSize]": "100",
