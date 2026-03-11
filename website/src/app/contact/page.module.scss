@@ -94,15 +94,7 @@
 
 /* Full-width Google Map */
 .contact__map {
-  margin-left: calc(-1 * $space-gutter);
-  margin-right: calc(-1 * $space-gutter);
   margin-top: $space-section;
-
-  @media (min-width: $bp-lg) {
-    margin-left: calc(-50vw + $bp-xl / 2 - $space-gutter);
-    margin-right: calc(-50vw + $bp-xl / 2 - $space-gutter);
-  }
-
   iframe {
     display: block;
     width: 100%;

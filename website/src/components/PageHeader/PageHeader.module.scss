@@ -5,8 +5,8 @@
   background: #10069f;
   display: flex;
   justify-content: center;
-  padding: 40px $space-gutter 80px;
-  margin-bottom: 80px;
+  padding: 40px $space-gutter;
+  margin-bottom: 40px;
   @media (min-width: $bp-md) {
     padding: 80px $space-gutter 120px;
   }
