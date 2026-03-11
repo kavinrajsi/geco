@@ -7,6 +7,7 @@ export default async function HomeFeaturedProducts() {
     "fields[0]": "name",
     "fields[1]": "slug",
     "populate[image][fields][0]": "url",
+    "populate[secondaryImage][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
     "sort": "createdAt:desc",
     "pagination[pageSize]": "100",
@@ -23,6 +24,7 @@ export default async function HomeFeaturedProducts() {
     .map((product) => ({
       ...product,
       imageUrl: getStrapiMedia(product.image?.url),
+      secondaryImageUrl: getStrapiMedia(product.secondaryImage?.url),
     }))
     .sort((a, b) =>
       featuredNames.indexOf(a.name?.toLowerCase()) -

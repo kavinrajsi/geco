@@ -247,28 +247,24 @@ export default async function ProductDetailPage({ params }) {
       <div className={styles["product-detail"]}>
         {/* Image Column */}
         <div className={styles["product-detail__image-col"]}>
-          <div className={styles["product-detail__images"]}>
-            <div className={styles["product-detail__image"]}>
-              {imageUrl && (
-                <FallbackImage
-                  src={imageUrl}
-                  alt={product.name}
-                  width={520}
-                  height={693}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              )}
-            </div>
+          <div className={styles["product-detail__image"]}>
+            {imageUrl && (
+              <FallbackImage
+                src={imageUrl}
+                alt={product.name}
+                width={520}
+                height={693}
+                className={styles["product-detail__img-primary"]}
+              />
+            )}
             {secondaryImageUrl && (
-              <div className={styles["product-detail__image"]}>
-                <FallbackImage
-                  src={secondaryImageUrl}
-                  alt={`${product.name} - secondary`}
-                  width={520}
-                  height={693}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div>
+              <FallbackImage
+                src={secondaryImageUrl}
+                alt={`${product.name} - secondary`}
+                width={520}
+                height={693}
+                className={styles["product-detail__img-secondary"]}
+              />
             )}
           </div>
         </div>

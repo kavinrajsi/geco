@@ -41,6 +41,7 @@ export default function FeaturedProductsSlider({ products }) {
       >
         {products.map((product) => {
           const imageUrl = product.imageUrl;
+          const secondaryImageUrl = product.secondaryImageUrl;
           const categoryName = product.productCategory?.name || "";
           return (
             <SwiperSlide
@@ -58,11 +59,16 @@ export default function FeaturedProductsSlider({ products }) {
                       alt={product.name}
                       width={300}
                       height={400}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
+                      className={styles["featured-products__card-img-primary"]}
+                    />
+                  )}
+                  {secondaryImageUrl && (
+                    <FallbackImage
+                      src={secondaryImageUrl}
+                      alt={`${product.name} - alternate`}
+                      width={300}
+                      height={400}
+                      className={styles["featured-products__card-img-secondary"]}
                     />
                   )}
                 </div>
