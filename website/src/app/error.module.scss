@@ -39,13 +39,9 @@
   font-weight: 500;
   margin-top: 24px;
   padding: 12px 24px;
-  transition: opacity 0.2s;
+  
 
   @media (min-width: $bp-md) {
     margin-top: 32px;
-  }
-
-  &:hover {
-    opacity: 0.85;
   }
 }

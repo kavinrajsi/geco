@@ -65,9 +65,8 @@
   align-items: center;
   gap: 12px;
   color: #1f1f1f;
-  font-size: $font-body;
+  font-size: 18px;
   line-height: 26px;
-  transition: opacity 0.2s;
 
   img {
     flex-shrink: 0;
@@ -184,7 +183,7 @@
     color: #1f1f1f;
     font-size: $font-body;
     line-height: 26px;
-    transition: opacity 0.2s;
+    
   }
 }
 
@@ -204,7 +203,7 @@
 
   a {
     display: flex;
-    transition: opacity 0.2s;
+    
   }
 
   img {

@@ -469,7 +469,7 @@ export default async function ProductDetailPage({ params }) {
       {/* FAQs */}
       {product.faqs?.length > 0 && (
         <section className={styles["product-detail__faq-section"]}>
-          <h2 className={styles["product-detail__faq-title"]}>FAQs</h2>
+          <h2 className={styles["product-detail__faq-title"]}>FAQ<sub>s</sub></h2>
           <FaqAccordion faqs={product.faqs} />
         </section>
       )}

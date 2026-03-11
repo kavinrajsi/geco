@@ -54,7 +54,7 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <PageHeader title="Products" />
+      <PageHeader title="Our Products" />
       <ProductGrid products={products} categories={categories} />
     </>
   );

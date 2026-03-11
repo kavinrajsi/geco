@@ -245,11 +245,6 @@
   line-height: 24px;
   padding: 12px 40px;
   text-decoration: none;
-  transition: opacity 0.2s;
-
-  &:hover {
-    opacity: 0.9;
-  }
 }
 
 /* Collapsible sections */
@@ -596,12 +591,7 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: opacity 0.2s;
   width: fit-content;
-
-  &:hover {
-    opacity: 0.85;
-  }
 }
 
 /* FAQs */
@@ -623,7 +613,6 @@
   line-height: 32px;
   margin-bottom: 40px;
   text-align: center;
-  text-transform: uppercase;
 
   @media (min-width: $bp-md) {
     font-size: 32px;
