@@ -19,8 +19,7 @@ async function getProduct(slug) {
     "populate[productCategory][fields][0]": "name",
     "populate[features][populate]": "icon",
     "populate[faqs][populate]": "*",
-    "populate[highlight][populate][image][fields][0]": "url",
-    "populate[highlight][populate][linkedBlog][fields][0]": "slug",
+    "populate[highlight][populate]": "*",
     "populate[howToUse][populate]": "image",
     "populate[relatedProducts][fields][0]": "name",
     "populate[relatedProducts][fields][1]": "slug",
@@ -100,7 +99,7 @@ function BlocksRenderer({ content }) {
         <ListTag key={i}>
           {block.children?.map((item, j) => (
             <li key={j}>
-              {item.children?.map((child, k) => child.text).join("")}
+              {item.children?.map((child) => child.text).join("")}
             </li>
           ))}
         </ListTag>
