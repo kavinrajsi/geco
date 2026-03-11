@@ -5,10 +5,11 @@
   flex-direction: column;
   gap: 32px;
   margin: 0 auto;
-  padding: 0 $space-gutter $space-section;
+  padding: 0 $space-gutter 180px;
 
   @media (min-width: $bp-lg) {
     max-width: $bp-xl;
+    padding-bottom: 80px;
   }
 }
 
@@ -24,7 +25,7 @@
   flex-wrap: wrap;
   gap: 16px 24px;
   justify-content: center;
-  padding: 16px 0;
+  // padding: 16px 0;
 }
 
 .product-grid__filter {
