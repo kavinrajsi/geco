@@ -430,6 +430,49 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_pages';
+  info: {
+    description: 'Content for the About page';
+    displayName: 'About Page';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    section1Content: Schema.Attribute.Text;
+    section1Heading: Schema.Attribute.String;
+    section2Content: Schema.Attribute.Text;
+    section2Heading: Schema.Attribute.String;
+    section2ImageDesktop: Schema.Attribute.Media<'images'>;
+    section2ImageMobile: Schema.Attribute.Media<'images'>;
+    section3Content: Schema.Attribute.Text;
+    section3Heading: Schema.Attribute.String;
+    section4Content: Schema.Attribute.Text;
+    section4Heading: Schema.Attribute.String;
+    section4Image: Schema.Attribute.Media<'images'>;
+    section4Tagline: Schema.Attribute.String;
+    section5Content: Schema.Attribute.Text;
+    section5Heading: Schema.Attribute.String;
+    section5Image: Schema.Attribute.Media<'images'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogCategoryBlogCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'blog_categories';
@@ -1141,6 +1184,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::blog.blog': ApiBlogBlog;

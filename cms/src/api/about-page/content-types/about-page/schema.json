@@ -1,0 +1,69 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_pages",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "Content for the About page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},s
+  "attributes": {
+    "section1Heading": {
+      "type": "string"
+    },
+    "section1Content": {
+      "type": "text"
+    },
+    "section2Heading": {
+      "type": "string"
+    },
+    "section2Content": {
+      "type": "text"
+    },
+    "section2ImageDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "section2ImageMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "section3Heading": {
+      "type": "string"
+    },
+    "section3Content": {
+      "type": "text"
+    },
+    "section4Heading": {
+      "type": "string"
+    },
+    "section4Content": {
+      "type": "text"
+    },
+    "section4Tagline": {
+      "type": "string"
+    },
+    "section4Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "section5Heading": {
+      "type": "string"
+    },
+    "section5Content": {
+      "type": "text"
+    },
+    "section5Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
