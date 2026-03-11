@@ -96,16 +96,16 @@
   opacity: 0;
 }
 
-.product-grid__card:hover .product-grid__card-img-primary {
+.product-grid__card-image:hover .product-grid__card-img-primary {
   opacity: 0;
 }
 
-.product-grid__card:hover .product-grid__card-img-secondary {
+.product-grid__card-image:hover .product-grid__card-img-secondary {
   opacity: 1;
 }
 
-.product-grid__card:hover .product-grid__card-img-primary,
-.product-grid__card:hover .product-grid__card-img-secondary {
+.product-grid__card-image:hover .product-grid__card-img-primary,
+.product-grid__card-image:hover .product-grid__card-img-secondary {
   transform: scale(1.03);
 }
 
