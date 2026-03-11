@@ -26,4 +26,4 @@ if (only) {
   cmd += ` --only ${only}`;
 }
 
-execSync(cmd, { stdio: "inherit" });
+execSync(cmd, { stdio: "inherit", timeout: 600000 });

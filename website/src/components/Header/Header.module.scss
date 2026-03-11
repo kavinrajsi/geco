@@ -86,6 +86,8 @@
 }
 
 .header__nav-link--active {
+  color: #97d700;
+
   &::after {
     transform: scaleX(1);
   }
