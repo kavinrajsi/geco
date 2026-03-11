@@ -135,5 +135,6 @@ cms/.tmp
 cms/build
 cms/.cache
 website/.next
+website/src/styles/_test.scss
 .next
 *.claude
