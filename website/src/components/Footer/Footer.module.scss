@@ -43,6 +43,15 @@
     width: #{fluid(180, 233)};
     height: auto;
   }
+
+  svg {
+    height: 45px;
+    width: auto;
+
+    @media (min-width: $bp-md) {
+      height: 60px;
+    }
+  }
 }
 
 .footer__contact {
