@@ -5,6 +5,7 @@ import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import FaqAccordion from "@/components/FaqAccordion/FaqAccordion";
 import RelatedProducts from "@/components/RelatedProducts/RelatedProducts";
 import CollapsibleSection from "@/components/CollapsibleSection/CollapsibleSection";
+import CollapsibleGroup from "@/components/CollapsibleSection/CollapsibleGroup";
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import styles from "./page.module.scss";
 
@@ -304,69 +305,69 @@ export default async function ProductDetailPage({ params }) {
             </div>
           )}
 
-          {/* Features (collapsible) */}
-          {product.features?.length > 0 && (
-            <CollapsibleSection title="Features" defaultOpen>
-              <ul className={styles["product-detail__features"]}>
-                {product.features.map((feature) => {
-                  const featureIconUrl = getStrapiMedia(feature.icon?.url);
-                  return (
-                    <li
-                      key={feature.id}
-                      className={styles["product-detail__feature"]}
-                    >
-                      {featureIconUrl ? (
-                        <FallbackImage
-                          src={featureIconUrl}
-                          alt={feature.text}
-                          width={24}
-                          height={24}
-                          className={styles["product-detail__feature-icon"]}
-                        />
-                      ) : (
-                        <svg
-                          className={styles["product-detail__feature-icon"]}
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                        >
-                          <path
-                            d="M3 9L7.5 13.5L15 4.5"
-                            stroke="#97D700"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+          {/* Collapsible sections — only one open at a time */}
+          <CollapsibleGroup defaultOpen={0}>
+            {product.features?.length > 0 && (
+              <CollapsibleSection title="Features">
+                <ul className={styles["product-detail__features"]}>
+                  {product.features.map((feature) => {
+                    const featureIconUrl = getStrapiMedia(feature.icon?.url);
+                    return (
+                      <li
+                        key={feature.id}
+                        className={styles["product-detail__feature"]}
+                      >
+                        {featureIconUrl ? (
+                          <FallbackImage
+                            src={featureIconUrl}
+                            alt={feature.text}
+                            width={24}
+                            height={24}
+                            className={styles["product-detail__feature-icon"]}
                           />
-                        </svg>
-                      )}
-                      <span className={styles["product-detail__feature-text"]}>
-                        {feature.text}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </CollapsibleSection>
-          )}
+                        ) : (
+                          <svg
+                            className={styles["product-detail__feature-icon"]}
+                            width="18"
+                            height="18"
+                            viewBox="0 0 18 18"
+                            fill="none"
+                          >
+                            <path
+                              d="M3 9L7.5 13.5L15 4.5"
+                              stroke="#97D700"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                        <span className={styles["product-detail__feature-text"]}>
+                          {feature.text}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </CollapsibleSection>
+            )}
 
-          {/* Areas of Application (collapsible) */}
-          {product.areasOfApplication?.length > 0 && (
-            <CollapsibleSection title="Areas of Application">
-              <div className={styles["product-detail__blocks"]}>
-                <BlocksRenderer content={product.areasOfApplication} />
-              </div>
-            </CollapsibleSection>
-          )}
+            {product.areasOfApplication?.length > 0 && (
+              <CollapsibleSection title="Areas of Application">
+                <div className={styles["product-detail__blocks"]}>
+                  <BlocksRenderer content={product.areasOfApplication} />
+                </div>
+              </CollapsibleSection>
+            )}
 
-          {/* Standard Compliance (collapsible) */}
-          {product.standardCompliance?.length > 0 && (
-            <CollapsibleSection title="Standard Compliance">
-              <div className={styles["product-detail__blocks"]}>
-                <BlocksRenderer content={product.standardCompliance} />
-              </div>
-            </CollapsibleSection>
-          )}
+            {product.standardCompliance?.length > 0 && (
+              <CollapsibleSection title="Standard Compliance">
+                <div className={styles["product-detail__blocks"]}>
+                  <BlocksRenderer content={product.standardCompliance} />
+                </div>
+              </CollapsibleSection>
+            )}
+          </CollapsibleGroup>
         </div>
       </div>
 

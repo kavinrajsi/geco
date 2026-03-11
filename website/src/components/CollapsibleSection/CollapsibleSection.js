@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import styles from "../../app/products/[id]/page.module.scss";
 
-export default function CollapsibleSection({ title, children, defaultOpen = false }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
+export default function CollapsibleSection({ title, children, isOpen, onToggle }) {
   return (
     <div className={`${styles["product-detail__collapsible"]} ${isOpen ? styles["product-detail__collapsible--open"] : ""}`}>
       <button
         className={styles["product-detail__collapsible-toggle"]}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onToggle}
         aria-expanded={isOpen}
       >
         <span>{title}</span>
