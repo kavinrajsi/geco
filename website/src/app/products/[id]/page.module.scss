@@ -493,9 +493,9 @@
 .highlight {
   margin: 0 auto;
   max-width: 1290px;
-  padding: 80px $space-gutter;
+  padding: 80px $space-gutter 0;
   @media (min-width: $bp-lg) {
-    padding: 80px $space-gutter;
+    padding: 80px $space-gutter 0;
   }
 }
 
@@ -505,7 +505,7 @@
   overflow: hidden;
 
   @media (min-width: $bp-lg) {
-    align-items: center;
+    // align-items: center;
     flex-direction: row;
   }
 }
@@ -527,7 +527,7 @@
   @media (min-width: $bp-lg) {
     border-radius: 20px 0 0 20px;
     flex-shrink: 0;
-    height: 430px;
+    // height: 430px;
     width: 630px;
   }
 }
@@ -544,7 +544,7 @@
   @media (min-width: $bp-lg) {
     border-radius: 0 20px 20px 0;
     flex: 1;
-    height: 430px;
+    // height: 430px;
     padding: 40px 80px;
   }
 }
