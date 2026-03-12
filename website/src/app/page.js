@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import HeroSlider from "@/components/HeroSlider/HeroSlider";
 import HomeFeaturedProducts from "@/components/HomeFeaturedProducts/HomeFeaturedProducts";
 import EngineeredPrecision from "@/components/EngineeredPrecision/EngineeredPrecision";
@@ -37,8 +38,8 @@ export default function Home() {
       "@type": "Organization",
       name: "Geco",
       alternateName: "VNC Electrodes",
-      url: "https://geco.build",
-      logo: "https://geco.build/og-image.png",
+      url: SITE_URL,
+      logo: `${SITE_URL}/og-image.png`,
       description:
         "Tile adhesives, grouts, sealants, and tapes — inspired by nature, engineered to hold.",
       foundingDate: "1983",
@@ -78,10 +79,10 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Geco",
-      url: "https://geco.build",
+      url: SITE_URL,
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://geco.build/products?q={search_term_string}",
+        target: `${SITE_URL}/products?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },

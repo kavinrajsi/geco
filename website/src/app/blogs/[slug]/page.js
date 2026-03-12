@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import ShareButtons from "@/components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
@@ -337,12 +338,12 @@ export default async function BlogDetailPage({ params }) {
       name: "Geco",
       logo: {
         "@type": "ImageObject",
-        url: "https://geco.build/og-image.png",
+        url: `${SITE_URL}/og-image.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://geco.build/blogs/${slug}`,
+      "@id": `${SITE_URL}/blogs/${slug}`,
     },
     keywords: [
       ...(blog.blogCategories?.map((c) => c.name) || []),

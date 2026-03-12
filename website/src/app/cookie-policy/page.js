@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import styles from "../privacy-policy/page.module.scss";
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function CookiePolicyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Cookie Policy",
-    url: "https://geco.build/cookie-policy",
+    url: `${SITE_URL}/cookie-policy`,
     description:
       "Learn about how we use cookies and similar technologies on our website.",
   };

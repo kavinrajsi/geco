@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import ProductGrid from "@/components/ProductGrid/ProductGrid";
@@ -63,7 +64,7 @@ export default async function ProductsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Our Products",
-    url: "https://geco.build/products",
+    url: `${SITE_URL}/products`,
     description:
       "Browse Geco's full range of tile adhesives, tile grouts, silicone sealants, and masking tapes — engineered for superior bonding, durability, and performance.",
   };

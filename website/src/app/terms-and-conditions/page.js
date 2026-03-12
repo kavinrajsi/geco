@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import styles from "../privacy-policy/page.module.scss";
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function TermsAndConditionsPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Terms and Conditions",
-    url: "https://geco.build/terms-and-conditions",
+    url: `${SITE_URL}/terms-and-conditions`,
     description:
       "Read the terms and conditions governing the use of our website and services.",
   };

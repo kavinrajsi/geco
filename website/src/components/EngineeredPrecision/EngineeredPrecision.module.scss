@@ -1,54 +1,45 @@
 @use "../../styles/fluid" as *;
 
 .engineered {
-  position: relative;
   width: 100%;
   overflow: hidden;
-}
-
-// ── Background ──────────────────────────────────
-
-.engineered__bg {
-  position: relative;
-  width: 100%;
-  min-height: 640px;
   background: url("/images/engineered-precision/mobile-bg.png") center / cover no-repeat;
 
   @media (min-width: $bp-md) {
-    min-height: 760px;
     background-image: url("/images/engineered-precision/desktop-bg.png");
+    background-size: contain;
+  }
+}
+
+// ── Container ───────────────────────────────────
+
+.engineered__container {
+  display: flex;
+  justify-content: center;
+  max-width: $bp-xl;
+  margin: 0 auto;
+  padding: 0 $space-gutter;
+
+  @media (min-width: $bp-md) {
+    justify-content: flex-end;
   }
 }
 
 // ── Content ─────────────────────────────────────
 
 .engineered__content {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   gap: 40px;
   max-width: 520px;
-  margin: 0 auto;
-  padding: 64px 20px;
+  padding: 64px 0;
   text-align: center;
 
   @media (min-width: $bp-md) {
     align-items: flex-start;
-    justify-content: center;
-    text-align: left;
     padding: 120px 0;
-    left: auto;
-    right: 0;
-    width: 50%;
-    max-width: 520px;
-    margin-right: calc((100% - #{$bp-xl}) / 2 + 30px);
-  }
-
-  @media (min-width: $bp-xl) {
-    margin-right: calc((100vw - #{$bp-xl}) / 2 + 30px);
+    text-align: left;
   }
 }
 

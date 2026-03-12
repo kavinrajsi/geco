@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import styles from "./page.module.scss";
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function PrivacyPolicyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Privacy Policy",
-    url: "https://geco.build/privacy-policy",
+    url: `${SITE_URL}/privacy-policy`,
     description:
       "Read our privacy policy to understand how we collect, use, and protect your data.",
   };

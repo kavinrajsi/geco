@@ -5,6 +5,7 @@ import HeaderWrapper from "@/components/Header/HeaderWrapper";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
+import { SITE_URL } from "@/lib/config";
 import "@/styles/globals.scss";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -24,7 +25,7 @@ const archivoExpanded = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://geco.build"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Geco",
     template: "%s | Geco",

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./page.module.scss";
@@ -52,7 +53,7 @@ export default async function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About Geco",
-    url: "https://geco.build/about",
+    url: `${SITE_URL}/about`,
     description:
       "Learn about Geco's nature-inspired philosophy — how the gecko's adhesion science drives our tile adhesives, grouts, sealants, and tapes. Part of VNC Group, founded 1983.",
     mainEntity: {

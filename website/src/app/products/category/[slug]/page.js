@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import ProductGrid from "@/components/ProductGrid/ProductGrid";
@@ -95,7 +96,7 @@ export default async function ProductCategoryPage({ params }) {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: `${category.name} Products`,
-    url: `https://geco.build/products/category/${slug}`,
+    url: `${SITE_URL}/products/category/${slug}`,
     description: `Explore Geco's range of ${category.name.toLowerCase()} — high-performance building materials engineered for superior bonding and durability.`,
   };
 

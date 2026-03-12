@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import styles from "../privacy-policy/page.module.scss";
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function DisclaimerPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Disclaimer",
-    url: "https://geco.build/disclaimer",
+    url: `${SITE_URL}/disclaimer`,
     description:
       "Read our disclaimer regarding the use of information on our website.",
   };

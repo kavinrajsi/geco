@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi, extractTextFromContent } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import BlogList from "@/components/BlogList/BlogList";
@@ -62,7 +63,7 @@ export default async function BlogsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Blogs",
-    url: "https://geco.build/blogs",
+    url: `${SITE_URL}/blogs`,
     description:
       "Expert guides, tips, and articles on tiling, adhesives, grouting, and construction from Geco — building materials inspired by nature.",
   };

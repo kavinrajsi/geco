@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
+import { SITE_URL } from "@/lib/config";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import FaqAccordion from "@/components/FaqAccordion/FaqAccordion";
 import RelatedProducts from "@/components/RelatedProducts/RelatedProducts";
@@ -207,7 +208,7 @@ export default async function ProductDetailPage({ params }) {
       ...(product.productCategory?.name && {
         category: product.productCategory.name,
       }),
-      url: `https://geco.build/products/${id}`,
+      url: `${SITE_URL}/products/${id}`,
     },
     {
       "@context": "https://schema.org",
@@ -217,13 +218,13 @@ export default async function ProductDetailPage({ params }) {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://geco.build",
+          item: SITE_URL,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Products",
-          item: "https://geco.build/products",
+          item: `${SITE_URL}/products`,
         },
         ...(product.productCategory?.name
           ? [
