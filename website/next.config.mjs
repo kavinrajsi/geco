@@ -13,6 +13,11 @@ const nextConfig = {
         destination: "/about",
         permanent: true,
       },
+      {
+        source: "/contact",
+        destination: "/contact-us",
+        permanent: true,
+      },
     ];
   },
   images: {

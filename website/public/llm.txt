@@ -35,7 +35,7 @@ Whether you are a professional contractor or a DIY enthusiast, Geco products del
 - [About](https://geco.build/about): Company history, vision, nature-inspired philosophy, and VNC family background.
 - [Products](https://geco.build/products): Full product catalogue with category filtering.
 - [Blogs](https://geco.build/blogs): Articles and guides on construction, tiling, and product usage.
-- [Contact](https://geco.build/contact): Get in touch with the Geco team.
+- [Contact](https://geco.build/contact-us): Get in touch with the Geco team.
 
 ## Legal
 
