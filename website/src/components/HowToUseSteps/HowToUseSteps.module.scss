@@ -1,0 +1,108 @@
+@use "../../styles/fluid" as *;
+
+/* Slider — visible below 992px */
+.slider {
+  display: block;
+
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.nav__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &--disabled {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+}
+
+/* Grid — visible from 992px */
+.grid {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Step card (shared between slider & grid) */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step__image {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.step__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step__label {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-transform: uppercase;
+
+  @media (min-width: $bp-md) {
+    line-height: 22px;
+  }
+}
+
+.step__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step__title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.step__description {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  @media (min-width: $bp-md) {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+  }
+}

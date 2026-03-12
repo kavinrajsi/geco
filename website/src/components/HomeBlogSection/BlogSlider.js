@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HomeBlogSection.module.scss";
@@ -21,8 +22,10 @@ export default function BlogSlider({ blogs }) {
   return (
     <div className={styles["home-blogs__slider"]}>
       <Swiper
-        spaceBetween={20}
-        slidesPerView={1}
+        modules={[Mousewheel]}
+        mousewheel={{ forceToAxis: true }}
+        spaceBetween={30}
+        slidesPerView={1.25}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setIsBeginning(swiper.isBeginning);
@@ -33,12 +36,12 @@ export default function BlogSlider({ blogs }) {
         onReachEnd={() => setIsEnd(true)}
         breakpoints={{
           576: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 2.25,
+            spaceBetween: 30,
           },
           768: {
-            slidesPerView: 3,
-            spaceBetween: 24,
+            slidesPerView: 3.25,
+            spaceBetween: 30,
           },
           992: {
             slidesPerView: 3,

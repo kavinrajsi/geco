@@ -6,6 +6,7 @@ import FaqAccordion from "@/components/FaqAccordion/FaqAccordion";
 import RelatedProducts from "@/components/RelatedProducts/RelatedProducts";
 import CollapsibleSection from "@/components/CollapsibleSection/CollapsibleSection";
 import CollapsibleGroup from "@/components/CollapsibleSection/CollapsibleGroup";
+import HowToUseSteps from "@/components/HowToUseSteps/HowToUseSteps";
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import styles from "./page.module.scss";
 
@@ -373,38 +374,12 @@ export default async function ProductDetailPage({ params }) {
           <h2 className={styles["product-detail__how-to-use-title"]}>
             How to use?
           </h2>
-          <div className={styles["product-detail__steps"]}>
-            {product.howToUse.map((step) => {
-              const stepImageUrl = getStrapiMedia(step.image?.url);
-              return (
-                <div key={step.id} className={styles["product-detail__step"]}>
-                  {stepImageUrl && (
-                    <div className={styles["product-detail__step-image"]}>
-                      <FallbackImage
-                        src={stepImageUrl}
-                        alt={step.title}
-                        width={300}
-                        height={300}
-                      />
-                    </div>
-                  )}
-                  <div className={styles["product-detail__step-text"]}>
-                    <span className={styles["product-detail__step-label"]}>
-                      Step {step.stepNumber}
-                    </span>
-                    <div className={styles["product-detail__step-content"]}>
-                      <h3 className={styles["product-detail__step-title"]}>
-                        {step.title}
-                      </h3>
-                      <p className={styles["product-detail__step-description"]}>
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <HowToUseSteps
+            steps={product.howToUse.map((step) => ({
+              ...step,
+              imageUrl: getStrapiMedia(step.image?.url),
+            }))}
+          />
         </section>
       )}
 

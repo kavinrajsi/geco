@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import styles from "./HeroSlider.module.scss";
 
@@ -25,7 +25,8 @@ export default function HeroSlider() {
   return (
     <section className={styles["hero-slider"]}>
       <Swiper
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay, Mousewheel, Pagination]}
+        mousewheel={{ forceToAxis: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         loop

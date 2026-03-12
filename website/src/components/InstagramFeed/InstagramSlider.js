@@ -1,6 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import Image from "next/image";
 import styles from "./InstagramFeed.module.scss";
 
@@ -10,14 +11,16 @@ export default function InstagramSlider({ posts }) {
   return (
     <div className={styles["instagram__slider"]}>
       <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
+        modules={[Mousewheel]}
+        mousewheel={{ forceToAxis: true }}
+        spaceBetween={30}
+        slidesPerView={1.25}
         breakpoints={{
           576: {
-            slidesPerView: 2,
+            slidesPerView: 2.25,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 3.25,
           },
           992: {
             slidesPerView: 4,
