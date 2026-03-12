@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
+  async redirects() {
+    return [
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/about-page",
+        destination: "/about",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     qualities: [100],
     remotePatterns: [

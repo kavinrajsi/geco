@@ -28,7 +28,7 @@ function renderParagraphs(text) {
 }
 
 export default async function AboutPage() {
-  const data = await fetchStrapi("/about-page", {
+  const data = await fetchStrapi("/about", {
     "populate[section2ImageDesktop][fields][0]": "url",
     "populate[section2ImageMobile][fields][0]": "url",
     "populate[section4Image][fields][0]": "url",
