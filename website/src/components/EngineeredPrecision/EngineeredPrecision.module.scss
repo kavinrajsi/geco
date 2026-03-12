@@ -3,18 +3,23 @@
 .engineered {
   width: 100%;
   min-height: 640px;
-  max-height: 640px;
+  // max-height: 640px;
   overflow: hidden;
-   background-image: url("/images/engineered-precision/mobile-bg.png");
-   background-position: center bottom;
-   background-size: cover;
-   background-repeat: no-repeat;
-
+  background-image: url("/images/engineered-precision/mobile-bg.png");
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
   @media (min-width: $bp-md) {
-    min-height: 760px;
-    max-height: none;
+    min-height: 1000px;
+    // max-height: none;
+    background-image: url("/images/engineered-precision/tablet-bg.png");
+    background-position: center bottom;
+    background-size: cover;
+    // padding-bottom: 330px;
+  }
+  @media (min-width: 960px) {
     background-image: url("/images/engineered-precision/desktop-bg.png");
-    background-position: center;
+    min-height: 760px;
     background-size: cover;
   }
 }
@@ -27,8 +32,7 @@
   max-width: $bp-xl;
   margin: 0 auto;
   padding: 0 $space-gutter;
-
-  @media (min-width: $bp-md) {
+  @media (min-width: 960px) {
     justify-content: flex-end;
   }
 }
@@ -43,8 +47,10 @@
   max-width: 520px;
   padding: 64px 0;
   text-align: center;
-
   @media (min-width: $bp-md) {
+    padding: 120px 0;
+  }
+  @media (min-width: 960px) {
     align-items: flex-start;
     padding: 120px 0;
     text-align: left;
@@ -99,12 +105,15 @@
   line-height: 20px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
   border: 1px solid transparent;
 
   &:hover {
-    background: #10069F;
-    border-color: #97D700;
+    background: #10069f;
+    border-color: #97d700;
     color: #fff;
   }
 }
