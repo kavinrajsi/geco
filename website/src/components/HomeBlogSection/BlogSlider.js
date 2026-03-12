@@ -22,7 +22,7 @@ export default function BlogSlider({ blogs }) {
     <div className={styles["home-blogs__slider"]}>
       <Swiper
         spaceBetween={20}
-        slidesPerView="auto"
+        slidesPerView={1}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setIsBeginning(swiper.isBeginning);
@@ -32,7 +32,16 @@ export default function BlogSlider({ blogs }) {
         onReachBeginning={() => setIsBeginning(true)}
         onReachEnd={() => setIsEnd(true)}
         breakpoints={{
-          1024: {
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+          992: {
+            slidesPerView: 3,
             spaceBetween: 30,
           },
         }}
