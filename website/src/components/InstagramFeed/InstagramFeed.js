@@ -1,4 +1,5 @@
 import Image from "next/image";
+import InstagramSlider from "./InstagramSlider";
 import styles from "./InstagramFeed.module.scss";
 
 const posts = [
@@ -16,6 +17,11 @@ export default function InstagramFeed() {
         <h2 className={styles["instagram__title"]}>Geco On Instagram</h2>
         <p className={styles["instagram__subtitle"]}>#Geco</p>
       </div>
+
+      {/* Slider for < 1200px */}
+      <InstagramSlider posts={posts} />
+
+      {/* Grid for >= 1200px */}
       <div className={styles["instagram__grid"]}>
         {posts.map((post) => (
           <a
