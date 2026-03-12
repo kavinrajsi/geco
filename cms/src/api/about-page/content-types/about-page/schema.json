@@ -10,7 +10,7 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},s
+  "pluginOptions": {},
   "attributes": {
     "section1Heading": {
       "type": "string"
