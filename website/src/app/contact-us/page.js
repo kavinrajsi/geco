@@ -28,9 +28,9 @@ export const metadata = {
 export default async function ContactPage() {
   const pageTitle = "Contact";
   const address1Title = "REGISTERED OFFICE";
-  const address1Text = "VNC Electrodes, 3, Industrial Estate,\nS.Vellalapatti, Karur - 639004,\nTamil Nadu, India";
+  const address1Text = "VNC Electrodes, 3, Industrial Estate,\nS.Vellalapatti, Karur - 639004,\nTamil Nadu, India.";
   const address2Title = "CHENNAI";
-  const address2Text = "VNC Electrodes, 11/4, Janaki Avenue,\nMRC Nagar, Raja Annamalai Puram,\nChennai - 600028, Tamil Nadu, India";
+  const address2Text = "VNC Electrodes, 11/4, Janaki Avenue,\nMRC Nagar, Raja Annamalai Puram,\nChennai - 600028, Tamil Nadu, India.";
   const phone = "1800 599 3939";
   const phoneHref = "tel:18005993939";
   const email = "contactus@vncgroup.com";
