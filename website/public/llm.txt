@@ -1,0 +1,45 @@
+# Geco
+
+> Geco is a building materials brand specializing in tile adhesives, grouts, sealants, and tapes. Inspired by the gecko — nature's perfect adhesion engineer — Geco products are engineered for superior bonding, reliability, and performance. Geco is part of the VNC family of brands, founded in 1983.
+
+## About
+
+Geco draws its inspiration from the gecko, a small creature weighing just 70 grams yet capable of supporting 133 kilograms, adhering to any surface through millions of microscopic setae. This natural adhesion system is the philosophy behind every Geco product: unwavering grip, adaptability, and reliable performance across every surface and project.
+
+The brand tagline: **Inspired By Nature. Engineered To Hold.**
+
+Whether you are a professional contractor or a DIY enthusiast, Geco products deliver superior performance through intelligent design — tile adhesives and grouts, sealants and tapes — each engineered to hold when it matters.
+
+## Product Categories
+
+- [Tile Adhesives](https://geco.com/products/category/tile-adhesives): High-performance adhesives for fixing ceramic, vitrified, and large-format tiles on walls and floors.
+- [Tile Grouts](https://geco.com/products/category/tile-grouts): Cementitious and epoxy-based grouts for filling joints with stain resistance, flexibility, and colour retention.
+- [Sealants](https://geco.com/products/category/sealants): Universal silicone sealants for sealing joints in bathrooms, kitchens, and wet areas.
+- [Tapes](https://geco.com/products/category/tapes): Masking tapes for clean paint lines and surface protection during application.
+
+## Products
+
+- [Geco Tilebond](https://geco.com/products/geco-tilebond): High-performance tile adhesive for fixing ceramic and vitrified tiles on walls and floors.
+- [Geco Tilebond Plus](https://geco.com/products/geco-tilebond-plus): Premium tile adhesive with enhanced bonding strength for large-format and heavy tiles.
+- [Geco Tilebond Classic](https://geco.com/products/geco-tilebond-classic): Reliable tile adhesive for standard ceramic tile installations on interior surfaces.
+- [Geco Jointfill Epoxy](https://geco.com/products/geco-jointfill-epoxy): Epoxy-based tile grout offering superior stain resistance and durability for joints.
+- [Geco Jointfill](https://geco.com/products/geco-jointfill): Cementitious tile grout for filling joints in ceramic and vitrified tile installations.
+- [Geco Durafill 12](https://geco.com/products/geco-durafill-12): High-strength grout for joints up to 12mm wide with excellent water resistance.
+- [Geco Durafill Max](https://geco.com/products/geco-durafill-max): Maximum-performance grout for wide joints with superior flexibility and colour retention.
+- [Geco Masking Tape](https://geco.com/products/geco-masking-tape): General-purpose masking tape for clean paint lines and surface protection.
+- [Geco Uniseal](https://geco.com/products/geco-uniseal): Universal silicone sealant for sealing joints in bathrooms, kitchens, and wet areas.
+
+## Pages
+
+- [Home](https://geco.com/): Featured products, brand story, blog highlights, and Instagram feed.
+- [About](https://geco.com/about): Company history, vision, nature-inspired philosophy, and VNC family background.
+- [Products](https://geco.com/products): Full product catalogue with category filtering.
+- [Blogs](https://geco.com/blogs): Articles and guides on construction, tiling, and product usage.
+- [Contact](https://geco.com/contact): Get in touch with the Geco team.
+
+## Legal
+
+- [Privacy Policy](https://geco.com/privacy-policy)
+- [Terms and Conditions](https://geco.com/terms-and-conditions)
+- [Cookie Policy](https://geco.com/cookie-policy)
+- [Disclaimer](https://geco.com/disclaimer)
