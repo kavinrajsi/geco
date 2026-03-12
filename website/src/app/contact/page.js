@@ -1,4 +1,3 @@
-import { fetchStrapi } from "@/lib/strapi";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import styles from "./page.module.scss";
@@ -21,18 +20,15 @@ export const metadata = {
 };
 
 export default async function ContactPage() {
-  const data = await fetchStrapi("/contact-page");
-  const page = data?.data || {};
-
-  const pageTitle = page.pageTitle || "Contact";
-  const address1Title = page.address1Title || "REGISTERED OFFICE";
-  const address1Text = page.address1Text || "VNC Electrodes, 3, Industrial Estate,\nS.Vellalapatti, Karur - 639004,\nTamil Nadu, India";
-  const address2Title = page.address2Title || "CHENNAI";
-  const address2Text = page.address2Text || "VNC Electrodes, 11/4, Janaki Avenue,\nMRC Nagar, Raja Annamalai Puram,\nChennai - 600028, Tamil Nadu, India";
-  const phone = page.phone || "1800 599 3939";
-  const phoneHref = page.phoneHref || "tel:18005993939";
-  const email = page.email || "contactus@vncgroup.com";
-  const mapEmbedUrl = page.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.5412270581921!2d78.10737619839473!3d10.957144100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd8bde0da75%3A0xabc8b2bcf9c5e9c8!2sVNC%20Group!5e0!3m2!1sen!2sin!4v1773037744267!5m2!1sen!2sin";
+  const pageTitle = "Contact";
+  const address1Title = "REGISTERED OFFICE";
+  const address1Text = "VNC Electrodes, 3, Industrial Estate,\nS.Vellalapatti, Karur - 639004,\nTamil Nadu, India";
+  const address2Title = "CHENNAI";
+  const address2Text = "VNC Electrodes, 11/4, Janaki Avenue,\nMRC Nagar, Raja Annamalai Puram,\nChennai - 600028, Tamil Nadu, India";
+  const phone = "1800 599 3939";
+  const phoneHref = "tel:18005993939";
+  const email = "contactus@vncgroup.com";
+  const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.5412270581921!2d78.10737619839473!3d10.957144100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd8bde0da75%3A0xabc8b2bcf9c5e9c8!2sVNC%20Group!5e0!3m2!1sen!2sin!4v1773037744267!5m2!1sen!2sin";
 
   const jsonLd = {
     "@context": "https://schema.org",
