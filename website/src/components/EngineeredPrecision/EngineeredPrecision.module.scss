@@ -2,10 +2,14 @@
 
 .engineered {
   width: 100%;
+  min-height: 640px;
+  max-height: 640px;
   overflow: hidden;
   background: url("/images/engineered-precision/mobile-bg.png") center / cover no-repeat;
 
   @media (min-width: $bp-md) {
+    min-height: auto;
+    max-height: none;
     background-image: url("/images/engineered-precision/desktop-bg.png");
     background-size: contain;
   }
@@ -81,12 +85,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 394px;
   padding: 16px 40px;
-
-  @media (min-width: $bp-md) {
-    margin-bottom: 0;
-  }
   background: #97d700;
   border-radius: 50px;
   color: #1f1f1f;
