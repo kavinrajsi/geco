@@ -8,12 +8,12 @@ export const metadata = {
   openGraph: {
     title: "Blogs | Geco",
     description: "Read our latest blog posts and updates.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Blogs | Geco",
     description: "Read our latest blog posts and updates.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -52,8 +52,20 @@ export default async function BlogsPage() {
     ),
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Blogs",
+    url: "https://geco.com/blogs",
+    description: "Read our latest blog posts and updates.",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader title="Blogs" />
       <BlogList blogs={blogs} categories={categories} tags={tags} />
     </>

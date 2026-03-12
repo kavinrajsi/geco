@@ -10,12 +10,12 @@ export const metadata = {
   openGraph: {
     title: "Contact | Geco",
     description: "Get in touch with us. We would love to hear from you.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Contact | Geco",
     description: "Get in touch with us. We would love to hear from you.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 

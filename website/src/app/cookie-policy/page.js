@@ -6,18 +6,32 @@ export const metadata = {
   openGraph: {
     title: "Cookie Policy | Geco",
     description: "Learn about how we use cookies and similar technologies on our website.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Cookie Policy | Geco",
     description: "Learn about how we use cookies and similar technologies on our website.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export default function CookiePolicyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Cookie Policy",
+    url: "https://geco.com/cookie-policy",
+    description:
+      "Learn about how we use cookies and similar technologies on our website.",
+  };
+
   return (
-    <div className={styles["policy"]}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles["policy"]}>
       <h1 className={styles["policy__title"]}>Cookie Policy</h1>
       <p className={styles["policy__updated"]}>Last updated: March 2026</p>
 
@@ -84,5 +98,6 @@ export default function CookiePolicyPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

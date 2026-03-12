@@ -6,18 +6,32 @@ export const metadata = {
   openGraph: {
     title: "Privacy Policy | Geco",
     description: "Read our privacy policy to understand how we collect, use, and protect your data.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Privacy Policy | Geco",
     description: "Read our privacy policy to understand how we collect, use, and protect your data.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export default function PrivacyPolicyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Privacy Policy",
+    url: "https://geco.com/privacy-policy",
+    description:
+      "Read our privacy policy to understand how we collect, use, and protect your data.",
+  };
+
   return (
-    <div className={styles["policy"]}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles["policy"]}>
       <h1 className={styles["policy__title"]}>Privacy Policy</h1>
       <p className={styles["policy__updated"]}>Last updated: March 2026</p>
 
@@ -106,5 +120,6 @@ export default function PrivacyPolicyPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

@@ -6,18 +6,32 @@ export const metadata = {
   openGraph: {
     title: "Disclaimer | Geco",
     description: "Read our disclaimer regarding the use of information on our website.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Disclaimer | Geco",
     description: "Read our disclaimer regarding the use of information on our website.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export default function DisclaimerPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Disclaimer",
+    url: "https://geco.com/disclaimer",
+    description:
+      "Read our disclaimer regarding the use of information on our website.",
+  };
+
   return (
-    <div className={styles["policy"]}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles["policy"]}>
       <h1 className={styles["policy__title"]}>Disclaimer</h1>
       <p className={styles["policy__updated"]}>Last updated: March 2026</p>
 
@@ -80,5 +94,6 @@ export default function DisclaimerPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

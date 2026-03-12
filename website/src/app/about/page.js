@@ -10,12 +10,12 @@ export const metadata = {
   openGraph: {
     title: "About | Geco",
     description: "Learn more about Geco and what we do.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "About | Geco",
     description: "Learn more about Geco and what we do.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -42,8 +42,30 @@ export default async function AboutPage() {
   const section4ImageUrl = getStrapiMedia(page.section4Image?.url);
   const section5ImageUrl = getStrapiMedia(page.section5Image?.url);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Geco",
+    url: "https://geco.com/about",
+    description: "Learn more about Geco and what we do.",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Geco",
+      alternateName: "VNC Electrodes",
+      foundingDate: "1983",
+      parentOrganization: {
+        "@type": "Organization",
+        name: "VNC Group",
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <link rel="preload" as="image" href="/images/geco-about-poster.png" />
       {/* Video Hero */}
       <div className={styles["about__video"]}>

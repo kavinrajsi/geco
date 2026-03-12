@@ -8,12 +8,12 @@ export const metadata = {
   openGraph: {
     title: "Products | Geco",
     description: "Explore our range of tile adhesives, grouts, tapes, and sealants.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Products | Geco",
     description: "Explore our range of tile adhesives, grouts, tapes, and sealants.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -53,8 +53,21 @@ export default async function ProductsPage() {
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Our Products",
+    url: "https://geco.com/products",
+    description:
+      "Explore our range of tile adhesives, grouts, tapes, and sealants.",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader title="Our Products" />
       <ProductGrid products={products} categories={categories} />
     </>

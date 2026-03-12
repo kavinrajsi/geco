@@ -6,18 +6,32 @@ export const metadata = {
   openGraph: {
     title: "Terms and Conditions | Geco",
     description: "Read the terms and conditions governing the use of our website and services.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Terms and Conditions | Geco",
     description: "Read the terms and conditions governing the use of our website and services.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export default function TermsAndConditionsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Terms and Conditions",
+    url: "https://geco.com/terms-and-conditions",
+    description:
+      "Read the terms and conditions governing the use of our website and services.",
+  };
+
   return (
-    <div className={styles["policy"]}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles["policy"]}>
       <h1 className={styles["policy__title"]}>Terms and Conditions</h1>
       <p className={styles["policy__updated"]}>Last updated: March 2026</p>
 
@@ -111,5 +125,6 @@ export default function TermsAndConditionsPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

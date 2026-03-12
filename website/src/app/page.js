@@ -15,18 +15,73 @@ export const metadata = {
   openGraph: {
     title: "Home | Geco",
     description: "Welcome to Geco. Building great experiences.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     title: "Home | Geco",
     description: "Welcome to Geco. Building great experiences.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export default function Home() {
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Geco",
+      alternateName: "VNC Electrodes",
+      url: "https://geco.com",
+      logo: "https://geco.com/og-image.png",
+      description:
+        "Tile adhesives, grouts, sealants, and tapes — inspired by nature, engineered to hold.",
+      foundingDate: "1983",
+      parentOrganization: {
+        "@type": "Organization",
+        name: "VNC Group",
+      },
+      address: [
+        {
+          "@type": "PostalAddress",
+          streetAddress:
+            "VNC Electrodes, 3, Industrial Estate, S.Vellalapatti",
+          addressLocality: "Karur",
+          addressRegion: "Tamil Nadu",
+          postalCode: "639004",
+          addressCountry: "IN",
+        },
+        {
+          "@type": "PostalAddress",
+          streetAddress:
+            "VNC Electrodes, 11/4, Janaki Avenue, MRC Nagar, Raja Annamalai Puram",
+          addressLocality: "Chennai",
+          addressRegion: "Tamil Nadu",
+          postalCode: "600028",
+          addressCountry: "IN",
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "1800 599 3939",
+        contactType: "customer service",
+        email: "contactus@vncgroup.com",
+        availableLanguage: ["English", "Tamil"],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Geco",
+      url: "https://geco.com",
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSlider />
       <ExploreCategories />
       <EngineeredPrecision />

@@ -65,12 +65,12 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${blog.title} | Geco`,
       description: blog.excerpt || blog.title,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
     twitter: {
       title: `${blog.title} | Geco`,
       description: blog.excerpt || blog.title,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
   };
 }
@@ -320,8 +320,39 @@ export default async function BlogDetailPage({ params }) {
   const featureImageUrl = getStrapiMedia(blog.featureImage?.url);
   const { prev, next } = await getAdjacentBlogs(blog.publishedAt);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt || blog.title,
+    ...(featureImageUrl && { image: featureImageUrl }),
+    datePublished: blog.publishedAt,
+    dateModified: blog.updatedAt || blog.publishedAt,
+    author: { "@type": "Organization", name: "Geco" },
+    publisher: {
+      "@type": "Organization",
+      name: "Geco",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://geco.com/og-image.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://geco.com/blogs/${slug}`,
+    },
+    keywords: [
+      ...(blog.blogCategories?.map((c) => c.name) || []),
+      ...(blog.blogTags?.map((t) => t.name) || []),
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Full-width feature image */}
       {featureImageUrl && (
         <div className={styles["blog-detail__feature-image"]}>

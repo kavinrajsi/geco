@@ -72,12 +72,12 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${product.name} | Geco`,
       description: product.tagline,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
     twitter: {
       title: `${product.name} | Geco`,
       description: product.tagline,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
   };
 }
@@ -193,8 +193,81 @@ export default async function ProductDetailPage({ params }) {
       ? product.relatedProducts.slice(0, 8)
       : fallbackRelated;
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.name,
+      description: product.tagline || product.description,
+      ...(imageUrl && { image: imageUrl }),
+      brand: { "@type": "Brand", name: "Geco" },
+      ...(product.productCategory?.name && {
+        category: product.productCategory.name,
+      }),
+      url: `https://geco.com/products/${id}`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://geco.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Products",
+          item: "https://geco.com/products",
+        },
+        ...(product.productCategory?.name
+          ? [
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: product.productCategory.name,
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: product.name,
+              },
+            ]
+          : [
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: product.name,
+              },
+            ]),
+      ],
+    },
+    ...(product.faqs?.length > 0
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: product.faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Breadcrumb */}
       <nav className={styles["breadcrumb"]}>
         <div className={styles["breadcrumb__links"]}>

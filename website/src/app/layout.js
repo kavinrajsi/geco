@@ -38,7 +38,7 @@ export const metadata = {
     description: "Building great experiences.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Geco",
@@ -49,7 +49,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Geco",
     description: "Building great experiences.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

@@ -65,12 +65,12 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${category.name} Products | Geco`,
       description: `Explore our range of ${category.name} products.`,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
     twitter: {
       title: `${category.name} Products | Geco`,
       description: `Explore our range of ${category.name} products.`,
-      images: ["/og-image.jpg"],
+      images: ["/og-image.png"],
     },
   };
 }
@@ -88,8 +88,20 @@ export default async function ProductCategoryPage({ params }) {
     getAllCategories(),
   ]);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${category.name} Products`,
+    url: `https://geco.com/products/category/${slug}`,
+    description: `Explore our range of ${category.name} products.`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader title={category.name} />
       <ProductGrid
         products={products}
