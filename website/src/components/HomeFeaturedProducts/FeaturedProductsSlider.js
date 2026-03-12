@@ -21,8 +21,8 @@ export default function FeaturedProductsSlider({ products }) {
   return (
     <div className={styles["featured-products__slider"]}>
       <Swiper
-        spaceBetween={30}
-        slidesPerView="auto"
+        spaceBetween={20}
+        slidesPerView={1}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setIsBeginning(swiper.isBeginning);
@@ -32,7 +32,15 @@ export default function FeaturedProductsSlider({ products }) {
         onReachBeginning={() => setIsBeginning(true)}
         onReachEnd={() => setIsEnd(true)}
         breakpoints={{
-          1024: {
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+          992: {
             slidesPerView: 4,
             spaceBetween: 30,
           },

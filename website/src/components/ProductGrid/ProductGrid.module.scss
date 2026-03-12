@@ -51,14 +51,20 @@
 
 /* Product grid */
 .product-grid__list {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 30px;
+  grid-template-columns: 1fr;
 
-  @media (min-width: $bp-lg) {
-    display: grid;
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $bp-md) {
     gap: 56px 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -68,9 +74,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin: 0 auto;
   text-decoration: none;
-  // width: 300px;
+  width: 100%;
 }
 
 .product-grid__card-image {
