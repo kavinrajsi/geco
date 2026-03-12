@@ -157,7 +157,7 @@
   gap: 30px;
   text-decoration: none;
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1200px) {
     align-items: center;
     flex-direction: row;
     gap: 30px;
@@ -174,7 +174,7 @@
   /* Mobile: maintain 520/320 aspect ratio */
   aspect-ratio: 520 / 320;
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1200px) {
     aspect-ratio: auto;
     height: 320px;
     width: 520px;
