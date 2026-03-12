@@ -11,7 +11,7 @@ export default async function HomeBlogSection() {
     "populate[blogCategories][fields][0]": "name",
     "populate[content][populate]": "*",
     "sort": "createdAt:desc",
-    "pagination[limit]": "3",
+    "pagination[limit]": "6",
   });
 
   const blogs = (blogsData?.data || []).map((blog) => ({

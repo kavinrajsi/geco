@@ -48,6 +48,12 @@
 
 .home-blogs__slide {
   width: auto;
+
+  @media (min-width: 992px) {
+    &:nth-child(n + 4) {
+      display: none;
+    }
+  }
 }
 
 /* Card */
