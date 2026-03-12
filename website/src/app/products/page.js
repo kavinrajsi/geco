@@ -57,7 +57,7 @@ export default async function ProductsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Our Products",
-    url: "https://geco.com/products",
+    url: "https://geco.build/products",
     description:
       "Explore our range of tile adhesives, grouts, tapes, and sealants.",
   };

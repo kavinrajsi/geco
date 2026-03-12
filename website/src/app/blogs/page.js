@@ -56,7 +56,7 @@ export default async function BlogsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Blogs",
-    url: "https://geco.com/blogs",
+    url: "https://geco.build/blogs",
     description: "Read our latest blog posts and updates.",
   };
 

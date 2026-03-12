@@ -92,7 +92,7 @@ export default async function ProductCategoryPage({ params }) {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: `${category.name} Products`,
-    url: `https://geco.com/products/category/${slug}`,
+    url: `https://geco.build/products/category/${slug}`,
     description: `Explore our range of ${category.name} products.`,
   };
 

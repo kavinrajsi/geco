@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Privacy Policy",
-    url: "https://geco.com/privacy-policy",
+    url: "https://geco.build/privacy-policy",
     description:
       "Read our privacy policy to understand how we collect, use, and protect your data.",
   };

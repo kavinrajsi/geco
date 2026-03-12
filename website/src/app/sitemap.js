@@ -1,6 +1,6 @@
 import { fetchStrapi } from "@/lib/strapi";
 
-const BASE_URL = "https://geco.com";
+const BASE_URL = "https://geco.build";
 
 export default async function sitemap() {
   const staticRoutes = [

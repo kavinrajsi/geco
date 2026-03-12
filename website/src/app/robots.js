@@ -7,6 +7,6 @@ export default function robots() {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://geco.com/sitemap.xml",
+    sitemap: "https://geco.build/sitemap.xml",
   };
 }

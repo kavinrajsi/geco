@@ -31,8 +31,8 @@ export default function Home() {
       "@type": "Organization",
       name: "Geco",
       alternateName: "VNC Electrodes",
-      url: "https://geco.com",
-      logo: "https://geco.com/og-image.png",
+      url: "https://geco.build",
+      logo: "https://geco.build/og-image.png",
       description:
         "Tile adhesives, grouts, sealants, and tapes — inspired by nature, engineered to hold.",
       foundingDate: "1983",
@@ -72,7 +72,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Geco",
-      url: "https://geco.com",
+      url: "https://geco.build",
     },
   ];
 

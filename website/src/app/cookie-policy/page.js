@@ -20,7 +20,7 @@ export default function CookiePolicyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Cookie Policy",
-    url: "https://geco.com/cookie-policy",
+    url: "https://geco.build/cookie-policy",
     description:
       "Learn about how we use cookies and similar technologies on our website.",
   };

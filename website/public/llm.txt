@@ -12,34 +12,34 @@ Whether you are a professional contractor or a DIY enthusiast, Geco products del
 
 ## Product Categories
 
-- [Tile Adhesives](https://geco.com/products/category/tile-adhesives): High-performance adhesives for fixing ceramic, vitrified, and large-format tiles on walls and floors.
-- [Tile Grouts](https://geco.com/products/category/tile-grouts): Cementitious and epoxy-based grouts for filling joints with stain resistance, flexibility, and colour retention.
-- [Sealants](https://geco.com/products/category/sealants): Universal silicone sealants for sealing joints in bathrooms, kitchens, and wet areas.
-- [Tapes](https://geco.com/products/category/tapes): Masking tapes for clean paint lines and surface protection during application.
+- [Tile Adhesives](https://geco.build/products/category/tile-adhesives): High-performance adhesives for fixing ceramic, vitrified, and large-format tiles on walls and floors.
+- [Tile Grouts](https://geco.build/products/category/tile-grouts): Cementitious and epoxy-based grouts for filling joints with stain resistance, flexibility, and colour retention.
+- [Sealants](https://geco.build/products/category/sealants): Universal silicone sealants for sealing joints in bathrooms, kitchens, and wet areas.
+- [Tapes](https://geco.build/products/category/tapes): Masking tapes for clean paint lines and surface protection during application.
 
 ## Products
 
-- [Geco Tilebond](https://geco.com/products/geco-tilebond): High-performance tile adhesive for fixing ceramic and vitrified tiles on walls and floors.
-- [Geco Tilebond Plus](https://geco.com/products/geco-tilebond-plus): Premium tile adhesive with enhanced bonding strength for large-format and heavy tiles.
-- [Geco Tilebond Classic](https://geco.com/products/geco-tilebond-classic): Reliable tile adhesive for standard ceramic tile installations on interior surfaces.
-- [Geco Jointfill Epoxy](https://geco.com/products/geco-jointfill-epoxy): Epoxy-based tile grout offering superior stain resistance and durability for joints.
-- [Geco Jointfill](https://geco.com/products/geco-jointfill): Cementitious tile grout for filling joints in ceramic and vitrified tile installations.
-- [Geco Durafill 12](https://geco.com/products/geco-durafill-12): High-strength grout for joints up to 12mm wide with excellent water resistance.
-- [Geco Durafill Max](https://geco.com/products/geco-durafill-max): Maximum-performance grout for wide joints with superior flexibility and colour retention.
-- [Geco Masking Tape](https://geco.com/products/geco-masking-tape): General-purpose masking tape for clean paint lines and surface protection.
-- [Geco Uniseal](https://geco.com/products/geco-uniseal): Universal silicone sealant for sealing joints in bathrooms, kitchens, and wet areas.
+- [Geco Tilebond](https://geco.build/products/geco-tilebond): High-performance tile adhesive for fixing ceramic and vitrified tiles on walls and floors.
+- [Geco Tilebond Plus](https://geco.build/products/geco-tilebond-plus): Premium tile adhesive with enhanced bonding strength for large-format and heavy tiles.
+- [Geco Tilebond Classic](https://geco.build/products/geco-tilebond-classic): Reliable tile adhesive for standard ceramic tile installations on interior surfaces.
+- [Geco Jointfill Epoxy](https://geco.build/products/geco-jointfill-epoxy): Epoxy-based tile grout offering superior stain resistance and durability for joints.
+- [Geco Jointfill](https://geco.build/products/geco-jointfill): Cementitious tile grout for filling joints in ceramic and vitrified tile installations.
+- [Geco Durafill 12](https://geco.build/products/geco-durafill-12): High-strength grout for joints up to 12mm wide with excellent water resistance.
+- [Geco Durafill Max](https://geco.build/products/geco-durafill-max): Maximum-performance grout for wide joints with superior flexibility and colour retention.
+- [Geco Masking Tape](https://geco.build/products/geco-masking-tape): General-purpose masking tape for clean paint lines and surface protection.
+- [Geco Uniseal](https://geco.build/products/geco-uniseal): Universal silicone sealant for sealing joints in bathrooms, kitchens, and wet areas.
 
 ## Pages
 
-- [Home](https://geco.com/): Featured products, brand story, blog highlights, and Instagram feed.
-- [About](https://geco.com/about): Company history, vision, nature-inspired philosophy, and VNC family background.
-- [Products](https://geco.com/products): Full product catalogue with category filtering.
-- [Blogs](https://geco.com/blogs): Articles and guides on construction, tiling, and product usage.
-- [Contact](https://geco.com/contact): Get in touch with the Geco team.
+- [Home](https://geco.build/): Featured products, brand story, blog highlights, and Instagram feed.
+- [About](https://geco.build/about): Company history, vision, nature-inspired philosophy, and VNC family background.
+- [Products](https://geco.build/products): Full product catalogue with category filtering.
+- [Blogs](https://geco.build/blogs): Articles and guides on construction, tiling, and product usage.
+- [Contact](https://geco.build/contact): Get in touch with the Geco team.
 
 ## Legal
 
-- [Privacy Policy](https://geco.com/privacy-policy)
-- [Terms and Conditions](https://geco.com/terms-and-conditions)
-- [Cookie Policy](https://geco.com/cookie-policy)
-- [Disclaimer](https://geco.com/disclaimer)
+- [Privacy Policy](https://geco.build/privacy-policy)
+- [Terms and Conditions](https://geco.build/terms-and-conditions)
+- [Cookie Policy](https://geco.build/cookie-policy)
+- [Disclaimer](https://geco.build/disclaimer)

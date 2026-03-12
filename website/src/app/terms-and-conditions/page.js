@@ -20,7 +20,7 @@ export default function TermsAndConditionsPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Terms and Conditions",
-    url: "https://geco.com/terms-and-conditions",
+    url: "https://geco.build/terms-and-conditions",
     description:
       "Read the terms and conditions governing the use of our website and services.",
   };

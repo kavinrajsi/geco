@@ -334,12 +334,12 @@ export default async function BlogDetailPage({ params }) {
       name: "Geco",
       logo: {
         "@type": "ImageObject",
-        url: "https://geco.com/og-image.png",
+        url: "https://geco.build/og-image.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://geco.com/blogs/${slug}`,
+      "@id": `https://geco.build/blogs/${slug}`,
     },
     keywords: [
       ...(blog.blogCategories?.map((c) => c.name) || []),

@@ -204,7 +204,7 @@ export default async function ProductDetailPage({ params }) {
       ...(product.productCategory?.name && {
         category: product.productCategory.name,
       }),
-      url: `https://geco.com/products/${id}`,
+      url: `https://geco.build/products/${id}`,
     },
     {
       "@context": "https://schema.org",
@@ -214,13 +214,13 @@ export default async function ProductDetailPage({ params }) {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://geco.com",
+          item: "https://geco.build",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Products",
-          item: "https://geco.com/products",
+          item: "https://geco.build/products",
         },
         ...(product.productCategory?.name
           ? [

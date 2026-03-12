@@ -24,7 +24,7 @@ const archivoExpanded = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://geco.com"),
+  metadataBase: new URL("https://geco.build"),
   title: {
     default: "Geco",
     template: "%s | Geco",

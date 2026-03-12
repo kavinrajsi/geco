@@ -46,7 +46,7 @@ export default async function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About Geco",
-    url: "https://geco.com/about",
+    url: "https://geco.build/about",
     description: "Learn more about Geco and what we do.",
     mainEntity: {
       "@type": "Organization",

@@ -20,7 +20,7 @@ export default function DisclaimerPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Disclaimer",
-    url: "https://geco.com/disclaimer",
+    url: "https://geco.build/disclaimer",
     description:
       "Read our disclaimer regarding the use of information on our website.",
   };
