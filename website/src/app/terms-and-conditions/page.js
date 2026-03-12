@@ -3,6 +3,9 @@ import styles from "../privacy-policy/page.module.scss";
 export const metadata = {
   title: "Terms and Conditions",
   description: "Read the terms and conditions governing the use of our website and services.",
+  alternates: {
+    canonical: "/terms-and-conditions",
+  },
   openGraph: {
     title: "Terms and Conditions | Geco",
     description: "Read the terms and conditions governing the use of our website and services.",

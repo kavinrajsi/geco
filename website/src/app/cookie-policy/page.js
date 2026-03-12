@@ -3,6 +3,9 @@ import styles from "../privacy-policy/page.module.scss";
 export const metadata = {
   title: "Cookie Policy",
   description: "Learn about how we use cookies and similar technologies on our website.",
+  alternates: {
+    canonical: "/cookie-policy",
+  },
   openGraph: {
     title: "Cookie Policy | Geco",
     description: "Learn about how we use cookies and similar technologies on our website.",

@@ -61,15 +61,18 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${category.name} Products`,
-    description: `Explore our range of ${category.name} products.`,
+    description: `Explore Geco's range of ${category.name.toLowerCase()} — high-performance building materials engineered for superior bonding and durability.`,
+    alternates: {
+      canonical: `/products/category/${slug}`,
+    },
     openGraph: {
       title: `${category.name} Products | Geco`,
-      description: `Explore our range of ${category.name} products.`,
+      description: `Explore Geco's range of ${category.name.toLowerCase()} — high-performance building materials engineered for superior bonding and durability.`,
       images: ["/og-image.png"],
     },
     twitter: {
       title: `${category.name} Products | Geco`,
-      description: `Explore our range of ${category.name} products.`,
+      description: `Explore Geco's range of ${category.name.toLowerCase()} — high-performance building materials engineered for superior bonding and durability.`,
       images: ["/og-image.png"],
     },
   };
@@ -93,7 +96,7 @@ export default async function ProductCategoryPage({ params }) {
     "@type": "CollectionPage",
     name: `${category.name} Products`,
     url: `https://geco.build/products/category/${slug}`,
-    description: `Explore our range of ${category.name} products.`,
+    description: `Explore Geco's range of ${category.name.toLowerCase()} — high-performance building materials engineered for superior bonding and durability.`,
   };
 
   return (

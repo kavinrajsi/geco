@@ -4,15 +4,21 @@ import ProductGrid from "@/components/ProductGrid/ProductGrid";
 
 export const metadata = {
   title: "Products",
-  description: "Explore our range of tile adhesives, grouts, tapes, and sealants.",
+  description:
+    "Browse Geco's full range of tile adhesives, tile grouts, silicone sealants, and masking tapes — engineered for superior bonding, durability, and performance.",
+  alternates: {
+    canonical: "/products",
+  },
   openGraph: {
     title: "Products | Geco",
-    description: "Explore our range of tile adhesives, grouts, tapes, and sealants.",
+    description:
+      "Browse Geco's full range of tile adhesives, tile grouts, silicone sealants, and masking tapes — engineered for superior bonding, durability, and performance.",
     images: ["/og-image.png"],
   },
   twitter: {
     title: "Products | Geco",
-    description: "Explore our range of tile adhesives, grouts, tapes, and sealants.",
+    description:
+      "Browse Geco's full range of tile adhesives, tile grouts, silicone sealants, and masking tapes — engineered for superior bonding, durability, and performance.",
     images: ["/og-image.png"],
   },
 };
@@ -59,7 +65,7 @@ export default async function ProductsPage() {
     name: "Our Products",
     url: "https://geco.build/products",
     description:
-      "Explore our range of tile adhesives, grouts, tapes, and sealants.",
+      "Browse Geco's full range of tile adhesives, tile grouts, silicone sealants, and masking tapes — engineered for superior bonding, durability, and performance.",
   };
 
   return (

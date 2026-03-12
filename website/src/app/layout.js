@@ -29,26 +29,39 @@ export const metadata = {
     default: "Geco",
     template: "%s | Geco",
   },
-  description: "Building great experiences.",
-  keywords: ["geco", "products", "blogs"],
+  description:
+    "Geco — high-performance tile adhesives, grouts, sealants, and tapes by VNC Group. Inspired by the gecko's natural adhesion, engineered for superior bonding and durability.",
+  keywords: [
+    "geco",
+    "tile adhesive",
+    "tile grout",
+    "sealant",
+    "masking tape",
+    "VNC Group",
+    "building materials",
+    "tile fixing",
+    "construction adhesive",
+  ],
   openGraph: {
     type: "website",
     siteName: "Geco",
     title: "Geco",
-    description: "Building great experiences.",
+    description:
+      "Geco — high-performance tile adhesives, grouts, sealants, and tapes by VNC Group. Inspired by the gecko's natural adhesion, engineered for superior bonding and durability.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Geco",
+        alt: "Geco — Inspired By Nature. Engineered To Hold.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Geco",
-    description: "Building great experiences.",
+    description:
+      "Geco — high-performance tile adhesives, grouts, sealants, and tapes by VNC Group. Inspired by the gecko's natural adhesion, engineered for superior bonding and durability.",
     images: ["/og-image.png"],
   },
   robots: {

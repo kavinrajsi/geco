@@ -3,6 +3,9 @@ import styles from "../privacy-policy/page.module.scss";
 export const metadata = {
   title: "Disclaimer",
   description: "Read our disclaimer regarding the use of information on our website.",
+  alternates: {
+    canonical: "/disclaimer",
+  },
   openGraph: {
     title: "Disclaimer | Geco",
     description: "Read our disclaimer regarding the use of information on our website.",

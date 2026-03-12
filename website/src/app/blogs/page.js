@@ -4,15 +4,21 @@ import BlogList from "@/components/BlogList/BlogList";
 
 export const metadata = {
   title: "Blogs",
-  description: "Read our latest blog posts and updates.",
+  description:
+    "Expert guides, tips, and articles on tiling, adhesives, grouting, and construction from Geco — building materials inspired by nature.",
+  alternates: {
+    canonical: "/blogs",
+  },
   openGraph: {
     title: "Blogs | Geco",
-    description: "Read our latest blog posts and updates.",
+    description:
+      "Expert guides, tips, and articles on tiling, adhesives, grouting, and construction from Geco — building materials inspired by nature.",
     images: ["/og-image.png"],
   },
   twitter: {
     title: "Blogs | Geco",
-    description: "Read our latest blog posts and updates.",
+    description:
+      "Expert guides, tips, and articles on tiling, adhesives, grouting, and construction from Geco — building materials inspired by nature.",
     images: ["/og-image.png"],
   },
 };
@@ -57,7 +63,8 @@ export default async function BlogsPage() {
     "@type": "CollectionPage",
     name: "Blogs",
     url: "https://geco.build/blogs",
-    description: "Read our latest blog posts and updates.",
+    description:
+      "Expert guides, tips, and articles on tiling, adhesives, grouting, and construction from Geco — building materials inspired by nature.",
   };
 
   return (

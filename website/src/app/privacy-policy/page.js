@@ -3,6 +3,9 @@ import styles from "./page.module.scss";
 export const metadata = {
   title: "Privacy Policy",
   description: "Read our privacy policy to understand how we collect, use, and protect your data.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
   openGraph: {
     title: "Privacy Policy | Geco",
     description: "Read our privacy policy to understand how we collect, use, and protect your data.",

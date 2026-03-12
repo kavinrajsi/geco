@@ -11,15 +11,21 @@ export const revalidate = 60;
 
 export const metadata = {
   title: "Home | Geco",
-  description: "Welcome to Geco. Building great experiences.",
+  description:
+    "Geco offers high-performance tile adhesives, grouts, sealants, and tapes. Inspired by the gecko's natural adhesion — engineered to hold.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Home | Geco",
-    description: "Welcome to Geco. Building great experiences.",
+    description:
+      "Geco offers high-performance tile adhesives, grouts, sealants, and tapes. Inspired by the gecko's natural adhesion — engineered to hold.",
     images: ["/og-image.png"],
   },
   twitter: {
     title: "Home | Geco",
-    description: "Welcome to Geco. Building great experiences.",
+    description:
+      "Geco offers high-performance tile adhesives, grouts, sealants, and tapes. Inspired by the gecko's natural adhesion — engineered to hold.",
     images: ["/og-image.png"],
   },
 };
@@ -73,6 +79,11 @@ export default function Home() {
       "@type": "WebSite",
       name: "Geco",
       url: "https://geco.build",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://geco.build/products?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
     },
   ];
 

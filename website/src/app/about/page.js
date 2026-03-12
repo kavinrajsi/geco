@@ -6,15 +6,21 @@ export const revalidate = 60;
 
 export const metadata = {
   title: "About",
-  description: "Learn more about Geco and what we do.",
+  description:
+    "Learn about Geco's nature-inspired philosophy — how the gecko's adhesion science drives our tile adhesives, grouts, sealants, and tapes. Part of VNC Group, founded 1983.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About | Geco",
-    description: "Learn more about Geco and what we do.",
+    description:
+      "Learn about Geco's nature-inspired philosophy — how the gecko's adhesion science drives our tile adhesives, grouts, sealants, and tapes. Part of VNC Group, founded 1983.",
     images: ["/og-image.png"],
   },
   twitter: {
     title: "About | Geco",
-    description: "Learn more about Geco and what we do.",
+    description:
+      "Learn about Geco's nature-inspired philosophy — how the gecko's adhesion science drives our tile adhesives, grouts, sealants, and tapes. Part of VNC Group, founded 1983.",
     images: ["/og-image.png"],
   },
 };
@@ -47,7 +53,8 @@ export default async function AboutPage() {
     "@type": "AboutPage",
     name: "About Geco",
     url: "https://geco.build/about",
-    description: "Learn more about Geco and what we do.",
+    description:
+      "Learn about Geco's nature-inspired philosophy — how the gecko's adhesion science drives our tile adhesives, grouts, sealants, and tapes. Part of VNC Group, founded 1983.",
     mainEntity: {
       "@type": "Organization",
       name: "Geco",

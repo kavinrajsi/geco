@@ -6,15 +6,21 @@ export const revalidate = 60;
 
 export const metadata = {
   title: "Contact",
-  description: "Get in touch with us. We would love to hear from you.",
+  description:
+    "Contact Geco for tile adhesive, grout, sealant, and tape enquiries. Toll-free: 1800 599 3939. Offices in Karur and Chennai, Tamil Nadu, India.",
+  alternates: {
+    canonical: "/contact-us",
+  },
   openGraph: {
     title: "Contact | Geco",
-    description: "Get in touch with us. We would love to hear from you.",
+    description:
+      "Contact Geco for tile adhesive, grout, sealant, and tape enquiries. Toll-free: 1800 599 3939. Offices in Karur and Chennai, Tamil Nadu, India.",
     images: ["/og-image.png"],
   },
   twitter: {
     title: "Contact | Geco",
-    description: "Get in touch with us. We would love to hear from you.",
+    description:
+      "Contact Geco for tile adhesive, grout, sealant, and tape enquiries. Toll-free: 1800 599 3939. Offices in Karur and Chennai, Tamil Nadu, India.",
     images: ["/og-image.png"],
   },
 };

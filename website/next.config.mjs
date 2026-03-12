@@ -18,6 +18,11 @@ const nextConfig = {
         destination: "/contact-us",
         permanent: true,
       },
+      {
+        source: "/product-category/:slug",
+        destination: "/products/category/:slug",
+        permanent: true,
+      },
     ];
   },
   images: {
