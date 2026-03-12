@@ -5,13 +5,17 @@
   min-height: 640px;
   max-height: 640px;
   overflow: hidden;
-  background: url("/images/engineered-precision/mobile-bg.png") center / cover no-repeat;
+   background-image: url("/images/engineered-precision/mobile-bg.png");
+   background-position: center bottom;
+   background-size: cover;
+   background-repeat: no-repeat;
 
   @media (min-width: $bp-md) {
-    min-height: auto;
+    min-height: 760px;
     max-height: none;
     background-image: url("/images/engineered-precision/desktop-bg.png");
-    background-size: contain;
+    background-position: center;
+    background-size: cover;
   }
 }
 
