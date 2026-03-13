@@ -3,16 +3,18 @@
 /* Breadcrumb */
 .breadcrumb {
   background: #f7f7f7;
+  padding: 14px 0;
+}
+
+.breadcrumbContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 14px $space-gutter;
 
   @media (min-width: $bp-lg) {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 14px 110px;
   }
 }
 
@@ -93,15 +95,15 @@
 }
 
 /* Two-column product detail layout */
-.product-detail {
-  margin: 0 auto;
-  padding: 40px $space-gutter;
+.productDetailContainer {
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   @media (min-width: $bp-lg) {
     display: flex;
     gap: 30px;
-    max-width: $bp-xl;
-    padding: 80px 110px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 
@@ -375,11 +377,14 @@
 /* How to Use */
 .product-detail__how-to-use {
   background: #f7f7f7;
-  padding: 80px $space-gutter;
+  padding: 80px 0;
 
   @media (min-width: $bp-lg) {
-    padding: 120px 110px;
+    padding: 120px 0;
   }
+}
+
+.howToUseContainer {
 }
 
 .product-detail__how-to-use-title {
@@ -511,13 +516,11 @@
 
 /* FAQs */
 .product-detail__faq-section {
-  margin: 0 auto;
-  max-width: 850px;
-  padding: 80px $space-gutter;
+  padding: 80px 0;
+}
 
-  @media (min-width: $bp-lg) {
-    padding: 80px 0;
-  }
+.faqContainer {
+  max-width: 850px;
 }
 
 .product-detail__faq-title {

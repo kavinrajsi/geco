@@ -1,17 +1,24 @@
 @use "../../styles/fluid" as *;
 
 .principles {
-  align-items: center;
   background: #f7f7f7;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 80px $space-gutter;
+  padding: 80px 0;
 
   @media (min-width: $bp-lg) {
     background: none;
-    padding: 120px $space-gutter 60px;
+    padding: 120px 0 60px;
   }
+}
+
+.principlesContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0 auto;
+  max-width: $bp-xl;
+  padding: 0 $space-gutter;
+  width: 100%;
 }
 
 .principles__header {

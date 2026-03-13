@@ -24,8 +24,10 @@ export default async function HomeBlogSection() {
 
   return (
     <section className={styles["home-blogs"]}>
-      <h2 className={styles["home-blogs__title"]}>Blogs</h2>
-      <BlogSlider blogs={blogs} />
+      <div className={`container ${styles["homeBlogsContainer"]}`}>
+        <h2 className={styles["home-blogs__title"]}>Blogs</h2>
+        <BlogSlider blogs={blogs} />
+      </div>
     </section>
   );
 }

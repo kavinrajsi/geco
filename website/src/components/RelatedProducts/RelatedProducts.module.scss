@@ -1,15 +1,17 @@
 @use "../../styles/fluid" as *;
 
 .related {
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.relatedContainer {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  overflow: hidden;
-  padding: 80px $space-gutter;
 
   @media (min-width: $bp-lg) {
     align-items: center;
-    padding: 80px 0;
   }
 }
 

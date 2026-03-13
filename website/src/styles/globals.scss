@@ -34,3 +34,17 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.container {
+  margin: 0 auto;
+  max-width: $bp-xl;
+  padding-left: $space-gutter;
+  padding-right: $space-gutter;
+  width: 100%;
+}
+
+.container-fluid {
+  padding-left: $space-gutter;
+  padding-right: $space-gutter;
+  width: 100%;
+}

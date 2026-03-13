@@ -274,6 +274,7 @@ export default async function ProductDetailPage({ params }) {
       />
       {/* Breadcrumb */}
       <nav className={styles["breadcrumb"]}>
+        <div className={`container ${styles["breadcrumbContainer"]}`}>
         <div className={styles["breadcrumb__links"]}>
           <div className={styles["breadcrumb__path"]}>
             <Link href="/" className={styles["breadcrumb__link"]}>
@@ -320,9 +321,10 @@ export default async function ProductDetailPage({ params }) {
             <span />
           )}
         </div>
+        </div>
       </nav>
 
-      <div className={styles["product-detail"]}>
+      <div className={`container ${styles["productDetailContainer"]}`}>
         {/* Image Column */}
         <div className={styles["product-detail__image-col"]}>
           <div className={styles["product-detail__image"]}>
@@ -448,15 +450,17 @@ export default async function ProductDetailPage({ params }) {
       {/* How to Use */}
       {product.howToUse?.length > 0 && (
         <section className={styles["product-detail__how-to-use"]}>
-          <h2 className={styles["product-detail__how-to-use-title"]}>
-            How to use?
-          </h2>
-          <HowToUseSteps
-            steps={product.howToUse.map((step) => ({
-              ...step,
-              imageUrl: getStrapiMedia(step.image?.url),
-            }))}
-          />
+          <div className={`container ${styles["howToUseContainer"]}`}>
+            <h2 className={styles["product-detail__how-to-use-title"]}>
+              How to use?
+            </h2>
+            <HowToUseSteps
+              steps={product.howToUse.map((step) => ({
+                ...step,
+                imageUrl: getStrapiMedia(step.image?.url),
+              }))}
+            />
+          </div>
         </section>
       )}
 
@@ -517,8 +521,10 @@ export default async function ProductDetailPage({ params }) {
       {/* FAQs */}
       {product.faqs?.length > 0 && (
         <section className={styles["product-detail__faq-section"]}>
-          <h2 className={styles["product-detail__faq-title"]}>FAQs</h2>
-          <FaqAccordion faqs={product.faqs} />
+          <div className={`container ${styles["faqContainer"]}`}>
+            <h2 className={styles["product-detail__faq-title"]}>FAQs</h2>
+            <FaqAccordion faqs={product.faqs} />
+          </div>
         </section>
       )}
 

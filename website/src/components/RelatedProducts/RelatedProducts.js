@@ -22,6 +22,7 @@ export default function RelatedProducts({ products }) {
 
   return (
     <section className={styles["related"]}>
+      <div className={`container ${styles["relatedContainer"]}`}>
       <h2 className={styles["related__title"]}>Related Products</h2>
 
       <div className={styles["related__wrapper"]}>
@@ -96,6 +97,7 @@ export default function RelatedProducts({ products }) {
             <path d="M9 5L16 12L9 19" stroke="#1F1F1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
+      </div>
       </div>
     </section>
   );

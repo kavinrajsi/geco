@@ -1,11 +1,14 @@
 @use "../../styles/fluid" as *;
 
 .home-blogs {
+  padding: 80px 0;
+}
+
+.homeBlogsContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 80px 0;
 }
 
 .home-blogs__title {
@@ -14,13 +17,8 @@
   font-size: fluid(28, 32);
   font-weight: 900;
   line-height: fluid(32, 40);
-  padding: 0 $space-gutter;
   text-align: center;
   text-transform: uppercase;
-
-  @media (min-width: $bp-lg) {
-    padding: 0;
-  }
 }
 
 .home-blogs__slider {
@@ -38,11 +36,6 @@
 .home-blogs__swiper {
   max-width: 100%;
   width: 100%;
-  padding: 0 $space-gutter;
-
-  @media (min-width: 992px) {
-    max-width: 1290px;
-  }
 }
 
 .home-blogs__slide {
