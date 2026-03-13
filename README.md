@@ -32,7 +32,7 @@ npm install
 
 ### 2. Configure environment variables
 
-**CMS** — create `cms/.env`:
+**CMS** — create `cms/.env` (see `cms/.env.example`):
 
 ```env
 HOST=0.0.0.0
@@ -50,6 +50,7 @@ ENCRYPTION_KEY=<random-string>
 ```env
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 STRAPI_API_TOKEN=<your-strapi-api-token>
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<recaptcha-v3-site-key>
 RECAPTCHA_SECRET_KEY=<recaptcha-v3-secret-key>
 ZEPTO_MAIL_API_KEY=<zeptomail-api-key>
@@ -57,6 +58,7 @@ ZEPTO_FROM_EMAIL=noreply@yourdomain.com
 ZEPTO_FROM_NAME=Geco
 ZEPTO_TO_EMAIL=contact@yourdomain.com
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+REVALIDATE_SECRET=<shared-secret-for-isr-revalidation>
 ```
 
 ### 3. Run development servers
@@ -71,6 +73,13 @@ cd website
 npm run dev
 ```
 
+To run the website against the live CMS instead of local:
+
+```bash
+cd website
+npm run dev:live
+```
+
 - **CMS Admin Panel**: http://localhost:1337/admin
 - **Website**: http://localhost:3000
 
@@ -82,28 +91,97 @@ On first run, Strapi will prompt you to create an admin account. After that:
 2. Add the token to `website/.env.local` as `STRAPI_API_TOKEN`
 3. Go to **Settings > Roles > Public** and enable `find` / `findOne` permissions for the content types you want publicly accessible
 
+### Content Types
+
+**Collection Types:**
+
+| Content Type | Key Fields |
+|---|---|
+| Product | name, slug, tagline, description, image, secondaryImage, brochure, productCategory, features, areasOfApplication, standardCompliance, howToUse, highlight, faqs, relatedProducts |
+| Blog | title, slug, featureImage, publishingDate, excerpt, content (dynamic zone), blogCategories, blogTags |
+| Product Category | name, slug |
+| Blog Category | name, slug |
+| Blog Tag | name, slug |
+
+**Single Types:**
+
+| Content Type | Purpose |
+|---|---|
+| About Page | Section headings, content, and images for the about page |
+| Contact Page | Office addresses, phone, email, and map embed URL |
+
+### Components
+
+**Blog components** (used in blog content dynamic zone):
+rich-text, heading, image, table, video, embed, file
+
+**Product components:**
+feature (icon + text), highlight (CTA section), how-to-use-step, faq
+
+### Strapi Cloud Sync
+
+The CMS supports data transfer to/from Strapi Cloud:
+
+```bash
+cd cms
+npm run transfer:push        # Push all data to cloud
+npm run transfer:pull        # Pull all data from cloud
+npm run transfer:push:content  # Push content only
+npm run transfer:push:files    # Push files only
+```
+
+Requires `STRAPI_CLOUD_URL` and `STRAPI_TRANSFER_TOKEN` in `cms/.env`.
+
 ## Website Pages
 
 | Route | Description |
 |---|---|
-| `/` | Homepage with featured products and latest blogs |
-| `/about` | About page |
-| `/products` | Product listing |
-| `/products/[id]` | Product detail |
-| `/blogs` | Blog listing |
-| `/blogs/[slug]` | Blog detail |
-| `/contact` | Contact form (ZeptoMail + reCAPTCHA v3) |
+| `/` | Homepage with hero slider, featured products, categories, blog section, Instagram feed |
+| `/about` | About page with video, multiple content sections |
+| `/products` | Product listing with category filtering |
+| `/products/category/[slug]` | Products filtered by category |
+| `/products/[id]` | Product detail with features, specs, how-to-use, FAQs, related products |
+| `/blogs` | Blog listing with category and tag filtering |
+| `/blogs/[slug]` | Blog detail with dynamic content zones and share buttons |
+| `/contact-us` | Contact form (ZeptoMail + reCAPTCHA v3 + Zoho CRM) |
 | `/privacy-policy` | Privacy policy |
 | `/terms-and-conditions` | Terms and conditions |
 | `/disclaimer` | Disclaimer |
 | `/cookie-policy` | Cookie policy |
 
+### API Routes
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/contact` | POST | Contact form submission — validates fields, checks honeypot + reCAPTCHA score, sends email via ZeptoMail |
+| `/api/revalidate` | POST | ISR cache revalidation — called by Strapi webhooks to invalidate cached pages when content changes |
+
+### URL Redirects
+
+| From | To |
+|---|---|
+| `/about-us`, `/about-page` | `/about` |
+| `/contact` | `/contact-us` |
+| `/product-category/:slug` | `/products/category/:slug` |
+
+### SEO
+
+- Dynamic `sitemap.xml` generated from products, blogs, and categories
+- Custom `robots.txt` with AI bot blocking (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, etc.)
+- Per-page metadata with Open Graph and Twitter cards
+- Schema.org JSON-LD markup (Organization, WebSite, ContactPage, AboutPage, CollectionPage)
+- Canonical URLs on all pages
+
 ## Tech Stack
 
-- **Frontend**: Next.js 16, React 19, SCSS Modules, Swiper
-- **CMS**: Strapi 5 (SQLite for dev, PostgreSQL for production)
+- **Frontend**: Next.js 16, React 19 (with React Compiler), SCSS Modules, Swiper 12
+- **CMS**: Strapi 5 (SQLite for dev, PostgreSQL/MySQL for production)
 - **Email**: ZeptoMail
-- **Spam Protection**: Google reCAPTCHA v3
+- **CRM**: Zoho CRM (contact form leads)
+- **Spam Protection**: Google reCAPTCHA v3 + honeypot field
+- **Analytics**: Google Tag Manager
+- **Fonts**: Archivo (Google Fonts + local ArchivoExpanded-Black)
+- **Styling**: SCSS Modules with fluid typography system (`clamp()`-based responsive scaling)
 
 ## Production Build
 
@@ -121,6 +199,8 @@ npm start
 
 ## Deployment
 
+### Database
+
 For production, switch Strapi from SQLite to PostgreSQL:
 
 ```bash
@@ -128,7 +208,9 @@ cd cms
 npm install pg
 ```
 
-Set the `DATABASE_CLIENT=postgres` environment variable along with `DATABASE_URL` or individual `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD` variables.
+Set `DATABASE_CLIENT=postgres` along with `DATABASE_URL` or individual `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD` variables.
+
+### File Uploads
 
 For file uploads in production, use a cloud provider like Cloudinary:
 
@@ -137,6 +219,6 @@ cd cms
 npm install @strapi/provider-upload-cloudinary
 ```
 
-## TODO
+### ISR Revalidation
 
-- [ ] Implement a fallback strategy (e.g. CDN caching, Redis, or Contentful) so the website remains available if Strapi goes down
+Set up a Strapi webhook pointing to `<website-url>/api/revalidate` with the `x-revalidate-secret` header matching your `REVALIDATE_SECRET` env var. This automatically invalidates cached pages when content is updated in the CMS.

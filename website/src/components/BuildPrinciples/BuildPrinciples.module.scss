@@ -10,7 +10,7 @@
 
   @media (min-width: $bp-lg) {
     background: none;
-    padding: 120px 0 60px;
+    padding: 120px $space-gutter 60px;
   }
 }
 
