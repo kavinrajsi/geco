@@ -35,16 +35,18 @@ export default async function HomeFeaturedProducts() {
 
   return (
     <section className={styles["featured-products"]}>
-      <div className={styles["featured-products__header"]}>
-        <h2 className={styles["featured-products__title"]}>
-          Featured Products
-        </h2>
-        <p className={styles["featured-products__subtitle"]}>
-          Inspired by the gecko&apos;s remarkable sticking ability, our products
-          stand for strength, reliability, and continuous innovation.
-        </p>
+      <div className={`container ${styles["featuredProductsContainer"]}`}>
+        <div className={styles["featured-products__header"]}>
+          <h2 className={styles["featured-products__title"]}>
+            Featured Products
+          </h2>
+          <p className={styles["featured-products__subtitle"]}>
+            Inspired by the gecko&apos;s remarkable sticking ability, our products
+            stand for strength, reliability, and continuous innovation.
+          </p>
+        </div>
+        <FeaturedProductsSlider products={products} />
       </div>
-      <FeaturedProductsSlider products={products} />
     </section>
   );
 }
