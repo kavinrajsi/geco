@@ -54,9 +54,10 @@
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr;
+  justify-content: center;
 
   @media (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 350px));
   }
 
   @media (min-width: $bp-md) {
@@ -65,7 +66,7 @@
   }
 
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 290px));
   }
 }
 
