@@ -6,10 +6,9 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-
-  @media (min-width: $bp-md) {
-    height: 100vh;
-  }
+  // @media (min-width: $bp-md) {
+  //   height: 100vh;
+  // }
 
   video {
     display: block;

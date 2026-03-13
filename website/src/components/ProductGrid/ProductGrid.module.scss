@@ -77,6 +77,24 @@
   gap: 16px;
   text-decoration: none;
   width: 100%;
+
+  /* Center lone item in last row — 3-column grid */
+  @media (min-width: $bp-md) and (max-width: 1199px) {
+    &:last-child:nth-child(3n + 1) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 290px;
+    }
+  }
+
+  /* Center lone item in last row — 4-column grid */
+  @media (min-width: 1200px) {
+    &:last-child:nth-child(4n + 1) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 290px;
+    }
+  }
 }
 
 .product-grid__card-image {

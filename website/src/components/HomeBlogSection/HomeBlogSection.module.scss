@@ -13,7 +13,7 @@
 
 .home-blogs__title {
   color: #1f1f1f;
-  font-family: "Archivo Expanded", sans-serif;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
   font-size: fluid(28, 32);
   font-weight: 900;
   line-height: fluid(32, 40);
