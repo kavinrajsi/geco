@@ -178,12 +178,34 @@ Requires `STRAPI_CLOUD_URL` and `STRAPI_TRANSFER_TOKEN` in `cms/.env`.
 - **Fonts**: Archivo (Google Fonts + local ArchivoExpanded-Black)
 - **Styling**: SCSS Modules with fluid typography system (`clamp()`-based responsive scaling)
 
+## Environment Files
+
+The website uses three env files for different environments:
+
+| File | Environment | Usage |
+|---|---|---|
+| `.env.local` | Local | Auto-loaded by Next.js for local development |
+| `.env.dev` | Vercel | Reference for Vercel dashboard env vars |
+| `.env.live` | Production | Live site (geco.build) |
+
+**Scripts:**
+
+```bash
+npm run dev          # Local dev → .env.local
+npm run dev:dev      # Local dev with Vercel env → .env.dev
+npm run dev:live     # Local dev with live env → .env.live
+npm run build        # Build with local env → .env.local
+npm run build:live   # Build with live env → .env.live
+```
+
+> **Note:** `.env.dev` is a local reference only. On Vercel, env vars are set in the dashboard and injected at build time — `dotenv-cli` is not involved.
+
 ## Production Build
 
 ```bash
-# Build the website
+# Build the website locally with live env
 cd website
-npm run build
+npm run build:live
 npm start
 
 # Build Strapi
@@ -193,6 +215,34 @@ npm start
 ```
 
 ## Deployment
+
+### Vercel (Website)
+
+The Next.js website is deployed on Vercel.
+
+**Build Settings (Vercel Dashboard):**
+
+| Setting | Value |
+|---|---|
+| Framework Preset | Next.js |
+| Root Directory | `website` |
+| Build Command | `npm run build` |
+| Output Directory | `.next` |
+| Install Command | `npm install` |
+
+**Environment Variables (Vercel Dashboard → Settings → Environment Variables):**
+
+```
+NEXT_PUBLIC_STRAPI_URL=<strapi-cloud-url>
+STRAPI_API_TOKEN=<strapi-api-token>
+NEXT_PUBLIC_SITE_URL=<deployed-site-url>
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<recaptcha-v3-site-key>
+RECAPTCHA_SECRET_KEY=<recaptcha-v3-secret-key>
+NEXT_PUBLIC_GTM_ID=<gtm-container-id>
+REVALIDATE_SECRET=<shared-secret-for-isr>
+```
+
+Copy values from `.env.dev` for preview deployments or `.env.live` for production.
 
 ### Database
 
