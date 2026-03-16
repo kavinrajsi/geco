@@ -71,7 +71,7 @@
 .hero-slider__image--mobile {
   display: block;
   width: 100%;
-  height: calc(100vh - 94px);
+  height: calc(100vh - 94px - 44px);
   object-fit: contain;
 
   @media (min-width: $bp-md) {
