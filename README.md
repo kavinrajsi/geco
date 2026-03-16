@@ -53,10 +53,6 @@ STRAPI_API_TOKEN=<your-strapi-api-token>
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<recaptcha-v3-site-key>
 RECAPTCHA_SECRET_KEY=<recaptcha-v3-secret-key>
-ZEPTO_MAIL_API_KEY=<zeptomail-api-key>
-ZEPTO_FROM_EMAIL=noreply@yourdomain.com
-ZEPTO_FROM_NAME=Geco
-ZEPTO_TO_EMAIL=contact@yourdomain.com
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
 REVALIDATE_SECRET=<shared-secret-for-isr-revalidation>
 ```
@@ -143,7 +139,7 @@ Requires `STRAPI_CLOUD_URL` and `STRAPI_TRANSFER_TOKEN` in `cms/.env`.
 | `/products/[id]` | Product detail with features, specs, how-to-use, FAQs, related products |
 | `/blogs` | Blog listing with category and tag filtering |
 | `/blogs/[slug]` | Blog detail with dynamic content zones and share buttons |
-| `/contact-us` | Contact form (ZeptoMail + reCAPTCHA v3 + Zoho CRM) |
+| `/contact-us` | Contact form (Zoho CRM + reCAPTCHA v3) |
 | `/privacy-policy` | Privacy policy |
 | `/terms-and-conditions` | Terms and conditions |
 | `/disclaimer` | Disclaimer |
@@ -153,7 +149,7 @@ Requires `STRAPI_CLOUD_URL` and `STRAPI_TRANSFER_TOKEN` in `cms/.env`.
 
 | Endpoint | Method | Description |
 |---|---|---|
-| `/api/contact` | POST | Contact form submission — validates fields, checks honeypot + reCAPTCHA score, sends email via ZeptoMail |
+| `/api/contact` | POST | Contact form submission — validates fields, checks honeypot + reCAPTCHA score, submits to Zoho CRM |
 | `/api/revalidate` | POST | ISR cache revalidation — called by Strapi webhooks to invalidate cached pages when content changes |
 
 ### URL Redirects
@@ -176,7 +172,6 @@ Requires `STRAPI_CLOUD_URL` and `STRAPI_TRANSFER_TOKEN` in `cms/.env`.
 
 - **Frontend**: Next.js 16, React 19 (with React Compiler), SCSS Modules, Swiper 12
 - **CMS**: Strapi 5 (SQLite for dev, PostgreSQL/MySQL for production)
-- **Email**: ZeptoMail
 - **CRM**: Zoho CRM (contact form leads)
 - **Spam Protection**: Google reCAPTCHA v3 + honeypot field
 - **Analytics**: Google Tag Manager
