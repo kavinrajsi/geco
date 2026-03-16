@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 32px;
   margin: 0 auto;
-  padding: 0 $space-gutter 180px;
+  padding: 0 0 180px;
 
   @media (min-width: $bp-lg) {
     max-width: $bp-xl;
@@ -51,48 +51,43 @@
 
 /* Product grid */
 .product-grid__list {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-
-  @media (min-width: 576px) {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 350px));
-  }
-
+  align-items: center;
+  gap: 30px;
   @media (min-width: $bp-md) {
     gap: 56px 30px;
-    grid-template-columns: repeat(3, 1fr);
+  }
+  > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    flex: 1 0 auto;
   }
 
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 290px));
-  }
-}
-
-/* Individual card */
-.product-grid__card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-decoration: none;
-  width: 100%;
-
-  /* Center lone item in last row — 3-column grid */
-  @media (min-width: $bp-md) and (max-width: 1199px) {
-    &:last-child:nth-child(3n + 1) {
-      grid-column: 1 / -1;
-      justify-self: center;
-      max-width: 290px;
+  /* Individual card */
+  .product-grid__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    width: calc(100%);
+    flex: 1 0 calc((100% / 12) * 12 - 30px);
+    max-width: calc((100% / 12) * 12 - 30px);
+    @media (min-width: 576px) {
+      flex: 1 0 calc((100% / 12) * 6 - 30px);
+      max-width: calc((100% / 12) * 6 - 30px);
     }
-  }
 
-  /* Center lone item in last row — 4-column grid */
-  @media (min-width: 1200px) {
-    &:last-child:nth-child(4n + 1) {
-      grid-column: 1 / -1;
-      justify-self: center;
-      max-width: 290px;
+    @media (min-width: 992px) {
+      flex: 1 0 calc((100% / 12) * 4 - 30px);
+      max-width: calc((100% / 12) * 4 - 30px);
+    }
+
+    @media (min-width: 1200px) {
+      flex: 1 0 calc((100% / 12) * 3 - 30px);
+      max-width: calc((100% / 12) * 3 - 30px);
     }
   }
 }
@@ -110,7 +105,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.4s ease, transform 0.3s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.3s ease;
 }
 
 .product-grid__card-img-secondary {
