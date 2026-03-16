@@ -9,7 +9,7 @@ Next.js 16 frontend for the Geco website, powered by a headless Strapi CMS backe
 - **Styling**: SCSS Modules with fluid typography system
 - **Carousel**: Swiper 12
 - **Spam Protection**: Google reCAPTCHA v3 + honeypot field
-- **Analytics**: Google Tag Manager, Microsoft Clarity
+- **Analytics**: Google Tag Manager, Microsoft Clarity, PostHog
 - **Fonts**: Archivo (Google Fonts, weights: 400/500/600/900) + local ArchivoExpanded-Black
 
 ## Getting Started
@@ -37,6 +37,8 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<recaptcha-v3-site-key>
 RECAPTCHA_SECRET_KEY=<recaptcha-v3-secret-key>
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_POSTHOG_KEY=<posthog-project-api-key>
+NEXT_PUBLIC_POSTHOG_HOST=https://eu.i.posthog.com
 REVALIDATE_SECRET=<shared-secret-for-isr-revalidation>
 ```
 
@@ -100,6 +102,7 @@ src/
 │   ├── WatchOurStories/    # Video section
 │   ├── InstagramFeed/
 │   ├── FallbackImage/
+│   ├── PostHogAnalytics/    # PostHog provider + pageview tracking
 │   ├── RecaptchaProvider/
 │   └── ScrollToTop/        # Scroll reset on route change
 ├── lib/
@@ -123,6 +126,8 @@ src/
 | `/products/category/[slug]` | Products filtered by category |
 | `/products/[id]` | Product detail — features, specs, how-to-use, FAQs, related products |
 | `/blogs` | Blog listing with category and tag filtering |
+| `/blogs/category/[slug]` | Blogs filtered by category |
+| `/blogs/tag/[slug]` | Blogs filtered by tag |
 | `/blogs/[slug]` | Blog detail with dynamic content zones and share buttons |
 | `/contact-us` | Contact form (Zoho CRM + reCAPTCHA v3) |
 | `/privacy-policy` | Privacy policy |
@@ -185,13 +190,22 @@ SCSS Modules with a fluid typography system defined in `src/styles/_fluid.scss`:
 
 Clarity is initialized globally in the root layout via the `ClarityAnalytics` client component. It provides session recordings, heatmaps, and user behavior insights across every page.
 
+### PostHog
+
+PostHog is initialized globally via the `PostHogAnalytics` provider component in the root layout. It wraps the entire app with `PostHogProvider` from `posthog-js/react`, enabling:
+- Automatic pageview tracking on client-side route changes
+- Page leave capture
+- Access to `usePostHog()` hook from any child component for custom event tracking
+
+Set `NEXT_PUBLIC_POSTHOG_KEY` and `NEXT_PUBLIC_POSTHOG_HOST` in your environment. PostHog won't initialize if the key is missing.
+
 ### Google reCAPTCHA v3
 
 The `RecaptchaProvider` wraps the entire app in the root layout, which loads the reCAPTCHA v3 script globally. However, this does not mean every page is "protected" — it only makes reCAPTCHA **available** site-wide. reCAPTCHA v3 runs invisibly in the background, scoring user behavior. The actual verification only happens where `useGoogleReCaptcha()` is explicitly called and the token is validated server-side (currently only the contact form).
 
 ## SEO
 
-- Dynamic `sitemap.xml` generated from products, blogs, and categories
+- Dynamic `sitemap.xml` generated from products, blogs, product categories, blog categories, and blog tags
 - Custom `robots.txt` blocking AI bots (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot)
 - Per-page metadata with Open Graph and Twitter cards
 - Schema.org JSON-LD (Organization, WebSite, ContactPage, AboutPage, CollectionPage)
