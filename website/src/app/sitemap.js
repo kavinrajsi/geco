@@ -60,5 +60,40 @@ export default async function sitemap() {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...categoryRoutes, ...blogRoutes];
+  // Fetch all blog categories
+  const blogCategoriesData = await fetchStrapi("/blog-categories", {
+    "fields[0]": "slug",
+    "fields[1]": "updatedAt",
+    "pagination[pageSize]": "100",
+  });
+
+  const blogCategoryRoutes = (blogCategoriesData?.data || []).map((category) => ({
+    url: `${BASE_URL}/blogs/category/${category.slug}`,
+    lastModified: new Date(category.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  // Fetch all blog tags
+  const blogTagsData = await fetchStrapi("/blog-tags", {
+    "fields[0]": "slug",
+    "fields[1]": "updatedAt",
+    "pagination[pageSize]": "100",
+  });
+
+  const blogTagRoutes = (blogTagsData?.data || []).map((tag) => ({
+    url: `${BASE_URL}/blogs/tag/${tag.slug}`,
+    lastModified: new Date(tag.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...productRoutes,
+    ...categoryRoutes,
+    ...blogRoutes,
+    ...blogCategoryRoutes,
+    ...blogTagRoutes,
+  ];
 }
