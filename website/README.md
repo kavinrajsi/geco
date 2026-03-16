@@ -9,8 +9,7 @@ Next.js 16 frontend for the Geco website, powered by a headless Strapi CMS backe
 - **Styling**: SCSS Modules with fluid typography system
 - **Carousel**: Swiper 12
 - **Spam Protection**: Google reCAPTCHA v3 + honeypot field
-- **Email**: ZeptoMail
-- **Analytics**: Google Tag Manager
+- **Analytics**: Google Tag Manager, Microsoft Clarity
 - **Fonts**: Archivo (Google Fonts, weights: 400/500/600/900) + local ArchivoExpanded-Black
 
 ## Getting Started
@@ -37,10 +36,6 @@ STRAPI_API_TOKEN=<your-strapi-api-token>
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<recaptcha-v3-site-key>
 RECAPTCHA_SECRET_KEY=<recaptcha-v3-secret-key>
-ZEPTO_MAIL_API_KEY=<zeptomail-api-key>
-ZEPTO_FROM_EMAIL=noreply@yourdomain.com
-ZEPTO_FROM_NAME=Geco
-ZEPTO_TO_EMAIL=contact@yourdomain.com
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
 REVALIDATE_SECRET=<shared-secret-for-isr-revalidation>
 ```
@@ -76,7 +71,6 @@ src/
 │   ├── disclaimer/
 │   ├── cookie-policy/
 │   ├── api/
-│   │   ├── contact/        # Contact form handler
 │   │   └── revalidate/     # ISR cache invalidation
 │   ├── sitemap.js          # Dynamic sitemap
 │   ├── robots.js           # Robots with AI bot blocking
@@ -130,7 +124,7 @@ src/
 | `/products/[id]` | Product detail — features, specs, how-to-use, FAQs, related products |
 | `/blogs` | Blog listing with category and tag filtering |
 | `/blogs/[slug]` | Blog detail with dynamic content zones and share buttons |
-| `/contact-us` | Contact form (ZeptoMail + reCAPTCHA v3) |
+| `/contact-us` | Contact form (Zoho CRM + reCAPTCHA v3) |
 | `/privacy-policy` | Privacy policy |
 | `/terms-and-conditions` | Terms and conditions |
 | `/disclaimer` | Disclaimer |
@@ -145,14 +139,6 @@ src/
 | `/product-category/:slug` | `/products/category/:slug` |
 
 ## API Routes
-
-### `POST /api/contact`
-
-Handles contact form submissions:
-1. Honeypot check for bot prevention
-2. Validates required fields (name, email, message)
-3. Verifies reCAPTCHA v3 token (score > 0.5)
-4. Sends formatted HTML email via ZeptoMail
 
 ### `POST /api/revalidate`
 
@@ -192,6 +178,16 @@ SCSS Modules with a fluid typography system defined in `src/styles/_fluid.scss`:
 | `$font-body` | 15px → 18px |
 | `$font-body-sm` | 13px → 16px |
 | `$font-label` | 13px → 14px |
+
+## Analytics & Spam Protection
+
+### Microsoft Clarity
+
+Clarity is initialized globally in the root layout via the `ClarityAnalytics` client component. It provides session recordings, heatmaps, and user behavior insights across every page.
+
+### Google reCAPTCHA v3
+
+The `RecaptchaProvider` wraps the entire app in the root layout, which loads the reCAPTCHA v3 script globally. However, this does not mean every page is "protected" — it only makes reCAPTCHA **available** site-wide. reCAPTCHA v3 runs invisibly in the background, scoring user behavior. The actual verification only happens where `useGoogleReCaptcha()` is explicitly called and the token is validated server-side (currently only the contact form).
 
 ## SEO
 

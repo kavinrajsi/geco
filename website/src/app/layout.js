@@ -5,6 +5,7 @@ import HeaderWrapper from "@/components/Header/HeaderWrapper";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
+import ClarityAnalytics from "@/components/ClarityAnalytics/ClarityAnalytics";
 import { SITE_URL } from "@/lib/config";
 import "@/styles/globals.scss";
 
@@ -98,6 +99,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         )}
+        <ClarityAnalytics projectId="vwqdb39x3o" />
         <RecaptchaProvider>
           <ScrollToTop />
           <HeaderWrapper />
