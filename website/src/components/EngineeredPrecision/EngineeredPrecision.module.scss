@@ -22,6 +22,11 @@
     min-height: 760px;
     background-size: cover;
   }
+  @media (min-width: 1200px) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  }
 }
 
 // ── Container ───────────────────────────────────
@@ -34,6 +39,9 @@
   padding: 0 $space-gutter;
   @media (min-width: 960px) {
     justify-content: flex-end;
+  }
+  @media (min-width: 1200px) {
+    width: 100%;
   }
 }
 
