@@ -117,7 +117,7 @@ export default function BlogList({ blogs, categories, tags }) {
 
         {tags.length > 0 && (
           <div className={styles["blog-list__section"]}>
-            <h3 className={styles["blog-list__section-title"]}>Tags Cloud</h3>
+            <h3 className={styles["blog-list__section-title"]}>Tags</h3>
             <div className={styles["blog-list__tags"]}>
               {tags.map((tag) => (
                 <button
