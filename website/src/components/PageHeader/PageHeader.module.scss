@@ -8,8 +8,8 @@
   margin-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  @include interp.interpolate("padding-top", 576px, 40px, 1024px, 80px, "ease-in-out");
-  @include interp.interpolate("padding-bottom", 576px, 40px, 1024px, 120px, "ease-in-out");
+  @include interp.interpolate("padding-top", 576px, 40px, 1400px, 80px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 40px, 1400px, 120px, "ease-in-out");
 }
 
 .page-header__title {
@@ -19,6 +19,6 @@
   font-weight: 900;
   text-align: center;
   text-transform: uppercase;
-  @include interp.interpolate("font-size", 576px, 28px, 1024px, 32px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 32px, 1024px, 40px, "ease-in-out");
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
 }

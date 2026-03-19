@@ -1,15 +1,35 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
+
+/* ── TEXT ─────────────────────────────────── */
+
+.explore__title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
+}
+
+.explore__subtitle {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
 
 .explore {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding: 80px 0;
-
-  @media (min-width: $bp-lg) {
-    padding: 120px 0;
-  }
+  padding-left: 0;
+  padding-right: 0;
+  @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 80px, 1400px, 120px, "ease-in-out");
 }
 
 .explore__header {
@@ -17,40 +37,13 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 0 $space-gutter;
+  padding: 0 20px;
   text-align: center;
   width: 100%;
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1024px) {
     padding: 0;
     width: 630px;
-  }
-}
-
-.explore__title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 32px;
-  text-transform: uppercase;
-
-  @media (min-width: $bp-lg) {
-    font-size: 32px;
-    line-height: 40px;
-  }
-}
-
-.explore__subtitle {
-  color: #6b727a;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-
-  @media (min-width: $bp-lg) {
-    font-size: 18px;
-    line-height: 26px;
   }
 }
 
@@ -61,11 +54,11 @@
   width: 100%;
   padding: 0 20px;
 
-  @media (min-width: $bp-sm) {
+  @media (min-width: 576px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -102,12 +95,14 @@
 .explore__card-label {
   position: absolute;
   bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  max-width: 200px;
+  margin: 0 auto;
   width: auto;
-  padding: 16px 40px !important;
-
-  @media (min-width: 768px) {
-    padding: 16px 40px !important;
-  }
+  text-align: center;
+  @include interp.interpolate("padding-top", 576px, 12px, 1400px, 16px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 12px, 1400px, 16px, "ease-in-out");
+  padding-left: 12px;
+  padding-right: 12px;
 }

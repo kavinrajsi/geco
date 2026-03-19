@@ -35,8 +35,8 @@ p.about__tagline {
   font-weight: 600;
   text-transform: capitalize;
   color: #1f1f1f;
-  @include interp.interpolate("font-size", 576px, 18px, 1024px, 24px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 22px, 1024px, 32px, "ease-in-out");
+  @include interp.interpolate("font-size", 576px, 18px, 1400px, 24px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 22px, 1400px, 32px, "ease-in-out");
 }
 
 /* ── GRID / LAYOUT ───────────────────────── */
@@ -58,16 +58,17 @@ p.about__tagline {
 
 /* Section wrapper */
 .about__section {
-  padding: 80px 0;
+  padding-left: 0;
+  padding-right: 0;
+  @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 80px, 1400px, 120px, "ease-in-out");
 
   &--green {
     background: #f8ffe1;
-    padding: 80px 0;
   }
 
   &--gray {
     background: #f8ffe1;
-    padding: 80px 0;
   }
 }
 

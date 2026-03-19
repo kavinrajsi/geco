@@ -1,4 +1,8 @@
-@use "../../styles/fluid" as *;
+/* ── TEXT ─────────────────────────────────── */
+
+/* (no text styles in HeroSlider) */
+
+/* ── GRID / LAYOUT ───────────────────────── */
 
 .hero-slider {
   width: 100%;
@@ -16,7 +20,7 @@
     width: 8px;
     height: 8px;
     background: transparent;
-    border: 1px solid #A0A0A0;
+    border: 1px solid #a0a0a0;
     opacity: 1;
     transition: background 0.3s, border-color 0.3s;
     border-radius: 50%;
@@ -25,7 +29,7 @@
   }
 
   :global(.swiper-pagination-bullet-active) {
-    background: #97D700;
+    background: #97d700;
     border-color: transparent;
     box-shadow: none;
 
@@ -37,7 +41,7 @@
       width: 20px;
       height: 20px;
       transform: translate(-50%, -50%);
-      border: 1px solid #97D700;
+      border: 1px solid #97d700;
       border-radius: 50%;
       box-sizing: border-box;
     }
@@ -47,7 +51,7 @@
 .hero-slider__slide {
   position: relative;
   width: 100%;
-  background-color: #11099D;
+  background-color: #11099d;
 }
 
 .hero-slider__image--desktop,
@@ -60,7 +64,7 @@
 .hero-slider__image--desktop {
   display: none;
 
-  @media (min-width: $bp-md) {
+  @media (min-width: 768px) {
     display: block;
     width: 100vw;
     height: calc(100vh - 124px);
@@ -74,7 +78,7 @@
   height: calc(100vh - 94px - 44px);
   object-fit: contain;
 
-  @media (min-width: $bp-md) {
+  @media (min-width: 768px) {
     display: none;
   }
 }

@@ -1,100 +1,20 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
 
-.engineered {
-  width: 100%;
-  min-height: 640px;
-  // max-height: 640px;
-  overflow: hidden;
-  background-image: url("/images/engineered-precision/mobile-bg.png");
-  background-position: center bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  @media (min-width: $bp-md) {
-    min-height: 1000px;
-    // max-height: none;
-    background-image: url("/images/engineered-precision/tablet-bg.png");
-    background-position: center bottom;
-    background-size: cover;
-    // padding-bottom: 330px;
-  }
-  @media (min-width: 960px) {
-    background-image: url("/images/engineered-precision/desktop-bg.png");
-    min-height: 760px;
-    background-size: cover;
-  }
-  @media (min-width: 1200px) {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  }
-}
-
-// ── Container ───────────────────────────────────
-
-.engineered__container {
-  display: flex;
-  justify-content: center;
-  max-width: $bp-xl;
-  margin: 0 auto;
-  padding: 0 $space-gutter;
-  @media (min-width: 960px) {
-    justify-content: flex-end;
-  }
-  @media (min-width: 1200px) {
-    width: 100%;
-  }
-}
-
-// ── Content ─────────────────────────────────────
-
-.engineered__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  max-width: 520px;
-  padding: 64px 0;
-  text-align: center;
-  @media (min-width: $bp-md) {
-    padding: 120px 0;
-  }
-  @media (min-width: 960px) {
-    align-items: flex-start;
-    padding: 120px 0;
-    text-align: left;
-  }
-}
-
-.engineered__text {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  color: #fff;
-}
+/* ── TEXT ─────────────────────────────────── */
 
 .engineered__title {
   font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 28px;
   font-weight: 600;
-  line-height: 32px;
   text-transform: capitalize;
-
-  @media (min-width: $bp-md) {
-    font-size: 40px;
-    line-height: 48px;
-  }
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 40px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 48px, "ease-in-out");
 }
 
 .engineered__description {
   font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
   font-weight: 500;
-  line-height: 24px;
-
-  @media (min-width: $bp-md) {
-    font-size: 18px;
-    line-height: 26px;
-  }
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 }
 
 // ── CTA button ──────────────────────────────────
@@ -124,4 +44,91 @@
     border-color: #97d700;
     color: #fff;
   }
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
+
+.engineered {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("/images/engineered-precision/mobile-bg.png");
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media (min-width: 768px) {
+    background-image: url("/images/engineered-precision/tablet-bg.png");
+    background-position: center bottom;
+    background-size: cover;
+  }
+
+  @media (min-width: 960px) {
+    background-image: url("/images/engineered-precision/desktop-bg.png");
+    background-size: cover;
+  }
+
+  @media (min-width: 1200px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.engineered__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100vh;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 960px) {
+    justify-content: flex-end;
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+    width: 100%;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+}
+
+.engineered__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 520px;
+  padding: 64px 0;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
+
+  @media (min-width: 960px) {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.engineered__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
 }

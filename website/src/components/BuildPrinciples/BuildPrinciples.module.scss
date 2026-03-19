@@ -1,12 +1,52 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
+
+/* ── TEXT ─────────────────────────────────── */
+
+.principles__title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
+}
+
+.principles__subtitle {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+}
+
+.principles__card-title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  text-transform: capitalize;
+  @include interp.interpolate("font-size", 576px, 18px, 1400px, 24px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 22px, 1400px, 32px, "ease-in-out");
+}
+
+.principles__card-description {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
 
 .principles {
   background: #f7f7f7;
-  padding: 80px 0;
+  padding-left: 0;
+  padding-right: 0;
+  @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 80px, 1400px, 60px, "ease-in-out");
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1024px) {
     background: none;
-    padding: 120px 0 60px;
   }
 }
 
@@ -16,9 +56,29 @@
   flex-direction: column;
   gap: 40px;
   margin: 0 auto;
-  max-width: $bp-xl;
-  padding: 0 $space-gutter;
+  padding: 0 20px;
   width: 100%;
+  max-width: 100%;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
 }
 
 .principles__header {
@@ -28,35 +88,8 @@
   text-align: center;
   width: 100%;
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1024px) {
     width: 630px;
-  }
-}
-
-.principles__title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 32px;
-  text-transform: uppercase;
-
-  @media (min-width: $bp-lg) {
-    font-size: 32px;
-    line-height: 40px;
-  }
-}
-
-.principles__subtitle {
-  color: #6b727a;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-
-  @media (min-width: $bp-lg) {
-    font-size: 18px;
-    line-height: 26px;
   }
 }
 
@@ -66,10 +99,9 @@
   grid-template-columns: 1fr 1fr;
   width: 100%;
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1024px) {
     gap: 30px;
     grid-template-columns: repeat(4, 1fr);
-    max-width: $bp-xl;
   }
 }
 
@@ -90,7 +122,7 @@
     width: auto;
   }
 
-  @media (min-width: $bp-lg) {
+  @media (min-width: 1024px) {
     height: 100px;
   }
 }
@@ -100,31 +132,4 @@
   flex-direction: column;
   gap: 8px;
   text-align: center;
-}
-
-.principles__card-title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 22px;
-  text-transform: capitalize;
-
-  @media (min-width: $bp-lg) {
-    font-size: 24px;
-    line-height: 32px;
-  }
-}
-
-.principles__card-description {
-  color: #6b727a;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-
-  @media (min-width: $bp-lg) {
-    font-size: 18px;
-    line-height: 26px;
-  }
 }
