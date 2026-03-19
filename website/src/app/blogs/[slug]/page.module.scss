@@ -1,48 +1,6 @@
-@use "../../../styles/fluid" as *;
+@use "../../../styles/interpolate" as interp;
 
-/* Full-width hero image */
-.blog-detail__feature-image {
-  background: #e9e9e9;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 93px);
-  @media (min-width: $bp-md) {
-    height: calc(100vh - 124px);
-  }
-
-  img {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
-}
-
-/* Article wrapper */
-.blog-detail {
-  margin: 0 auto;
-  padding: fluid(32, 80) $space-gutter $space-section;
-
-  @media (min-width: $bp-lg) {
-    max-width: 850px;
-    padding: fluid(32, 64) $space-gutter $space-section;
-  }
-}
-
-/* Header: tag + title */
-.blog-detail__header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 40px;
-}
-
-.blog-detail__categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+/* ── TEXT ─────────────────────────────────── */
 
 .blog-detail__tag {
   background: rgba(151, 215, 0, 0.4);
@@ -55,53 +13,45 @@
 }
 
 .blog-detail__title {
-  font-size: fluid(28, 48);
   font-weight: 600;
-  line-height: fluid(32, 56);
   text-transform: capitalize;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 48px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 56px, "ease-in-out");
 }
 
 .blog-detail__date {
   color: #a0a0a0;
   display: block;
-  font-size: $font-label;
-}
-
-/* Content area */
-.blog-detail__content {
-  display: flex;
-  flex-direction: column;
+  @include interp.interpolate("font-size", 576px, 13px, 1400px, 14px, "ease-in-out");
 }
 
 .blog-detail__rich-text {
   color: #6b727a;
-  font-size: fluid(16, 18);
-  font-weight: 500;
-  line-height: fluid(24, 26);
   font-family: "Archivo";
   font-style: normal;
   font-weight: 500;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+
   p {
     color: #6b727a;
-    font-size: fluid(16, 18);
-    font-weight: 500;
-    line-height: fluid(24, 26);
     font-family: "Archivo";
     font-style: normal;
     font-weight: 500;
+    @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
   }
 
   ul {
     color: #6b727a;
-    font-size: fluid(16, 18);
-    font-weight: 500;
-    line-height: fluid(24, 26);
     font-family: "Archivo";
     font-style: normal;
     font-weight: 500;
     list-style: disc;
     margin-bottom: 12px;
     padding-left: 24px;
+    @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 
     ul {
       list-style: circle;
@@ -114,14 +64,13 @@
     list-style: decimal;
     margin-bottom: 12px;
     padding-left: 24px;
-
     color: #6b727a;
-    font-size: fluid(16, 18);
-    font-weight: 500;
-    line-height: fluid(24, 26);
     font-family: "Archivo";
     font-style: normal;
     font-weight: 500;
+    @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+
     ol {
       list-style: lower-alpha;
       margin-bottom: 0;
@@ -132,14 +81,12 @@
   li {
     margin-bottom: 6px;
     padding-left: 4px;
-
     color: #6b727a;
-    font-size: fluid(16, 18);
-    font-weight: 500;
-    line-height: fluid(24, 26);
     font-family: "Archivo";
     font-style: normal;
     font-weight: 500;
+    @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 
     &::marker {
       color: #1f1f1f;
@@ -154,10 +101,10 @@
     th,
     td {
       border: 1px solid #e9e9e9;
-      font-size: fluid(14, 16);
-      line-height: fluid(22, 24);
       padding: 12px 16px;
       text-align: left;
+      @include interp.interpolate("font-size", 576px, 14px, 1400px, 16px, "ease-in-out");
+      @include interp.interpolate("line-height", 576px, 22px, 1400px, 24px, "ease-in-out");
     }
 
     th {
@@ -175,6 +122,7 @@
     border-radius: 16px;
     height: auto;
     max-width: 100%;
+    padding-top: 30px;
   }
 
   blockquote {
@@ -201,42 +149,37 @@
 
   h2 {
     color: #1f1f1f;
-    font-size: fluid(24, 32);
     font-weight: 600;
-    line-height: fluid(30, 40);
-    // margin-bottom: 12px;
+    @include interp.interpolate("font-size", 576px, 24px, 1400px, 32px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 30px, 1400px, 40px, "ease-in-out");
   }
 
   h3 {
     color: #1f1f1f;
-    font-size: fluid(20, 24);
     font-weight: 600;
-    line-height: fluid(28, 32);
-    // margin-bottom: 8px;
+    @include interp.interpolate("font-size", 576px, 20px, 1400px, 24px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 28px, 1400px, 32px, "ease-in-out");
   }
 
   h4 {
     color: #1f1f1f;
-    font-size: fluid(18, 20);
     font-weight: 600;
-    line-height: fluid(26, 28);
-    // margin-bottom: 8px;
+    @include interp.interpolate("font-size", 576px, 18px, 1400px, 20px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 26px, 1400px, 28px, "ease-in-out");
   }
 
   h5 {
     color: #1f1f1f;
-    font-size: fluid(16, 18);
     font-weight: 600;
-    line-height: fluid(24, 26);
-    // margin-bottom: 8px;
+    @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
   }
 
   h6 {
     color: #1f1f1f;
-    font-size: fluid(14, 16);
     font-weight: 600;
-    line-height: fluid(20, 24);
-    // margin-bottom: 8px;
+    @include interp.interpolate("font-size", 576px, 14px, 1400px, 16px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 20px, 1400px, 24px, "ease-in-out");
   }
 
   p + p {
@@ -250,10 +193,6 @@
   h6 + p {
     padding-top: 16px;
   }
-
-  img {
-    padding-top: 30px;
-  }
 }
 
 .blog-detail__heading {
@@ -264,33 +203,127 @@
 }
 
 .blog-detail__heading--h2 {
-  font-size: fluid(24, 32);
-  line-height: fluid(30, 40);
   margin-bottom: 12px;
+  @include interp.interpolate("font-size", 576px, 24px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 30px, 1400px, 40px, "ease-in-out");
 }
 
 .blog-detail__heading--h3 {
-  font-size: fluid(20, 24);
-  line-height: fluid(28, 32);
   margin-bottom: 8px;
+  @include interp.interpolate("font-size", 576px, 20px, 1400px, 24px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 28px, 1400px, 32px, "ease-in-out");
 }
 
 .blog-detail__heading--h4 {
-  font-size: fluid(18, 20);
-  line-height: fluid(26, 28);
   margin-bottom: 8px;
+  @include interp.interpolate("font-size", 576px, 18px, 1400px, 20px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 26px, 1400px, 28px, "ease-in-out");
 }
 
 .blog-detail__heading--h5 {
-  font-size: fluid(16, 18);
-  line-height: fluid(24, 26);
   margin-bottom: 8px;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 }
 
 .blog-detail__heading--h6 {
-  font-size: fluid(14, 16);
-  line-height: fluid(20, 24);
   margin-bottom: 8px;
+  @include interp.interpolate("font-size", 576px, 14px, 1400px, 16px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 20px, 1400px, 24px, "ease-in-out");
+}
+
+.blog-detail__tags-label {
+  color: #1f1f1f;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.blog-detail__blog-tag {
+  background: #f7f7f7;
+  border-radius: 84px;
+  font-size: 14px;
+  font-weight: 600;
+  height: 32px;
+  line-height: 20px;
+  padding: 6px 16px;
+  text-transform: uppercase;
+}
+
+.blog-detail__nav-label {
+  color: #a0a0a0;
+}
+
+.blog-detail__nav-title {
+  color: #1f1f1f;
+}
+
+.blog-detail__caption {
+  margin-top: 8px;
+  opacity: 0.6;
+  text-align: center;
+  @include interp.interpolate("font-size", 576px, 13px, 1400px, 14px, "ease-in-out");
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
+
+/* Full-width hero image */
+.blog-detail__feature-image {
+  background: #e9e9e9;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 93px);
+
+  @media (min-width: 768px) {
+    height: calc(100vh - 124px);
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+/* Article wrapper */
+.blog-detail {
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  max-width: 100%;
+  @include interp.interpolate("padding-top", 576px, 32px, 1400px, 64px, "ease-in-out");
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 850px;
+  }
+}
+
+/* Header: tag + title */
+.blog-detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.blog-detail__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Content area */
+.blog-detail__content {
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-detail__figure {
@@ -312,7 +345,7 @@
   margin-right: auto;
   width: 60%;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 }
@@ -322,7 +355,7 @@
   margin-left: auto;
   width: 60%;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 }
@@ -331,13 +364,6 @@
   composes: blog-detail__figure;
   margin-left: auto;
   margin-right: auto;
-}
-
-.blog-detail__caption {
-  font-size: $font-label;
-  margin-top: 8px;
-  opacity: 0.6;
-  text-align: center;
 }
 
 .blog-detail__video,
@@ -358,10 +384,10 @@
   th,
   td {
     border: 1px solid #e9e9e9;
-    font-size: fluid(14, 16);
-    line-height: fluid(22, 24);
     padding: 12px 16px;
     text-align: left;
+    @include interp.interpolate("font-size", 576px, 14px, 1400px, 16px, "ease-in-out");
+    @include interp.interpolate("line-height", 576px, 22px, 1400px, 24px, "ease-in-out");
   }
 
   th {
@@ -382,11 +408,11 @@
     background: rgba(128, 128, 128, 0.1);
     border-radius: 6px;
     display: inline-block;
-    font-size: $font-body;
     font-weight: 600;
     padding: 10px 20px;
     text-decoration: none;
     transition: background 0.2s;
+    @include interp.interpolate("font-size", 576px, 15px, 1400px, 18px, "ease-in-out");
 
     &:hover {
       background: rgba(128, 128, 128, 0.2);
@@ -416,27 +442,10 @@
   gap: 12px;
 }
 
-.blog-detail__tags-label {
-  color: #1f1f1f;
-  font-size: 16px;
-  line-height: 26px;
-}
-
 .blog-detail__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.blog-detail__blog-tag {
-  background: #f7f7f7;
-  border-radius: 84px;
-  font-size: 14px;
-  font-weight: 600;
-  height: 32px;
-  line-height: 20px;
-  padding: 6px 16px;
-  text-transform: uppercase;
 }
 
 /* Previous / Next navigation */
@@ -452,25 +461,17 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  font-size: fluid(14, 16);
   font-weight: 500;
   gap: 6px;
   line-height: 24px;
   min-width: 0;
   text-decoration: none;
+  @include interp.interpolate("font-size", 576px, 14px, 1400px, 16px, "ease-in-out");
 
   &--next {
     align-items: flex-end;
     text-align: right;
   }
-}
-
-.blog-detail__nav-label {
-  color: #a0a0a0;
-}
-
-.blog-detail__nav-title {
-  color: #1f1f1f;
 }
 
 .blog-detail__nav-divider {
