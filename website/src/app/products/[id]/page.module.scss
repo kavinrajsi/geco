@@ -459,6 +459,9 @@
 }
 
 .howToUseContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   margin: 0 auto;
   padding: 0 20px;
   max-width: 100%;
@@ -580,6 +583,9 @@
 }
 
 .faqContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   margin: 0 auto;
   padding: 0 20px;
   max-width: 100%;
