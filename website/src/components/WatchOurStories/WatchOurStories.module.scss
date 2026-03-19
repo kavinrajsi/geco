@@ -15,25 +15,25 @@
   max-width: 100%;
   @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
 
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
+  // @media (min-width: 576px) {
+  //   max-width: 540px;
+  // }
 
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
+  // @media (min-width: 768px) {
+  //   max-width: 720px;
+  // }
 
-  @media (min-width: 1024px) {
-    max-width: 960px;
-  }
+  // @media (min-width: 1024px) {
+  //   max-width: 960px;
+  // }
 
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
+  // @media (min-width: 1200px) {
+  //   max-width: 1140px;
+  // }
 
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
+  // @media (min-width: 1400px) {
+  //   max-width: 1320px;
+  // }
 }
 
 .stories__header {
