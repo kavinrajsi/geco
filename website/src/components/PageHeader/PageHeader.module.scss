@@ -1,29 +1,24 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
 
 .page-header {
   align-items: center;
   background: #10069f;
   display: flex;
   justify-content: center;
-  padding: 40px $space-gutter;
   margin-bottom: 40px;
-  @media (min-width: $bp-md) {
-    padding: 80px $space-gutter 120px;
-  }
+  padding-left: 20px;
+  padding-right: 20px;
+  @include interp.interpolate("padding-top", 576px, 40px, 1024px, 80px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 40px, 1024px, 120px, "ease-in-out");
 }
 
 .page-header__title {
   color: #fff;
   font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-size: 28px;
   font-style: normal;
   font-weight: 900;
-  line-height: 32px;
   text-align: center;
   text-transform: uppercase;
-
-  @media (min-width: $bp-md) {
-    font-size: 32px;
-    line-height: 40px;
-  }
+  @include interp.interpolate("font-size", 576px, 28px, 1024px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1024px, 40px, "ease-in-out");
 }

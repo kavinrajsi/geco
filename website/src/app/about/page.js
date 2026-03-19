@@ -101,10 +101,9 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <picture className={styles["about__split-image"]}>
-            <source media="(min-width: 768px)" srcSet="/images/blueprint-desktop.png" />
-            <img src="/images/blueprint-mobile.png" alt="Gecko in nature" />
-          </picture>
+          <div className={styles["about__split-image"]}>
+            <img src="/images/blueprint-desktop.png" alt="Gecko in nature" width={630} height={418} />
+          </div>
         </div>
       </section>
 
@@ -148,7 +147,7 @@ export default function AboutPage() {
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
-          <div className={styles["about__split-text"]}>
+          <div className={`${styles["about__split-text"]} ${styles["about__split-text--right"]}`}>
             <h2 className={styles["about__heading"]}>
               Your Dreams, Our Foundation
             </h2>

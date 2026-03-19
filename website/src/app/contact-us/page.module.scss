@@ -1,28 +1,99 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
 
-.contact {
-  margin: 0 auto;
-  padding: 0;
-  @media (min-width: $bp-lg) {
-    max-width: $bp-xl;
+/* ── TEXT ─────────────────────────────────── */
+
+/* Address title */
+.contact__address-title {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  @include interp.interpolate("font-size", 576px, 18px, 768px, 20px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 768px, 28px, "ease-in-out");
+}
+
+/* Address text */
+.contact__address-text {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  @include interp.interpolate("font-size", 576px, 16px, 768px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 768px, 26px, "ease-in-out");
+}
+
+/* Phone & Email buttons */
+.contact__btn {
+  align-items: center;
+  background: #97d700;
+  border-radius: 50px;
+  color: #1f1f1f;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 8px;
+  @include interp.interpolate("font-size", 576px, 14px, 768px, 16px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 22px, 768px, 26px, "ease-in-out");
+  padding: 8px 16px;
+  text-decoration: none;
+  width: fit-content;
+
+  .contact__btn-icon {
+    display: inline-flex;
+  }
+
+  svg {
+    flex-shrink: 0;
   }
 }
 
-/* Two-column layout */
+/* ── GRID / LAYOUT ───────────────────────── */
+
+/* Container */
+.contact {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+}
+
+/* Two-column layout (12-col grid: form 6col + info 6col) */
 .contact__grid {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 0 $space-gutter;
+  padding: 0 20px;
 
-  @media (min-width: $bp-lg) {
-    flex-direction: row;
-    gap: 64px;
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+    gap: 20px;
   }
 }
 
 .contact__form {
-  flex: 1;
+  @media (min-width: 1024px) {
+    grid-column: span 8;
+  }
 }
 
 /* Info sidebar */
@@ -30,9 +101,14 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  @media (min-width: $bp-lg) {
-    flex-shrink: 0;
-    width: 410px;
+
+  @media (min-width: 1024px) {
+    grid-column: span 4;
+    justify-self: start;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 410px;
   }
 }
 
@@ -42,60 +118,16 @@
   gap: 8px;
 }
 
-.contact__address-title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo), sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
-
-  @media (min-width: $bp-md) {
-    font-weight: 700;
-    font-weight: 600;
-  }
-}
-
-.contact__address-text {
-  color: #1f1f1f;
-  font-family: var(--font-archivo), sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-/* Phone & Email buttons */
 .contact__buttons {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.contact__btn {
-  align-items: center;
-  background: #97d700;
-  border-radius: 50px;
-  color: #1f1f1f;
-  display: inline-flex;
-  font-size: 16px;
-  font-weight: 600;
-  gap: 8px;
-  line-height: 26px;
-  padding: 8px 16px;
-  text-decoration: none;
-  width: fit-content;
-  .contact__btn-icon {
-    display: inline-flex;
-  }
-  svg {
-    flex-shrink: 0;
-  }
-}
-
 /* Full-width Google Map */
 .contact__map {
-  margin-top: $space-section;
+  margin-top: 80px;
+
   iframe {
     display: block;
     width: 100%;
