@@ -1,9 +1,32 @@
 import styles from "./SectionTitle.module.scss";
 
-export default function SectionTitle({ title, description }) {
+const defaultTags = {
+  section: "h2",
+  page: "h1",
+  about: "h2",
+  card: "h3",
+  form: "h2",
+  feature: "h2",
+  address: "h2",
+};
+
+export default function SectionTitle({
+  title,
+  description,
+  variant = "section",
+  as,
+  align,
+  className,
+}) {
+  const Tag = as || defaultTags[variant] || "h2";
+  const variantClass = styles[`section-title--${variant}`] || "";
+  const alignClass = align ? styles[`section-title--${align}`] : "";
+
   return (
-    <div className={styles["section-title"]}>
-      <h2 className={styles["section-title__heading"]}>{title}</h2>
+    <div
+      className={`${styles["section-title"]} ${variantClass} ${alignClass} ${className || ""}`.trim()}
+    >
+      <Tag className={styles["section-title__heading"]}>{title}</Tag>
       {description && (
         <p className={styles["section-title__description"]}>{description}</p>
       )}

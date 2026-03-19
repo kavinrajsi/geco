@@ -1,5 +1,5 @@
+import Button from "@/components/Button/Button";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
-import Link from "next/link";
 import styles from "./ExploreCategories.module.scss";
 
 const categories = [
@@ -38,9 +38,8 @@ export default function ExploreCategories() {
       </div>
       <div className={styles["explore__grid"]}>
         {categories.map((category) => (
-          <Link
+          <div
             key={category.slug}
-            href={`/products/category/${category.slug}`}
             className={styles["explore__card"]}
           >
             <FallbackImage
@@ -50,10 +49,13 @@ export default function ExploreCategories() {
               height={607}
               className={styles["explore__card-image"]}
             />
-            <span className={styles["explore__card-label"]}>
-              {category.name}
-            </span>
-          </Link>
+            <Button
+              variant="white"
+              text={category.name}
+              href={`/products/category/${category.slug}`}
+              className={styles["explore__card-label"]}
+            />
+          </div>
         ))}
       </div>
     </section>

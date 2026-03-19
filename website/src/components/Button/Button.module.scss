@@ -1,0 +1,44 @@
+.button {
+  background: #97d700;
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    background: #10069f;
+    color: #fff;
+    border-color: #97d700;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// White pill variant
+.button--white {
+  background: #fff;
+  color: #1f1f1f;
+
+  &:hover {
+    background: #10069f;
+    color: #fff;
+    border-color: #fff;
+  }
+}

@@ -1,5 +1,6 @@
 @use "../../styles/fluid" as *;
 
+// ── Base ──────────────────────────────────────────────────
 .section-title {
   margin-bottom: 24px;
 
@@ -8,25 +9,40 @@
   }
 }
 
-.section-title__heading {
+// ── Alignment modifiers ───────────────────────────────────
+.section-title--left {
+  .section-title__heading,
+  .section-title__description {
+    text-align: left;
+  }
+}
+
+.section-title--center {
+  .section-title__heading,
+  .section-title__description {
+    text-align: center;
+  }
+}
+
+// ── Default: section (h2 – section headings) ─────────────
+.section-title--section .section-title__heading {
   color: #1f1f1f;
-  font-family: var(--font-archivo);
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
   font-size: 28px;
-  font-stretch: expanded;
   font-weight: 900;
   line-height: 32px;
   text-align: center;
   text-transform: uppercase;
 
-  @media (min-width: $bp-md) {
+  @media (min-width: $bp-lg) {
     font-size: 32px;
     line-height: 40px;
   }
 }
 
-.section-title__description {
+.section-title--section .section-title__description {
   color: #6b727a;
-  font-family: var(--font-archivo);
+  font-family: var(--font-archivo), "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -35,5 +51,130 @@
   @media (min-width: $bp-md) {
     font-size: 18px;
     line-height: 26px;
+  }
+}
+
+// ── Page header (h1 – blue banner) ────────────────────────
+.section-title--page {
+  align-items: center;
+  background: #10069f;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 40px $space-gutter;
+
+  @media (min-width: $bp-md) {
+    padding: 80px $space-gutter 120px;
+  }
+
+  .section-title__heading {
+    color: #fff;
+    font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 32px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (min-width: $bp-md) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+}
+
+// ── About (h2 – sentence-case headings) ───────────────────
+.section-title--about {
+  margin-bottom: 16px;
+
+  @media (min-width: $bp-md) {
+    margin-bottom: 24px;
+  }
+
+  .section-title__heading {
+    color: #1f1f1f;
+    font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 32px;
+
+    @media (min-width: $bp-md) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+}
+
+// ── Card (h3 – card titles) ──────────────────────────────
+.section-title--card {
+  margin-bottom: 8px;
+
+  .section-title__heading {
+    color: #1f1f1f;
+    font-family: var(--font-archivo), "Archivo", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    text-transform: capitalize;
+
+    @media (min-width: $bp-lg) {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+}
+
+// ── Form (h2 – form headings) ────────────────────────────
+.section-title--form {
+  margin-bottom: 16px;
+
+  @media (min-width: $bp-md) {
+    margin-bottom: 24px;
+  }
+
+  .section-title__heading {
+    color: #1f1f1f;
+    font-family: var(--font-archivo), "Archivo", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    @media (min-width: $bp-md) {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+}
+
+// ── Feature (h2 – white text on dark/image bg) ───────────
+.section-title--feature {
+  margin-bottom: 16px;
+
+  .section-title__heading {
+    color: #fff;
+    font-family: var(--font-archivo), "Archivo", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 32px;
+    text-transform: capitalize;
+
+    @media (min-width: $bp-md) {
+      font-size: 40px;
+      line-height: 48px;
+    }
+  }
+}
+
+// ── Address (h2 – contact address labels) ─────────────────
+.section-title--address {
+  margin-bottom: 0;
+
+  .section-title__heading {
+    color: #1f1f1f;
+    font-family: var(--font-archivo), "Archivo", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
   }
 }
