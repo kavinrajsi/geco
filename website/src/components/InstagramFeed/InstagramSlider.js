@@ -13,7 +13,7 @@ export default function InstagramSlider({ posts }) {
       <Swiper
         modules={[Mousewheel]}
         mousewheel={{ forceToAxis: true }}
-        spaceBetween={30}
+        spaceBetween={0}
         slidesPerView={1.25}
         breakpoints={{
           576: {
