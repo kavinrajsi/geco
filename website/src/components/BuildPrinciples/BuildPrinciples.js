@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./BuildPrinciples.module.scss";
 
 const principles = [
@@ -143,15 +144,11 @@ export default function BuildPrinciples() {
   return (
     <section className={styles["principles"]}>
       <div className={`container ${styles["principlesContainer"]}`}>
-        <div className={styles["principles__header"]}>
-          <h2 className={styles["principles__title"]}>
-            Built on Four Principles
-          </h2>
-          <p className={styles["principles__subtitle"]}>
-            Our core beliefs drive innovation that&apos;s reliable, versatile,
-            and constantly evolving to meet your needs.
-          </p>
-        </div>
+        <SectionTitle
+          title="Built on Four Principles"
+          description="Our core beliefs drive innovation that's reliable, versatile, and constantly evolving to meet your needs."
+          className={styles["principles__header"]}
+        />
         <div className={styles["principles__grid"]}>
           {principles.map((principle) => (
             <div key={principle.title} className={styles["principles__card"]}>

@@ -1,5 +1,6 @@
 import Button from "@/components/Button/Button";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./ExploreCategories.module.scss";
 
 const categories = [
@@ -28,14 +29,11 @@ const categories = [
 export default function ExploreCategories() {
   return (
     <section className={styles["explore"]}>
-      <div className={styles["explore__header"]}>
-        <h2 className={styles["explore__title"]}>Explore Categories</h2>
-        <p className={styles["explore__subtitle"]}>
-          Discover our range of professional solutions that are crafted to
-          deliver strength, precision, and lasting results for every stage of
-          your project.
-        </p>
-      </div>
+      <SectionTitle
+        title="Explore Categories"
+        description="Discover our range of professional solutions that are crafted to deliver strength, precision, and lasting results for every stage of your project."
+        className={styles["explore__header"]}
+      />
       <div className={styles["explore__grid"]}>
         {categories.map((category) => (
           <div

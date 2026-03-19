@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./WatchOurStories.module.scss";
 
 export default function WatchOurStories({ title, subtitle, videoUrl, videoSrc, poster }) {
@@ -5,12 +6,11 @@ export default function WatchOurStories({ title, subtitle, videoUrl, videoSrc, p
 
   return (
     <section className={styles["stories"]}>
-      <div className={styles["stories__header"]}>
-        <h2 className={styles["stories__title"]}>{title || "Watch Our Stories"}</h2>
-        {subtitle && (
-          <p className={styles["stories__subtitle"]}>{subtitle}</p>
-        )}
-      </div>
+      <SectionTitle
+        title={title || "Watch Our Stories"}
+        description={subtitle}
+        className={styles["stories__header"]}
+      />
       <div className={styles["stories__video"]}>
         {videoSrc ? (
           <video

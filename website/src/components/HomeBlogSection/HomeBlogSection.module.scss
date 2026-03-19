@@ -2,16 +2,6 @@
 
 /* ── TEXT ─────────────────────────────────── */
 
-.home-blogs__title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-weight: 900;
-  text-align: center;
-  text-transform: uppercase;
-  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
-}
-
 .home-blogs__card-tag {
   background: rgba(151, 215, 0, 0.4);
   border-radius: 48px;

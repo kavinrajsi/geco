@@ -1,12 +1,101 @@
-@use "../../styles/fluid" as *;
+@use "../../styles/interpolate" as interp;
+
+/* ── TEXT ─────────────────────────────────── */
+
+// ── Default: section (h2 – section headings) ─────────────
+.section-title--section .section-title__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
+}
+
+.section-title--section .section-title__description {
+  color: #6b727a;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+}
+
+// ── Page header (h1 – blue banner) ────────────────────────
+.section-title--page .section-title__heading {
+  color: #fff;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
+}
+
+// ── About (h2 – sentence-case headings) ───────────────────
+.section-title--about .section-title__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
+  font-weight: 900;
+  @include interp.interpolate("font-size", 576px, 24px, 1400px, 32px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
+}
+
+// ── Card (h3 – card titles) ──────────────────────────────
+.section-title--card .section-title__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  text-transform: capitalize;
+  @include interp.interpolate("font-size", 576px, 18px, 1400px, 24px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 22px, 1400px, 32px, "ease-in-out");
+}
+
+// ── Form (h2 – form headings) ────────────────────────────
+.section-title--form .section-title__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  @include interp.interpolate("font-size", 576px, 24px, 1400px, 28px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 28px, 1400px, 36px, "ease-in-out");
+}
+
+// ── Feature (h2 – white text on dark/image bg) ───────────
+.section-title--feature .section-title__heading {
+  color: #fff;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  text-transform: capitalize;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 40px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 32px, 1400px, 48px, "ease-in-out");
+}
+
+.section-title--feature .section-title__description {
+  color: #fff;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 500;
+  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+}
+
+// ── Address (h2 – contact address labels) ─────────────────
+.section-title--address .section-title__heading {
+  color: #1f1f1f;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  @include interp.interpolate("font-size", 576px, 18px, 1400px, 20px, "ease-in-out");
+  @include interp.interpolate("line-height", 576px, 24px, 1400px, 28px, "ease-in-out");
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
 
 // ── Base ──────────────────────────────────────────────────
 .section-title {
-  margin-bottom: 24px;
-
-  @media (min-width: $bp-md) {
-    margin-bottom: 32px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 // ── Alignment modifiers ───────────────────────────────────
@@ -24,157 +113,40 @@
   }
 }
 
-// ── Default: section (h2 – section headings) ─────────────
-.section-title--section .section-title__heading {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 32px;
-  text-align: center;
-  text-transform: uppercase;
-
-  @media (min-width: $bp-lg) {
-    font-size: 32px;
-    line-height: 40px;
-  }
-}
-
-.section-title--section .section-title__description {
-  color: #6b727a;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  text-align: center;
-
-  @media (min-width: $bp-md) {
-    font-size: 18px;
-    line-height: 26px;
-  }
-}
-
-// ── Page header (h1 – blue banner) ────────────────────────
+// ── Page header layout ────────────────────────────────────
 .section-title--page {
   align-items: center;
   background: #10069f;
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-  padding: 40px $space-gutter;
-
-  @media (min-width: $bp-md) {
-    padding: 80px $space-gutter 120px;
-  }
-
-  .section-title__heading {
-    color: #fff;
-    font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 32px;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media (min-width: $bp-md) {
-      font-size: 32px;
-      line-height: 40px;
-    }
-  }
+  padding-left: 20px;
+  padding-right: 20px;
+  @include interp.interpolate("padding-top", 576px, 40px, 1400px, 80px, "ease-in-out");
+  @include interp.interpolate("padding-bottom", 576px, 40px, 1400px, 120px, "ease-in-out");
 }
 
-// ── About (h2 – sentence-case headings) ───────────────────
+// ── About layout ──────────────────────────────────────────
 .section-title--about {
-  margin-bottom: 16px;
-
-  @media (min-width: $bp-md) {
-    margin-bottom: 24px;
-  }
-
-  .section-title__heading {
-    color: #1f1f1f;
-    font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-    line-height: 32px;
-
-    @media (min-width: $bp-md) {
-      font-size: 32px;
-      line-height: 40px;
-    }
-  }
+  margin-bottom: 28px;
 }
 
-// ── Card (h3 – card titles) ──────────────────────────────
+// ── Card layout ───────────────────────────────────────────
 .section-title--card {
   margin-bottom: 8px;
-
-  .section-title__heading {
-    color: #1f1f1f;
-    font-family: var(--font-archivo), "Archivo", sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 22px;
-    text-transform: capitalize;
-
-    @media (min-width: $bp-lg) {
-      font-size: 24px;
-      line-height: 32px;
-    }
-  }
 }
 
-// ── Form (h2 – form headings) ────────────────────────────
+// ── Form layout ───────────────────────────────────────────
 .section-title--form {
   margin-bottom: 16px;
-
-  @media (min-width: $bp-md) {
-    margin-bottom: 24px;
-  }
-
-  .section-title__heading {
-    color: #1f1f1f;
-    font-family: var(--font-archivo), "Archivo", sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 28px;
-    text-transform: uppercase;
-
-    @media (min-width: $bp-md) {
-      font-size: 28px;
-      line-height: 36px;
-    }
-  }
 }
 
-// ── Feature (h2 – white text on dark/image bg) ───────────
+// ── Feature layout ────────────────────────────────────────
 .section-title--feature {
   margin-bottom: 16px;
-
-  .section-title__heading {
-    color: #fff;
-    font-family: var(--font-archivo), "Archivo", sans-serif;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 32px;
-    text-transform: capitalize;
-
-    @media (min-width: $bp-md) {
-      font-size: 40px;
-      line-height: 48px;
-    }
-  }
 }
 
-// ── Address (h2 – contact address labels) ─────────────────
+// ── Address layout ────────────────────────────────────────
 .section-title--address {
   margin-bottom: 0;
-
-  .section-title__heading {
-    color: #1f1f1f;
-    font-family: var(--font-archivo), "Archivo", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 28px;
-  }
 }

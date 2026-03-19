@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InstagramSlider from "./InstagramSlider";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./InstagramFeed.module.scss";
 
 const posts = [
@@ -13,10 +14,11 @@ const posts = [
 export default function InstagramFeed() {
   return (
     <section className={styles["instagram"]}>
-      <div className={styles["instagram__header"]}>
-        <h2 className={styles["instagram__title"]}>Geco On Instagram</h2>
-        <p className={styles["instagram__subtitle"]}>#Geco</p>
-      </div>
+      <SectionTitle
+        title="Geco On Instagram"
+        description="#Geco"
+        className={styles["instagram__header"]}
+      />
 
       {/* Slider for < 1200px */}
       <InstagramSlider posts={posts} />

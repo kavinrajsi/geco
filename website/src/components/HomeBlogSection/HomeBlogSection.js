@@ -1,5 +1,6 @@
 import { fetchStrapi, getStrapiMedia, extractTextFromContent } from "@/lib/strapi";
 import BlogSlider from "./BlogSlider";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./HomeBlogSection.module.scss";
 
 export default async function HomeBlogSection() {
@@ -25,7 +26,7 @@ export default async function HomeBlogSection() {
   return (
     <section className={styles["home-blogs"]}>
       <div className={`container ${styles["homeBlogsContainer"]}`}>
-        <h2 className={styles["home-blogs__title"]}>Blogs</h2>
+        <SectionTitle title="Blogs" />
         <BlogSlider blogs={blogs} />
       </div>
     </section>

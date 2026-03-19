@@ -2,23 +2,6 @@
 
 /* ── TEXT ─────────────────────────────────── */
 
-.principles__title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
-}
-
-.principles__subtitle {
-  color: #6b727a;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-weight: 500;
-  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
-}
-
 .principles__card-title {
   color: #1f1f1f;
   font-family: var(--font-archivo), "Archivo", sans-serif;
