@@ -9,6 +9,7 @@ import CollapsibleSection from "@/components/CollapsibleSection/CollapsibleSecti
 import CollapsibleGroup from "@/components/CollapsibleSection/CollapsibleGroup";
 import HowToUseSteps from "@/components/HowToUseSteps/HowToUseSteps";
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./page.module.scss";
 
 export const revalidate = 60;
@@ -451,9 +452,7 @@ export default async function ProductDetailPage({ params }) {
       {product.howToUse?.length > 0 && (
         <section className={styles["product-detail__how-to-use"]}>
           <div className={`container ${styles["howToUseContainer"]}`}>
-            <h2 className={styles["product-detail__how-to-use-title"]}>
-              How to use?
-            </h2>
+            <SectionTitle title="How to use?" />
             <HowToUseSteps
               steps={product.howToUse.map((step) => ({
                 ...step,
@@ -522,7 +521,7 @@ export default async function ProductDetailPage({ params }) {
       {product.faqs?.length > 0 && (
         <section className={styles["product-detail__faq-section"]}>
           <div className={`container ${styles["faqContainer"]}`}>
-            <h2 className={styles["product-detail__faq-title"]}>FAQs</h2>
+            <SectionTitle title="FAQs" />
             <FaqAccordion faqs={product.faqs} />
           </div>
         </section>

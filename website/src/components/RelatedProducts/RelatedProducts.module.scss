@@ -15,20 +15,6 @@
   }
 }
 
-.related__title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 32px;
-  text-align: center;
-  text-transform: uppercase;
-
-  @media (min-width: $bp-md) {
-    font-size: 32px;
-    line-height: 40px;
-  }
-}
 
 .related__wrapper {
   position: relative;
@@ -43,13 +29,16 @@
 .related__track {
   display: flex;
   gap: 30px;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+@media(min-width: 1024px) {
+    justify-content: center;
   }
 }
 
@@ -115,6 +104,11 @@
   height: 44px;
   justify-content: center;
   width: 44px;
+}
+
+.related__arrow--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Desktop arrows: positioned on sides of the track */

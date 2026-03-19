@@ -150,16 +150,7 @@
   }
 }
 
-.product-detail__how-to-use-title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-weight: 900;
-  margin-bottom: 40px;
-  text-align: center;
-  text-transform: uppercase;
-  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
-}
+
 
 .highlight__title {
   color: #000;
@@ -194,15 +185,7 @@
   width: fit-content;
 }
 
-.product-detail__faq-title {
-  color: #1f1f1f;
-  font-family: var(--font-archivo-expanded), "Archivo Expanded", sans-serif;
-  font-weight: 900;
-  margin-bottom: 40px;
-  text-align: center;
-  @include interp.interpolate("font-size", 576px, 28px, 1400px, 32px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 32px, 1400px, 40px, "ease-in-out");
-}
+
 
 .product-detail__faq-question {
   align-items: center;
@@ -533,7 +516,7 @@
   flex-direction: column;
   overflow: hidden;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     flex-direction: row;
   }
 }
@@ -552,9 +535,13 @@
     width: 100%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     border-radius: 20px 0 0 20px;
+    width: 50%;
     flex-shrink: 0;
+  }
+
+  @media (min-width: 1200px) {
     width: 630px;
   }
 }
@@ -568,9 +555,12 @@
   justify-content: center;
   padding: 40px 24px;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     border-radius: 0 20px 20px 0;
     flex: 1;
+  }
+
+  @media (min-width: 1200px) {
     padding: 40px 80px;
   }
 }

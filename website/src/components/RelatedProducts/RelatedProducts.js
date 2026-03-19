@@ -1,13 +1,31 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./RelatedProducts.module.scss";
 
 export default function RelatedProducts({ products }) {
   const scrollRef = useRef(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollPrev(el.scrollLeft > 0);
+    setCanScrollNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener("scroll", checkScroll);
+    return () => el.removeEventListener("scroll", checkScroll);
+  }, [checkScroll]);
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
@@ -23,11 +41,11 @@ export default function RelatedProducts({ products }) {
   return (
     <section className={styles["related"]}>
       <div className={`container ${styles["relatedContainer"]}`}>
-      <h2 className={styles["related__title"]}>Related Products</h2>
+      <SectionTitle title="Related Products" />
 
       <div className={styles["related__wrapper"]}>
         <button
-          className={`${styles["related__arrow"]} ${styles["related__arrow--prev"]}`}
+          className={`${styles["related__arrow"]} ${styles["related__arrow--prev"]} ${!canScrollPrev ? styles["related__arrow--hidden"] : ""}`}
           onClick={() => scroll("prev")}
           aria-label="Previous products"
         >
@@ -68,7 +86,7 @@ export default function RelatedProducts({ products }) {
         </div>
 
         <button
-          className={`${styles["related__arrow"]} ${styles["related__arrow--next"]}`}
+          className={`${styles["related__arrow"]} ${styles["related__arrow--next"]} ${!canScrollNext ? styles["related__arrow--hidden"] : ""}`}
           onClick={() => scroll("next")}
           aria-label="Next products"
         >
@@ -80,7 +98,7 @@ export default function RelatedProducts({ products }) {
 
       <div className={styles["related__arrows-mobile"]}>
         <button
-          className={styles["related__arrow"]}
+          className={`${styles["related__arrow"]} ${!canScrollPrev ? styles["related__arrow--hidden"] : ""}`}
           onClick={() => scroll("prev")}
           aria-label="Previous products"
         >
@@ -89,7 +107,7 @@ export default function RelatedProducts({ products }) {
           </svg>
         </button>
         <button
-          className={styles["related__arrow"]}
+          className={`${styles["related__arrow"]} ${!canScrollNext ? styles["related__arrow--hidden"] : ""}`}
           onClick={() => scroll("next")}
           aria-label="Next products"
         >
