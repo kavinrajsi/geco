@@ -17,6 +17,7 @@ export default function SectionTitle({
   as,
   align,
   className,
+  noTransform,
 }) {
   const Tag = as || defaultTags[variant] || "h2";
   const variantClass = styles[`section-title--${variant}`] || "";
@@ -26,7 +27,10 @@ export default function SectionTitle({
     <div
       className={`${styles["section-title"]} ${variantClass} ${alignClass} ${className || ""}`.trim()}
     >
-      <Tag className={styles["section-title__heading"]}>{title}</Tag>
+      <Tag
+        className={styles["section-title__heading"]}
+        style={noTransform ? { textTransform: "none" } : undefined}
+      >{title}</Tag>
       {description && (
         <p className={styles["section-title__description"]}>{description}</p>
       )}

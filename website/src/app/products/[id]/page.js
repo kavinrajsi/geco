@@ -520,7 +520,7 @@ export default async function ProductDetailPage({ params }) {
       {product.faqs?.length > 0 && (
         <section className={styles["product-detail__faq-section"]}>
           <div className={`container ${styles["faqContainer"]}`}>
-            <SectionTitle title="FAQs" />
+            <SectionTitle title="FAQs" noTransform />
             <FaqAccordion faqs={product.faqs} />
           </div>
         </section>
