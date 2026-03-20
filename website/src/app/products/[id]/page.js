@@ -375,7 +375,7 @@ export default async function ProductDetailPage({ params }) {
               <Button
                 href={brochureUrl}
                 target="_blank"
-                text="Download Brochure"
+                text="Brochure"
                 className={styles["product-detail__brochure"]}
               />
             </div>
