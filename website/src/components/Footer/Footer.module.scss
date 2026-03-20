@@ -114,10 +114,16 @@
   display: inline-block;
 
   svg {
-    height: 45px;
-    width: auto;
+    width: 176px;
+    height: 44px;
 
     @media (min-width: 768px) {
+      width: 174px;
+      height: 44px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 233px;
       height: 60px;
     }
   }
