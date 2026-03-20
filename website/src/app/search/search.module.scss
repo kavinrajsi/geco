@@ -2,27 +2,6 @@
 
 /* ── TEXT ─────────────────────────────────── */
 
-.search__filter {
-  background: none;
-  border: none;
-  color: #1f1f1f;
-  cursor: pointer;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-weight: 500;
-  line-height: 20px;
-  padding: 4px 0;
-  text-transform: uppercase;
-  white-space: nowrap;
-  @include interp.interpolate("font-size", 576px, 12px, 768px, 14px, "ease-in-out");
-
-  &--active {
-    background: #97d700;
-    border: 2px solid #97d700;
-    border-radius: 25px;
-    padding: 8px 32px;
-  }
-}
-
 .search__card-category {
   color: #6b727a;
   font-family: var(--font-archivo), "Archivo", sans-serif;
