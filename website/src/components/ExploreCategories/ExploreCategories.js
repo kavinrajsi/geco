@@ -29,7 +29,7 @@ const categories = [
 export default function ExploreCategories() {
   return (
     <section className={styles["explore"]}>
-      <div className="container-fluid">
+      <div className={`container-fluid ${styles["explore__inner"]}`}>
       <SectionTitle
         title="Explore Categories"
         description="Discover our range of professional solutions that are crafted to deliver strength, precision, and lasting results for every stage of your project."
