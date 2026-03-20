@@ -33,7 +33,7 @@ export default function ExploreCategories() {
       <SectionTitle
         title="Explore Categories"
         description="Discover our range of professional solutions that are crafted to deliver strength, precision, and lasting results for every stage of your project."
-        className={styles["explore__header"]}
+      
       />
       <div className={styles["explore__grid"]}>
         {categories.map((category) => (

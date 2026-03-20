@@ -17,7 +17,6 @@ export default function InstagramFeed() {
       <SectionTitle
         title="Geco On Instagram"
         description="#Geco"
-        className={styles["instagram__header"]}
       />
 
       {/* Slider for < 1200px */}

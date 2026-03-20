@@ -9,7 +9,6 @@ export default function WatchOurStories({ title, subtitle, videoUrl, videoSrc, p
       <SectionTitle
         title={title || "Watch Our Stories"}
         description={subtitle}
-        className={styles["stories__header"]}
       />
       <div className={styles["stories__video"]}>
         {videoSrc ? (

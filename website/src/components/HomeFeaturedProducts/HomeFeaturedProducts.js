@@ -40,7 +40,6 @@ export default async function HomeFeaturedProducts() {
         <SectionTitle
           title="Featured Products"
           description="Inspired by the gecko's remarkable sticking ability, our products stand for strength, reliability, and continuous innovation."
-          className={styles["featured-products__header"]}
         />
         <FeaturedProductsSlider products={products} />
       </div>

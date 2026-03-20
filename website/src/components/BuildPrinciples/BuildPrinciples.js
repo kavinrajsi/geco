@@ -147,7 +147,6 @@ export default function BuildPrinciples() {
         <SectionTitle
           title="Built on Four Principles"
           description="Our core beliefs drive innovation that's reliable, versatile, and constantly evolving to meet your needs."
-          className={styles["principles__header"]}
         />
         <div className={styles["principles__grid"]}>
           {principles.map((principle) => (
