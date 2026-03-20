@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { SITE_URL } from "@/lib/config";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
@@ -55,7 +56,9 @@ export default async function SearchPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageHeader title="Search" />
-      <SearchResults products={products} />
+      <Suspense>
+        <SearchResults products={products} />
+      </Suspense>
     </>
   );
 }
