@@ -1,12 +1,22 @@
-import { fetchStrapi } from "@/lib/strapi";
+import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import Header from "./Header";
 
 export default async function HeaderWrapper() {
-  const data = await fetchStrapi("/product-categories", {
-    "fields[0]": "name",
-    "fields[1]": "slug",
-    "sort": "name:asc",
-  });
+  const [data, productsData] = await Promise.all([
+    fetchStrapi("/product-categories", {
+      "fields[0]": "name",
+      "fields[1]": "slug",
+      "sort": "name:asc",
+    }),
+    fetchStrapi("/products", {
+      "fields[0]": "name",
+      "fields[1]": "slug",
+      "populate[image][fields][0]": "url",
+      "populate[productCategory][fields][0]": "name",
+      "sort": "name:asc",
+      "pagination[pageSize]": "100",
+    }),
+  ]);
 
   const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
   const categories = (data?.data || [])
@@ -17,5 +27,12 @@ export default async function HeaderWrapper() {
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
 
-  return <Header productCategories={categories} />;
+  const products = (productsData?.data || []).map((p) => ({
+    name: p.name,
+    slug: p.slug,
+    category: p.productCategory?.name || "",
+    imageUrl: getStrapiMedia(p.image?.url),
+  }));
+
+  return <Header productCategories={categories} products={products} />;
 }

@@ -13,13 +13,14 @@ const navLinks = [
   { href: "/contact-us", label: "Contact" },
 ];
 
-export default function Header({ productCategories = [] }) {
+export default function Header({ productCategories = [], products = [] }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const submenuTimeout = useRef(null);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef(null);
 
   const handleSubmenuEnter = () => {
@@ -453,17 +454,20 @@ export default function Header({ productCategories = [] }) {
               ref={searchInputRef}
               type="text"
               placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className={styles["search-overlay__input"]}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && e.target.value.trim()) {
-                  window.location.href = `/search?q=${encodeURIComponent(e.target.value.trim())}`;
+                if (e.key === "Enter" && searchQuery.trim()) {
+                  setSearchOpen(false);
+                  window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
                 }
               }}
             />
           </div>
           <button
             className={styles["search-overlay__close"]}
-            onClick={() => setSearchOpen(false)}
+            onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
             aria-label="Close search"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -473,7 +477,46 @@ export default function Header({ productCategories = [] }) {
           </button>
         </div>
         <div className={styles["search-overlay__divider"]} />
-        <div className={styles["search-overlay__body"]} />
+        <div className={styles["search-overlay__body"]}>
+          {searchQuery.trim() ? (
+            (() => {
+              const q = searchQuery.toLowerCase().trim();
+              const results = products.filter(
+                (p) =>
+                  p.name?.toLowerCase().includes(q) ||
+                  p.category?.toLowerCase().includes(q)
+              );
+              return results.length > 0 ? (
+                <div className={styles["search-overlay__results"]}>
+                  {results.map((product) => (
+                    <Link
+                      key={product.slug}
+                      href={`/products/${product.slug}`}
+                      className={styles["search-overlay__result"]}
+                      onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
+                    >
+                      {product.imageUrl && (
+                        <img
+                          src={product.imageUrl}
+                          alt={product.name}
+                          className={styles["search-overlay__result-img"]}
+                        />
+                      )}
+                      <div className={styles["search-overlay__result-info"]}>
+                        <span className={styles["search-overlay__result-category"]}>{product.category}</span>
+                        <span className={styles["search-overlay__result-name"]}>{product.name}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className={styles["search-overlay__empty"]}>No results found for &ldquo;{searchQuery}&rdquo;</p>
+              );
+            })()
+          ) : (
+            <p className={styles["search-overlay__empty"]}>Start typing to search products.</p>
+          )}
+        </div>
       </div>
     </header>
   );
