@@ -36,7 +36,7 @@ export default function BlogSlider({ blogs }) {
         onReachEnd={() => setIsEnd(true)}
         breakpoints={{
           576: {
-            slidesPerView: 2.25,
+            slidesPerView: 1.25,
             spaceBetween: 30,
           },
           768: {
