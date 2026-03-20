@@ -19,6 +19,8 @@ export default async function HomeFeaturedProducts() {
     "geco jointfill epoxy",
     "geco durafill max",
     "geco uniseal gp pro",
+    "geco tilebond plus",
+    "geco jointfill",
   ];
   const products = (productsData?.data || [])
     .filter((p) => featuredNames.includes(p.name?.toLowerCase()))
