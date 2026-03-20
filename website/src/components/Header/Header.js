@@ -19,6 +19,8 @@ export default function Header({ productCategories = [] }) {
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const submenuTimeout = useRef(null);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef(null);
 
   const handleSubmenuEnter = () => {
     clearTimeout(submenuTimeout.current);
@@ -31,7 +33,19 @@ export default function Header({ productCategories = [] }) {
 
   useEffect(() => {
     setMenuOpen(false);
+    setSearchOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (searchOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      setTimeout(() => searchInputRef.current?.focus(), 100);
+    } else if (!menuOpen) {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+  }, [searchOpen]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -160,6 +174,16 @@ export default function Header({ productCategories = [] }) {
 
         {/* Desktop Icons */}
         <div className={styles["header__icons"]}>
+          <button
+            className={styles["header__search-btn"]}
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M21.35 21.0004L17 16.6504" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
           <div className={styles["header__social"]}>
             <a
               href="https://facebook.com"
@@ -408,6 +432,43 @@ export default function Header({ productCategories = [] }) {
             );
           })}
         </nav>
+      </div>
+
+      {/* Search Overlay */}
+      <div
+        className={`${styles["search-overlay"]} ${searchOpen ? styles["search-overlay--open"] : ""}`}
+      >
+        <div className={styles["search-overlay__header"]}>
+          <div className={styles["search-overlay__input-wrapper"]}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#1f1f1f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M21.35 21.0004L17 16.6504" stroke="#1f1f1f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <input
+              ref={searchInputRef}
+              type="text"
+              placeholder="Search"
+              className={styles["search-overlay__input"]}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && e.target.value.trim()) {
+                  window.location.href = `/search?q=${encodeURIComponent(e.target.value.trim())}`;
+                }
+              }}
+            />
+          </div>
+          <button
+            className={styles["search-overlay__close"]}
+            onClick={() => setSearchOpen(false)}
+            aria-label="Close search"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18" stroke="#1f1f1f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 6L18 18" stroke="#1f1f1f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div className={styles["search-overlay__divider"]} />
+        <div className={styles["search-overlay__body"]} />
       </div>
     </header>
   );
