@@ -44,7 +44,7 @@ export default function FeaturedProductsSlider({ products }) {
             spaceBetween: 30,
           },
           992: {
-            slidesPerView: 2.25,
+            slidesPerView: 3.35,
             spaceBetween: 30,
           },
           1200: {
