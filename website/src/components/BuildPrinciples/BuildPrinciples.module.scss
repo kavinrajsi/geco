@@ -7,8 +7,13 @@
   font-family: var(--font-archivo), "Archivo", sans-serif;
   font-weight: 600;
   text-transform: capitalize;
-  @include interp.interpolate("font-size", 576px, 18px, 1400px, 24px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 22px, 1400px, 32px, "ease-in-out");
+  font-size: 18px;
+  line-height: 22px;
+
+  @media (min-width: 1200px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 .principles__card-description {
