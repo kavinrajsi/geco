@@ -106,8 +106,8 @@
   padding: 24px 0;
   text-align: left;
   width: 100%;
-  @include interp.interpolate("font-size", 576px, 20px, 1400px, 24px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 28px, 1400px, 32px, "ease-in-out");
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .product-detail__feature-text {
