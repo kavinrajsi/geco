@@ -10,6 +10,7 @@ import CollapsibleGroup from "@/components/CollapsibleSection/CollapsibleGroup";
 import HowToUseSteps from "@/components/HowToUseSteps/HowToUseSteps";
 import WatchOurStories from "@/components/WatchOurStories/WatchOurStories";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import Button from "@/components/Button/Button";
 import styles from "./page.module.scss";
 
 export const revalidate = 60;
@@ -371,14 +372,12 @@ export default async function ProductDetailPage({ params }) {
           {/* Brochure Download */}
           {brochureUrl && (
             <div className={styles["product-detail__brochure-wrap"]}>
-              <a
+              <Button
                 href={brochureUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                text="Brochure"
                 className={styles["product-detail__brochure"]}
-              >
-                Download Brochure
-              </a>
+              />
             </div>
           )}
 
