@@ -90,6 +90,11 @@
   @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
+    gap: 30px;
+  }
+
+  @media (min-width: 1400px) {
+    gap: 40px;
   }
 
   &.footer__bottom {
@@ -149,8 +154,12 @@
   @media (min-width: 1024px) {
     flex-direction: row;
     flex-shrink: 0;
-    gap: 60px;
+    gap: 30px;
     padding-top: 0;
+  }
+
+  @media (min-width: 1400px) {
+    gap: 60px;
   }
 }
 
