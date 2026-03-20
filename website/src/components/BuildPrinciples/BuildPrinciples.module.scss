@@ -69,17 +69,17 @@
   }
 }
 
-.principles__header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: center;
-  width: 100%;
+// .principles__header {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+//   text-align: center;
+//   width: 100%;
 
-  @media (min-width: 1024px) {
-    width: 630px;
-  }
-}
+//   @media (min-width: 1024px) {
+//     width: 630px;
+//   }
+// }
 
 .principles__grid {
   display: grid;
