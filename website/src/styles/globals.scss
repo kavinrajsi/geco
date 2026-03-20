@@ -35,6 +35,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  text-transform: uppercase;
+}
+
 .container {
   margin: 0 auto;
   max-width: $bp-xl;
