@@ -434,6 +434,11 @@ export default function Header({ productCategories = [] }) {
         </nav>
       </div>
 
+      {/* Search Backdrop */}
+      <div
+        className={`${styles["search-backdrop"]} ${searchOpen ? styles["search-backdrop--open"] : ""}`}
+        onClick={() => setSearchOpen(false)}
+      />
       {/* Search Overlay */}
       <div
         className={`${styles["search-overlay"]} ${searchOpen ? styles["search-overlay--open"] : ""}`}

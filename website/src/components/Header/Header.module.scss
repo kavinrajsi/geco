@@ -342,12 +342,33 @@
   cursor: pointer;
 }
 
+// Search backdrop
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 299;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.search-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 // Search overlay
 .search-overlay {
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 300;
+  width: 80vw;
+  height: 80vh;
   background: #fff;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   opacity: 0;
