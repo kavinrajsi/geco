@@ -26,9 +26,23 @@
 
 .engineered__description {
   font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-style: normal;
   font-weight: 500;
-  @include interp.interpolate("font-size", 576px, 16px, 1400px, 18px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 
 // ── CTA button ──────────────────────────────────
