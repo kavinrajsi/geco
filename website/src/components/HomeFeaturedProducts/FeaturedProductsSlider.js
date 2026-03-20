@@ -40,7 +40,7 @@ export default function FeaturedProductsSlider({ products }) {
             spaceBetween: 30,
           },
           768: {
-            slidesPerView: 3.25,
+            slidesPerView: 2.25,
             spaceBetween: 30,
           },
           992: {
