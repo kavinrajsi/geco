@@ -6,6 +6,7 @@ export default function Footer() {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["footer__container"]}>
+      <div className={styles["footer__wrapper"]}>
         {/* Brand + Contact */}
         <div className={styles["footer__brand"]}>
           <Link href="/" className={styles["footer__logo"]}>
@@ -244,7 +245,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className={`${styles["footer__container"]} ${styles["footer__bottom"]} `}>
+      <div className={`${styles["footer__wrapper"]} ${styles["footer__bottom"]} `}>
         <div className={styles["footer__bottom-inner"]}>
           <p className={styles["footer__copyright"]}>
             &copy;VNC Electrodes. All Rights Reserved.
@@ -260,6 +261,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
+      </div>
       </div>
     </footer>
   );

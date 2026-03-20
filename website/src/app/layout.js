@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import RecaptchaProvider from "@/components/RecaptchaProvider/RecaptchaProvider";
 import ClarityAnalytics from "@/components/ClarityAnalytics/ClarityAnalytics";
+import GridOverlay from "@/components/GridOverlay/GridOverlay";
 import PostHogAnalytics from "@/components/PostHogAnalytics/PostHogAnalytics";
 import { SITE_URL } from "@/lib/config";
 import "@/styles/globals.scss";
@@ -107,6 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <HeaderWrapper />
             <main>{children}</main>
             <Footer />
+            <GridOverlay />
           </RecaptchaProvider>
         </PostHogAnalytics>
       </body>

@@ -56,9 +56,6 @@
 }
 
 .footer__container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px 40px;
   margin: 0 auto;
   padding: 0 20px;
   max-width: 100%;
@@ -73,8 +70,6 @@
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
-    justify-content: space-between;
     max-width: 960px;
   }
 
@@ -84,6 +79,17 @@
 
   @media (min-width: 1400px) {
     max-width: 1320px;
+  }
+}
+
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 40px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   &.footer__bottom {

@@ -1,32 +1,24 @@
-@use "../styles/fluid" as *;
+@use "../styles/interpolate" as interp;
 
-.error {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 60vh;
-  padding: $space-section $space-gutter;
-  text-align: center;
-}
+/* ── TEXT ─────────────────────────────────── */
 
 .error__code {
-  font-size: fluid(80, 160);
   font-weight: 800;
   line-height: 1;
   opacity: 0.1;
+  @include interp.interpolate("font-size", 576px, 80px, 1400px, 160px, "ease-in-out");
 }
 
 .error__title {
-  font-size: $font-h1;
   font-weight: 700;
   margin-top: -8px;
+  @include interp.interpolate("font-size", 576px, 28px, 1400px, 40px, "ease-in-out");
 }
 
 .error__description {
-  font-size: $font-body;
   margin-top: 8px;
   opacity: 0.6;
+  @include interp.interpolate("font-size", 576px, 15px, 1400px, 18px, "ease-in-out");
 }
 
 .error__button {
@@ -35,13 +27,24 @@
   border-radius: 6px;
   color: var(--background);
   cursor: pointer;
-  font-size: $font-body-sm;
   font-weight: 500;
   margin-top: 24px;
   padding: 12px 24px;
-  
+  @include interp.interpolate("font-size", 576px, 13px, 1400px, 16px, "ease-in-out");
 
-  @media (min-width: $bp-md) {
+  @media (min-width: 768px) {
     margin-top: 32px;
   }
+}
+
+/* ── GRID / LAYOUT ───────────────────────── */
+
+.error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 80px 20px;
+  text-align: center;
 }
