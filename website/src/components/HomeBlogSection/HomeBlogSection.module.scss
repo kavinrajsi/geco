@@ -46,6 +46,11 @@
 
 .home-blogs {
   padding: 80px 0;
+
+  @media (min-width: 1200px) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }
 
 .homeBlogsContainer {

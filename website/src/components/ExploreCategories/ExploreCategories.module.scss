@@ -9,8 +9,13 @@
   gap: 40px;
   padding-left: 0;
   padding-right: 0;
-  @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
-  @include interp.interpolate("padding-bottom", 576px, 80px, 1400px, 120px, "ease-in-out");
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  @media (min-width: 1200px) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }
 
 .explore__header {

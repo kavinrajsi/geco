@@ -13,7 +13,11 @@
   padding-right: 20px;
   padding-bottom: 0;
   max-width: 100%;
-  @include interp.interpolate("padding-top", 576px, 80px, 1400px, 120px, "ease-in-out");
+  padding-top: 80px;
+
+  @media (min-width: 1200px) {
+    padding-top: 120px;
+  }
 
   // @media (min-width: 576px) {
   //   max-width: 540px;
