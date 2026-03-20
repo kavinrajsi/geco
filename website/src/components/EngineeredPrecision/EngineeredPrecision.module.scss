@@ -32,6 +32,9 @@
     align-items: center;
     justify-content: center;
   }
+  @media (min-width: 1400px) {
+    background-position: center;
+  }
 }
 
 /* ── TEXT ─────────────────────────────────── */
