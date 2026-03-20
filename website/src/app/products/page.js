@@ -1,5 +1,5 @@
 import { SITE_URL } from "@/lib/config";
-import { fetchStrapi } from "@/lib/strapi";
+import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import ProductGrid from "@/components/ProductGrid/ProductGrid";
 
@@ -52,6 +52,14 @@ export default async function ProductsPage() {
     if (catDiff !== 0) return catDiff;
     return (a.name || "").localeCompare(b.name || "");
   });
+  console.log("--- Product Image URLs ---");
+  products.forEach((p) => {
+    console.log(p.name);
+    console.log("  Primary:", getStrapiMedia(p.image?.url) || "none");
+    console.log("  Secondary:", getStrapiMedia(p.secondaryImage?.url) || "none");
+  });
+  console.log("--- End Product Image URLs ---");
+
   const categories = (categoriesData?.data || [])
     .map((cat) => ({ name: cat.name, slug: cat.slug }))
     .sort((a, b) => {
