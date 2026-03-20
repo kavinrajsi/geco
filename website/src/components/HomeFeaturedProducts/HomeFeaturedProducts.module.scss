@@ -81,15 +81,6 @@
 .featured-products__slider {
   position: relative;
   width: 100%;
-
-  @media (min-width: 992px) {
-    max-width: 1140px;
-    padding: 0 60px;
-  }
-
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
 }
 
 .featured-products__swiper {
