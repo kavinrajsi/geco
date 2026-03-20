@@ -272,10 +272,14 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: calc(100vh - 93px);
+  height: calc(100vh - 124px);
 
   @media (min-width: 768px) {
-    height: calc(100vh - 124px);
+    height: 500px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 80vh;
   }
 
   img {
