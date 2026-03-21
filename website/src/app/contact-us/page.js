@@ -109,25 +109,6 @@ export default async function ContactPage() {
             </div>
 
             <div className={styles["contact__buttons"]}>
-              <a href={phoneHref} className={styles["contact__btn"]}>
-                <span className={styles["contact__btn-icon"]}>
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0.08676 5.54927C1.11037 10.0896 8.01977 17.1523 12.3701 17.909C14.1614 18.1613 15.441 17.909 16.4646 16.9001C17.2323 16.3956 18 14.8821 18 13.6209C17.7441 12.8642 17.2323 12.612 16.4646 12.3597C15.9528 12.1075 13.3937 11.3508 12.8819 11.3508C11.6024 11.3508 12.1142 14.1254 10.3229 12.8642C8.01977 11.3508 6.74025 10.3418 5.20483 7.81943C4.94893 7.06271 4.69302 6.55823 5.20483 6.30599C6.99615 5.0448 7.25206 5.54927 6.48435 3.02688C6.22844 2.5224 5.97254 1.76568 5.71664 1.00896C5.46073 0.50448 5.20483 0 4.43712 0C1.36628 0 -0.425047 2.5224 0.08676 5.54927Z"
-                      fill="#1F1F1F"
-                    />
-                  </svg>
-                </span>
-                <span className={styles["contact__btn-text"]}>{phone}</span>
-              </a>
               <a href={`mailto:${email}`} className={styles["contact__btn"]}>
                 <span className={styles["contact__btn-icon"]}>
                   <svg
@@ -146,6 +127,25 @@ export default async function ContactPage() {
                   </svg>
                 </span>
                 <span className={styles["contact__btn-text"]}>{email}</span>
+              </a>
+              <a href={phoneHref} className={styles["contact__btn"]}>
+                <span className={styles["contact__btn-icon"]}>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M0.08676 5.54927C1.11037 10.0896 8.01977 17.1523 12.3701 17.909C14.1614 18.1613 15.441 17.909 16.4646 16.9001C17.2323 16.3956 18 14.8821 18 13.6209C17.7441 12.8642 17.2323 12.612 16.4646 12.3597C15.9528 12.1075 13.3937 11.3508 12.8819 11.3508C11.6024 11.3508 12.1142 14.1254 10.3229 12.8642C8.01977 11.3508 6.74025 10.3418 5.20483 7.81943C4.94893 7.06271 4.69302 6.55823 5.20483 6.30599C6.99615 5.0448 7.25206 5.54927 6.48435 3.02688C6.22844 2.5224 5.97254 1.76568 5.71664 1.00896C5.46073 0.50448 5.20483 0 4.43712 0C1.36628 0 -0.425047 2.5224 0.08676 5.54927Z"
+                      fill="#1F1F1F"
+                    />
+                  </svg>
+                </span>
+                <span className={styles["contact__btn-text"]}>{phone}</span>
               </a>
             </div>
           </div>
