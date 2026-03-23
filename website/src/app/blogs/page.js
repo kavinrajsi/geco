@@ -34,17 +34,15 @@ export default async function BlogsPage() {
     "fields[0]": "title",
     "fields[1]": "slug",
     "fields[2]": "excerpt",
-    "fields[3]": "sticky",
+    "fields[3]": "publishingDate",
     "populate[content][populate]": "*",
     "sort": "publishingDate:desc",
   });
 
-  const blogs = (blogsData?.data || [])
-    .map((blog) => ({
-      ...blog,
-      excerpt: blog.excerpt || extractTextFromContent(blog.content),
-    }))
-    .sort((a, b) => (b.sticky ? 1 : 0) - (a.sticky ? 1 : 0));
+  const blogs = (blogsData?.data || []).map((blog) => ({
+    ...blog,
+    excerpt: blog.excerpt || extractTextFromContent(blog.content),
+  }));
 
   const categories = [
     ...new Set(
@@ -76,9 +74,6 @@ export default async function BlogsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        dangerouslySetInnerHTML={{ __html: `console.log("--- Blogs Data ---", ${JSON.stringify(JSON.stringify(blogs))}); console.log("--- Blog Categories ---", ${JSON.stringify(JSON.stringify(categories))}); console.log("--- Blog Tags ---", ${JSON.stringify(JSON.stringify(tags))});` }}
       />
       <PageHeader title="Blogs" />
       <BlogList blogs={blogs} categories={categories} tags={tags} />

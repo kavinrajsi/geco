@@ -34,7 +34,7 @@ export default async function ProductsPage() {
       "populate[image][fields][0]": "url",
       "populate[secondaryImage][fields][0]": "url",
       "populate[productCategory][fields][0]": "name",
-      "sort": "publishingDate:desc",
+      "sort": "name:asc",
       "pagination[pageSize]": "100",
     }),
     fetchStrapi("/product-categories", {
@@ -52,14 +52,6 @@ export default async function ProductsPage() {
     if (catDiff !== 0) return catDiff;
     return (a.name || "").localeCompare(b.name || "");
   });
-  console.log("--- Product Image URLs ---");
-  products.forEach((p) => {
-    console.log(p.name);
-    console.log("  Primary:", getStrapiMedia(p.image?.url) || "none");
-    console.log("  Secondary:", getStrapiMedia(p.secondaryImage?.url) || "none");
-  });
-  console.log("--- End Product Image URLs ---");
-
   const categories = (categoriesData?.data || [])
     .map((cat) => ({ name: cat.name, slug: cat.slug }))
     .sort((a, b) => {
@@ -82,9 +74,6 @@ export default async function ProductsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        dangerouslySetInnerHTML={{ __html: `console.log("--- Products Data ---", ${JSON.stringify(JSON.stringify(products))}); console.log("--- Categories Data ---", ${JSON.stringify(JSON.stringify(categories))});` }}
       />
       <PageHeader title="Our Products" />
       <ProductGrid products={products} categories={categories} />

@@ -21,7 +21,7 @@ export default async function SearchPage() {
     "populate[image][fields][0]": "url",
     "populate[secondaryImage][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
-    "sort": "publishingDate:desc",
+    "sort": "name:asc",
     "pagination[pageSize]": "100",
   });
 

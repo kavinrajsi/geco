@@ -40,7 +40,7 @@ async function getOtherProducts(currentSlug, currentId) {
     "populate[productCategory][fields][0]": "name",
     "fields[0]": "name",
     "fields[1]": "slug",
-    sort: "publishingDate:desc",
+    sort: "name:asc",
   });
   const products = data?.data || [];
   const idx = products.findIndex(
