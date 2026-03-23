@@ -35,7 +35,7 @@ export default async function BlogsPage() {
     "fields[1]": "slug",
     "fields[2]": "excerpt",
     "populate[content][populate]": "*",
-    "sort": "createdAt:desc",
+    "sort": "publishedAt:desc",
   });
 
   const blogs = (blogsData?.data || []).map((blog) => ({
