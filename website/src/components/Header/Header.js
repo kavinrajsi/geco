@@ -22,6 +22,16 @@ export default function Header({ productCategories = [], products = [] }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSubmenuEnter = () => {
     clearTimeout(submenuTimeout.current);
@@ -63,7 +73,7 @@ export default function Header({ productCategories = [], products = [] }) {
   }, [menuOpen]);
 
   return (
-    <header className={styles["header"]}>
+    <header className={`${styles["header"]} ${scrolled ? styles["header--scrolled"] : ""}`}>
       <div className={styles["header__container"]}>
         {/* Logo */}
         <Link
