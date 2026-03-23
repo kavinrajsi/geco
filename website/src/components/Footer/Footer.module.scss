@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #1f1f1f;
+  color: #fff;
   font-size: 18px;
   line-height: 26px;
 
@@ -18,7 +18,7 @@
 }
 
 .footer__accordion-text {
-  color: #1f1f1f;
+  color: #fff;
   font-family: var(--font-archivo), "Archivo", sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -35,7 +35,7 @@
 
 .footer__copyright,
 .footer__credit {
-  color: #1f1f1f;
+  color: #fff;
   font-family: var(--font-archivo), "Archivo", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -50,7 +50,8 @@
 /* ── GRID / LAYOUT ───────────────────────── */
 
 .footer {
-  background-color: #97d700;
+  background-color: #10069f;
+  color: #fff;
   margin-top: auto;
   padding: 40px 0;
 }
@@ -188,7 +189,7 @@
 
 .footer__links-title {
   align-items: center;
-  color: #1f1f1f;
+  color: #fff;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -236,7 +237,7 @@
   }
 
   a {
-    color: #1f1f1f;
+    color: #fff;
     font-size: 16px;
     line-height: 26px;
   }
