@@ -2,8 +2,11 @@
 
 .header {
   background: #10069f;
-  position: sticky;
+  left: 0;
+  position: fixed;
+  right: 0;
   top: 0;
+  width: 100%;
   z-index: 100;
   transition: all 0.3s ease;
 }
@@ -53,6 +56,18 @@
 
   @media (min-width: 1400px) {
     max-width: 1320px;
+  }
+}
+
+.header__spacer {
+  height: 92px; // mobile: 24px + 44px + 24px
+
+  @media (min-width: $bp-md) {
+    height: 108px; // md: 32px + 44px + 32px
+  }
+
+  @media (min-width: 1200px) {
+    height: 124px; // lg: 32px + 60px + 32px
   }
 }
 
@@ -349,7 +364,6 @@
   color: #fff;
   display: flex;
   cursor: pointer;
-  padding-right: 16px;
 }
 
 // Search backdrop

@@ -73,6 +73,7 @@ export default function Header({ productCategories = [], products = [] }) {
   }, [menuOpen]);
 
   return (
+    <>
     <header className={`${styles["header"]} ${scrolled ? styles["header--scrolled"] : ""}`}>
       <div className={styles["header__container"]}>
         {/* Logo */}
@@ -443,5 +444,7 @@ export default function Header({ productCategories = [], products = [] }) {
         </div>
       </div>
     </header>
+    <div className={styles["header__spacer"]} />
+    </>
   );
 }
