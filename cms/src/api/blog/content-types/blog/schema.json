@@ -58,6 +58,10 @@
       "relation": "manyToMany",
       "target": "api::blog-tag.blog-tag",
       "inversedBy": "blogs"
+    },
+    "sticky": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
