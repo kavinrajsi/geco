@@ -34,7 +34,7 @@ export default async function ProductsPage() {
       "populate[image][fields][0]": "url",
       "populate[secondaryImage][fields][0]": "url",
       "populate[productCategory][fields][0]": "name",
-      "sort": "name:asc",
+      "sort": "publishDate:desc",
       "pagination[pageSize]": "100",
     }),
     fetchStrapi("/product-categories", {

@@ -20,18 +20,18 @@ async function getBlog(slug) {
   return data?.data?.[0] || null;
 }
 
-async function getAdjacentBlogs(publishedAt) {
+async function getAdjacentBlogs(publishDate) {
   const [prevData, nextData] = await Promise.all([
     fetchStrapi("/blogs", {
-      "filters[publishedAt][$lt]": publishedAt,
-      "sort": "publishedAt:desc",
+      "filters[publishDate][$lt]": publishDate,
+      "sort": "publishDate:desc",
       "pagination[limit]": "1",
       "fields[0]": "title",
       "fields[1]": "slug",
     }),
     fetchStrapi("/blogs", {
-      "filters[publishedAt][$gt]": publishedAt,
-      "sort": "publishedAt:asc",
+      "filters[publishDate][$gt]": publishDate,
+      "sort": "publishDate:asc",
       "pagination[limit]": "1",
       "fields[0]": "title",
       "fields[1]": "slug",
@@ -322,7 +322,7 @@ export default async function BlogDetailPage({ params }) {
   }
 
   const featureImageUrl = getStrapiMedia(blog.featureImage?.url);
-  const { prev, next } = await getAdjacentBlogs(blog.publishedAt);
+  const { prev, next } = await getAdjacentBlogs(blog.publishDate || blog.publishedAt);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -330,8 +330,8 @@ export default async function BlogDetailPage({ params }) {
     headline: blog.title,
     description: blog.excerpt || blog.title,
     ...(featureImageUrl && { image: featureImageUrl }),
-    datePublished: blog.publishedAt,
-    dateModified: blog.updatedAt || blog.publishedAt,
+    datePublished: blog.publishDate || blog.publishedAt,
+    dateModified: blog.updatedAt || blog.publishDate || blog.publishedAt,
     author: { "@type": "Organization", name: "Geco" },
     publisher: {
       "@type": "Organization",
