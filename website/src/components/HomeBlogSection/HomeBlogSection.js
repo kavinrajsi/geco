@@ -12,7 +12,7 @@ export default async function HomeBlogSection() {
     "populate[featureImage][fields][0]": "url",
     "populate[blogCategories][fields][0]": "name",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
     "pagination[limit]": "6",
   });
 

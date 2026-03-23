@@ -36,7 +36,7 @@ export default async function BlogsPage() {
     "fields[2]": "excerpt",
     "fields[3]": "sticky",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
   });
 
   const blogs = (blogsData?.data || [])

@@ -23,7 +23,7 @@ async function getBlogsByTag(tagSlug) {
     "fields[1]": "slug",
     "fields[2]": "excerpt",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
   });
   return (data?.data || []).map((blog) => ({
     ...blog,

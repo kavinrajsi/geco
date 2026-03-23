@@ -10,7 +10,7 @@ export default async function HomeFeaturedProducts() {
     "populate[image][fields][0]": "url",
     "populate[secondaryImage][fields][0]": "url",
     "populate[productCategory][fields][0]": "name",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
     "pagination[pageSize]": "100",
   });
 

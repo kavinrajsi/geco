@@ -22,7 +22,7 @@ async function getProductsByCategory(categorySlug) {
     "fields[0]": "name",
     "fields[1]": "slug",
     "fields[2]": "tagline",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
   });
   return data?.data || [];
 }

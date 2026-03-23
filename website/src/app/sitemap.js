@@ -21,7 +21,7 @@ export default async function sitemap() {
     "fields[0]": "slug",
     "fields[1]": "updatedAt",
     "pagination[pageSize]": "100",
-    "sort": "publishDate:desc",
+    "sort": "publishingDate:desc",
   });
 
   const blogRoutes = (blogsData?.data || []).map((blog) => ({
