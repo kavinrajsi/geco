@@ -83,6 +83,9 @@ export default async function ProductsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        dangerouslySetInnerHTML={{ __html: `console.log("--- Products Data ---", ${JSON.stringify(JSON.stringify(products))}); console.log("--- Categories Data ---", ${JSON.stringify(JSON.stringify(categories))});` }}
+      />
       <PageHeader title="Our Products" />
       <ProductGrid products={products} categories={categories} />
     </>

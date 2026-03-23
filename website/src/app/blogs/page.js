@@ -77,6 +77,9 @@ export default async function BlogsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        dangerouslySetInnerHTML={{ __html: `console.log("--- Blogs Data ---", ${JSON.stringify(JSON.stringify(blogs))}); console.log("--- Blog Categories ---", ${JSON.stringify(JSON.stringify(categories))}); console.log("--- Blog Tags ---", ${JSON.stringify(JSON.stringify(tags))});` }}
+      />
       <PageHeader title="Blogs" />
       <BlogList blogs={blogs} categories={categories} tags={tags} />
     </>
