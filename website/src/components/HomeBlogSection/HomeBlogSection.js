@@ -8,21 +8,18 @@ export default async function HomeBlogSection() {
     "fields[0]": "title",
     "fields[1]": "slug",
     "fields[2]": "excerpt",
-    "fields[3]": "sticky",
     "populate[featureImage][fields][0]": "url",
     "populate[blogCategories][fields][0]": "name",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "createdAt:desc",
     "pagination[limit]": "6",
   });
 
-  const blogs = (blogsData?.data || [])
-    .map((blog) => ({
-      ...blog,
-      excerpt: blog.excerpt || extractTextFromContent(blog.content),
-      featureImageUrl: getStrapiMedia(blog.featureImage?.url),
-    }))
-    .sort((a, b) => (b.sticky ? 1 : 0) - (a.sticky ? 1 : 0));
+  const blogs = (blogsData?.data || []).map((blog) => ({
+    ...blog,
+    excerpt: blog.excerpt || extractTextFromContent(blog.content),
+    featureImageUrl: getStrapiMedia(blog.featureImage?.url),
+  }));
 
   if (blogs.length === 0) return null;
 

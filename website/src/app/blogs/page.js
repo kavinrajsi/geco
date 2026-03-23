@@ -34,17 +34,14 @@ export default async function BlogsPage() {
     "fields[0]": "title",
     "fields[1]": "slug",
     "fields[2]": "excerpt",
-    "fields[3]": "sticky",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "createdAt:desc",
   });
 
-  const blogs = (blogsData?.data || [])
-    .map((blog) => ({
-      ...blog,
-      excerpt: blog.excerpt || extractTextFromContent(blog.content),
-    }))
-    .sort((a, b) => (b.sticky ? 1 : 0) - (a.sticky ? 1 : 0));
+  const blogs = (blogsData?.data || []).map((blog) => ({
+    ...blog,
+    excerpt: blog.excerpt || extractTextFromContent(blog.content),
+  }));
 
   const categories = [
     ...new Set(

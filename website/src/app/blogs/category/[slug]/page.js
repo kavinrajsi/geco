@@ -23,7 +23,7 @@ async function getBlogsByCategory(categorySlug) {
     "fields[1]": "slug",
     "fields[2]": "excerpt",
     "populate[content][populate]": "*",
-    "sort": "publishDate:desc",
+    "sort": "createdAt:desc",
   });
   return (data?.data || []).map((blog) => ({
     ...blog,
