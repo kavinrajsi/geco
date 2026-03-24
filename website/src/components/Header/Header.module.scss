@@ -195,15 +195,6 @@
   }
 }
 
-.header__icons {
-  align-items: center;
-  display: none;
-  gap: 16px;
-
-  @media (min-width: $bp-lg) {
-    display: flex;
-  }
-}
 
 .header__divider {
   background: rgba(255, 255, 255, 0.3);
