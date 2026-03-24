@@ -503,12 +503,11 @@ export default async function ProductDetailPage({ params }) {
                     </div>
                   </div>
                   {(product.highlight.linkedBlog?.slug || product.highlight.buttonLink) && (
-                    <Link
+                    <Button
                       href={product.highlight.linkedBlog?.slug ? `/blogs/${product.highlight.linkedBlog.slug}` : product.highlight.buttonLink}
-                      className={styles["highlight__btn"]}
-                    >
-                      {product.highlight.buttonText || "Learn more"}
-                    </Link>
+                      variant="dark"
+                      text={product.highlight.buttonText || "Learn more"}
+                    />
                   )}
                 </div>
               </div>

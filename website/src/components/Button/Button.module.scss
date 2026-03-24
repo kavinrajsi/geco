@@ -49,3 +49,15 @@
     border-color: #fff;
   }
 }
+
+// Dark variant
+.button--dark {
+  background: #1f1f1f;
+  color: #fff;
+
+  &:hover {
+    background: #10069f;
+    color: #fff;
+    border-color: #1f1f1f;
+  }
+}

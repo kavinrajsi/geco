@@ -11,7 +11,7 @@ export default function Button({
   ...props
 }) {
   const buttonContent = text || children;
-  const variantClass = variant === "white" ? styles["button--white"] : "";
+  const variantClass = variant === "white" ? styles["button--white"] : variant === "dark" ? styles["button--dark"] : "";
   const buttonClass = `${styles.button} ${variantClass} ${className}`.trim();
 
   // If href is provided, render as Link or anchor
