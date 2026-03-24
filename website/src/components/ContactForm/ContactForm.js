@@ -15,11 +15,11 @@ function validate(form) {
   const errors = {};
   if (
     !form["Last Name"].trim() ||
-    form["Last Name"].trim().length < 2 ||
+    form["Last Name"].trim().length < 3 ||
     !/^[a-zA-Z\s]+$/.test(form["Last Name"].trim())
   ) {
     errors["Last Name"] =
-      "Name must be at least 2 characters and contain only letters.";
+      "Name must be at least 3 characters and contain only letters.";
   }
   if (
     form.Email.trim() &&
