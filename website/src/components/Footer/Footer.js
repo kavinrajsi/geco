@@ -31,7 +31,6 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div className={styles["footer__nav"]}>
             <details className={styles["footer__accordion"]}>
               <summary className={styles["footer__links-title"]}>
                 <span className={styles["footer__accordion-text"]}>
@@ -119,7 +118,6 @@ export default function Footer() {
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </div>
             </details>
-          </div>
 
           {/* Social Links */}
           <div className={styles["footer__social"]}>
