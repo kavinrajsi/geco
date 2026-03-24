@@ -179,21 +179,6 @@
   @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 }
 
-.highlight__btn {
-  background: #1f1f1f;
-  border-radius: 50px;
-  color: #fff;
-  display: inline-block;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  padding: 16px 40px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: fit-content;
-}
 
 
 

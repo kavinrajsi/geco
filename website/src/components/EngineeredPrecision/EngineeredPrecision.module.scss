@@ -95,32 +95,6 @@
   }
 }
 
-.engineered__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 40px;
-  background: #97d700;
-  border-radius: 50px;
-  color: #1f1f1f;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  border: 1px solid transparent;
-
-  &:hover {
-    background: #10069f;
-    border-color: #97d700;
-    color: #fff;
-  }
-}
 
 .engineered__content {
   display: flex;
