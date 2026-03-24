@@ -1,19 +1,26 @@
 .button {
   background: #97d700;
-  color: #1f1f1f;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-transform: uppercase;
-  padding: 16px 40px;
+  border: 1px solid transparent;
   border-radius: 50px;
-  border: 2px solid transparent;
+  color: #1f1f1f;
   cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  padding: 14px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: background 0.3s, color 0.3s, border-color 0.3s;
   white-space: nowrap;
-  display: inline-block;
-  text-decoration: none;
+
+  @media (min-width: 768px) {
+    border-width: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 16px 40px;
+  }
 
   &:hover {
     background: #10069f;
