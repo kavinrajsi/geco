@@ -133,41 +133,6 @@
   }
 }
 
-/* Submit button */
-.contact-form__submit {
-  background: #97d700;
-  border: 1px solid transparent;
-  border-radius: 50px;
-  color: #1f1f1f;
-  cursor: pointer;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: normal;
-  padding: 14px;
-  text-transform: uppercase;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
-
-  @media (min-width: 768px) {
-    border-width: 2px;
-    font-size: 14px;
-    line-height: 20px;
-    padding: 16px 40px;
-  }
-
-  &:hover:not(:disabled) {
-    background: #10069f;
-    border-color: #97d700;
-    color: #fff;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-}
-
 /* Honeypot (hidden) */
 .contact-form__honeypot {
   height: 0;

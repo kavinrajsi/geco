@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Button from "@/components/Button/Button";
 import styles from "./ContactForm.module.scss";
 
 const initialForm = {
@@ -223,13 +224,11 @@ export default function ContactForm() {
 
         {/* Footer: Submit button */}
         <div className={styles["contact-form__footer"]}>
-          <button
-            className={styles["contact-form__submit"]}
+          <Button
             type="submit"
             disabled={status === "submitting"}
-          >
-            {status === "submitting" ? "Sending..." : "Send Message"}
-          </button>
+            text={status === "submitting" ? "Sending..." : "Send Message"}
+          />
         </div>
       </form>
     </div>
