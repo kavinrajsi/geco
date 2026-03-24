@@ -193,7 +193,6 @@ export default function BlogList({ blogs, categories, tags }) {
           <Button
             text="Load more"
             onClick={() => setVisibleCount((c) => c + BLOGS_PER_PAGE)}
-            className={styles["blog-list__load-more"]}
           />
         )}
       </div>
