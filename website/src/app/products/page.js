@@ -44,14 +44,8 @@ export default async function ProductsPage() {
     }),
   ]);
 
+  const products = productsData?.data || [];
   const categoryOrder = ["tile adhesives", "tile grouts", "sealants", "tapes"];
-  const products = (productsData?.data || []).sort((a, b) => {
-    const ai = categoryOrder.indexOf(a.productCategory?.name?.toLowerCase());
-    const bi = categoryOrder.indexOf(b.productCategory?.name?.toLowerCase());
-    const catDiff = (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-    if (catDiff !== 0) return catDiff;
-    return (a.name || "").localeCompare(b.name || "");
-  });
   const categories = (categoriesData?.data || [])
     .map((cat) => ({ name: cat.name, slug: cat.slug }))
     .sort((a, b) => {
