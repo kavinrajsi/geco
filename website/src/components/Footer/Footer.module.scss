@@ -86,7 +86,7 @@
 .footer__wrapper {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 24px 40px;
 
   @media (min-width: 1024px) {
