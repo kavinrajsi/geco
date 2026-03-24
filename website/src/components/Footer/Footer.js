@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand + Contact */}
           <div className={styles["footer__brand"]}>
             <Link href="/" className={styles["footer__logo"]}>
-     
+              <Image src="/images/geco-logo.png" alt="GECO" width={240} height={120} />
             </Link>
             <div className={styles["footer__contact"]}>
               <a
