@@ -12,16 +12,14 @@ export default function ProductGrid({ products, categories, activeCategory }) {
           <Button
             href="/products"
             text="All"
-            variant={!activeCategory ? "green" : "white"}
-            className={!activeCategory ? "" : styles["product-grid__filter--inactive"]}
+            className={`${styles["product-grid__filter"]} ${!activeCategory ? styles["product-grid__filter--active"] : ""}`}
           />
           {categories.map((cat) => (
             <Button
               key={cat.slug}
               href={`/products/category/${cat.slug}`}
               text={cat.name}
-              variant={activeCategory === cat.slug ? "green" : "white"}
-              className={activeCategory === cat.slug ? "" : styles["product-grid__filter--inactive"]}
+              className={`${styles["product-grid__filter"]} ${activeCategory === cat.slug ? styles["product-grid__filter--active"] : ""}`}
             />
           ))}
         </div>
