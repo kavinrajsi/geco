@@ -100,13 +100,6 @@
 .explore__card-label {
   position: absolute;
   bottom: 30px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: auto;
-  text-align: center;
-  max-width: fit-content;
-  @media (min-width: 768px) {
-  max-width: 200px;
-  }
+  left: 50%;
+  transform: translateX(-50%);
 }
