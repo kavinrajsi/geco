@@ -207,6 +207,13 @@
   }
 }
 
+// Search + Hamburger wrapper
+.header__actions {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
 // Mobile hamburger button
 .header__hamburger {
   align-items: center;
