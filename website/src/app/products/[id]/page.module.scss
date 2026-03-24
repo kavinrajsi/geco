@@ -79,18 +79,6 @@
   @include interp.interpolate("line-height", 576px, 24px, 1400px, 26px, "ease-in-out");
 }
 
-.product-detail__brochure {
-  background: #97d700;
-  border-radius: 50px;
-  color: #1f1f1f;
-  display: inline-block;
-  font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  padding: 12px 40px;
-  text-decoration: none;
-}
 
 .product-detail__collapsible-toggle {
   align-items: center;

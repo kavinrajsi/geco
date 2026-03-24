@@ -376,7 +376,6 @@ export default async function ProductDetailPage({ params }) {
                 href={brochureUrl}
                 target="_blank"
                 text="Brochure"
-                className={styles["product-detail__brochure"]}
               />
             </div>
           )}
