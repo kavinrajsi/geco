@@ -697,6 +697,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product-category.product-category'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    publishingDate: Schema.Attribute.Date;
     relatedProducts: Schema.Attribute.Relation<
       'oneToMany',
       'api::product.product'
