@@ -28,11 +28,7 @@ export default async function HomeFeaturedProducts() {
       ...product,
       imageUrl: getStrapiMedia(product.image?.url),
       secondaryImageUrl: getStrapiMedia(product.secondaryImage?.url),
-    }))
-    .sort((a, b) =>
-      featuredNames.indexOf(a.name?.toLowerCase()) -
-      featuredNames.indexOf(b.name?.toLowerCase())
-    );
+    }));
 
   if (products.length === 0) return null;
 
