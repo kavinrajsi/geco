@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "@/components/Button/Button";
 import styles from "./EngineeredPrecision.module.scss";
 
 export default function EngineeredPrecision() {
@@ -14,9 +14,7 @@ export default function EngineeredPrecision() {
                GECO brings nature&apos;s holding power to your projects. From tile adhesives to sealants, every product is designed to hold strong, perform flawlessly, and last—just as nature intended. Build stronger. Build smarter. Build with GECO.
             </p>
           </div>
-          <Link href="/products" className={styles["engineered__cta"]}>
-            SEE ALL PRODUCTS
-          </Link>
+          <Button href="/products" text="SEE ALL PRODUCTS" />
         </div>
       </div>
     </section>
