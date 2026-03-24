@@ -82,6 +82,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product"
+    },
+    "publishingDate": {
+      "type": "date",
+      "required": false
     }
   }
 }
