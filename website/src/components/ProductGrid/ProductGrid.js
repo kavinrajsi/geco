@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "@/components/Button/Button";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./ProductGrid.module.scss";
@@ -8,24 +9,20 @@ export default function ProductGrid({ products, categories, activeCategory }) {
     <div className={styles["product-grid"]}>
       <div className={styles["product-grid__filters"]}>
         <div className={styles["product-grid__menu"]}>
-          <Link
+          <Button
             href="/products"
-            className={`${styles["product-grid__filter"]} ${
-              !activeCategory ? styles["product-grid__filter--active"] : ""
-            }`}
-          >
-            All
-          </Link>
+            text="All"
+            variant={!activeCategory ? "green" : "white"}
+            className={!activeCategory ? "" : styles["product-grid__filter--inactive"]}
+          />
           {categories.map((cat) => (
-            <Link
+            <Button
               key={cat.slug}
               href={`/products/category/${cat.slug}`}
-              className={`${styles["product-grid__filter"]} ${
-                activeCategory === cat.slug ? styles["product-grid__filter--active"] : ""
-              }`}
-            >
-              {cat.name}
-            </Link>
+              text={cat.name}
+              variant={activeCategory === cat.slug ? "green" : "white"}
+              className={activeCategory === cat.slug ? "" : styles["product-grid__filter--inactive"]}
+            />
           ))}
         </div>
       </div>
