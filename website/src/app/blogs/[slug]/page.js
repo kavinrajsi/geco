@@ -393,13 +393,13 @@ export default async function BlogDetailPage({ params }) {
         {/* Tags & Nav */}
         <div className={styles["blog-detail__tags-section"]}>
           <div className={styles["blog-detail__tags-row"]}>
-            {blog.blogCategories?.length > 0 && (
+            {blog.blogTags?.length > 0 && (
               <div className={styles["blog-detail__tags-group"]}>
-                <span className={styles["blog-detail__tags-label"]}>Categories:</span>
+                <span className={styles["blog-detail__tags-label"]}>Tag:</span>
                 <div className={styles["blog-detail__tags"]}>
-                  {blog.blogCategories.map((cat) => (
-                    <span key={cat.id} className={styles["blog-detail__blog-tag"]}>
-                      {cat.name}
+                  {blog.blogTags.map((tag) => (
+                    <span key={tag.id} className={styles["blog-detail__blog-tag"]}>
+                      {tag.name}
                     </span>
                   ))}
                 </div>
