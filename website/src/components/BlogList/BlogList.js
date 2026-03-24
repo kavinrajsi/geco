@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Button from "@/components/Button/Button";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./BlogList.module.scss";
@@ -189,12 +190,10 @@ export default function BlogList({ blogs, categories, tags }) {
         </div>
 
         {hasMore && (
-          <button
-            className={styles["blog-list__load-more"]}
+          <Button
+            text="Load more"
             onClick={() => setVisibleCount((c) => c + BLOGS_PER_PAGE)}
-          >
-            Load more
-          </button>
+          />
         )}
       </div>
     </div>
