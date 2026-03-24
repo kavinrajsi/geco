@@ -383,6 +383,15 @@ export default async function BlogDetailPage({ params }) {
             </div>
           )}
           <h1 className={styles["blog-detail__title"]}>{blog.title}</h1>
+          {blog.publishingDate && (
+            <span className={styles["blog-detail__date"]}>
+              {new Date(blog.publishingDate).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+          )}
         </header>
 
         {/* Content (Dynamic Zone) */}
