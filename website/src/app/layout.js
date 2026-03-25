@@ -16,7 +16,7 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   stretch: "expanded",
 });
 

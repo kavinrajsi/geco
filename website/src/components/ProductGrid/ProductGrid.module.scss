@@ -15,6 +15,7 @@
   text-transform: uppercase;
   white-space: nowrap;
   @include interp.interpolate("font-size", 576px, 12px, 768px, 14px, "ease-in-out");
+    padding: 8px 32px;
 }
 
 /* Active filter */

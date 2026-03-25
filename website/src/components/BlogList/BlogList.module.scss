@@ -60,8 +60,10 @@
   font-family: var(--font-archivo), "Archivo", sans-serif;
   font-style: normal;
   font-weight: 600;
-  @include interp.interpolate("font-size", 576px, 20px, 1400px, 28px, "ease-in-out");
-  @include interp.interpolate("line-height", 576px, 28px, 1400px, 36px, "ease-in-out");
+  // @include interp.interpolate("font-size", 576px, 20px, 1400px, 28px, "ease-in-out");
+  // @include interp.interpolate("line-height", 576px, 28px, 1400px, 36px, "ease-in-out");
+    font-size: 20px;
+    line-height: 28px;
 
   @media (min-width: 768px) {
     text-transform: capitalize;
@@ -134,6 +136,7 @@
     gap: 40px;
     grid-column: span 3;
     order: 1;
+    margin-left: 40px;
   }
 }
 
