@@ -9,7 +9,7 @@ export default function ProductGrid({ products, categories, activeCategory }) {
   return (
     <div className={styles["product-grid"]}>
       <div className={styles["product-grid__filters"]}>
-        <MobileFilter />
+        <MobileFilter activeCategory={activeCategory} />
         <div className={styles["product-grid__menu"]}>
           <Button
             href="/products"

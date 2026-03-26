@@ -3,33 +3,11 @@
 import { useState, useCallback } from "react";
 import styles from "./MobileFilter.module.scss";
 
-const FILTER_SECTIONS = [
-  {
-    key: "applicationArea",
-    label: "Application Area",
-    options: ["Bathrooms", "Kitchens", "Living Rooms", "Outdoors", "Swimming Pools"],
-  },
-  {
-    key: "productType",
-    label: "Product Type",
-    options: ["Tile Adhesives", "Tile Grouts", "Sealants", "Tapes"],
-  },
-  {
-    key: "applicationSurface",
-    label: "Application Surface",
-    options: ["Ceilings", "Metals", "Terraces", "Walls", "Woods"],
-  },
-  {
-    key: "finish",
-    label: "Finish",
-    options: ["Glossy", "Matte", "Satin", "Textured"],
-  },
-];
+const FILTER_OPTIONS = ["All", "Tile Adhesives", "Tile Grouts", "Sealants", "Tapes"];
 
-export default function MobileFilter() {
+export default function MobileFilter({ activeCategory }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [openSection, setOpenSection] = useState(null);
-  const [selected, setSelected] = useState({});
+  const [selectedOption, setSelectedOption] = useState(activeCategory || "All");
 
   const toggleDrawer = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -45,35 +23,13 @@ export default function MobileFilter() {
     document.body.style.overflow = "";
   }, []);
 
-  const toggleSection = useCallback((key) => {
-    setOpenSection((prev) => (prev === key ? null : key));
-  }, []);
-
-  const toggleOption = useCallback((sectionKey, option) => {
-    setSelected((prev) => {
-      const current = prev[sectionKey] || [];
-      const exists = current.includes(option);
-      return {
-        ...prev,
-        [sectionKey]: exists
-          ? current.filter((o) => o !== option)
-          : [...current, option],
-      };
-    });
-  }, []);
-
   const clearAll = useCallback(() => {
-    setSelected({});
+    setSelectedOption("All");
   }, []);
 
   const handleApply = useCallback(() => {
     closeDrawer();
   }, [closeDrawer]);
-
-  const activeCount = Object.values(selected).reduce(
-    (sum, arr) => sum + arr.length,
-    0
-  );
 
   return (
     <>
@@ -87,9 +43,6 @@ export default function MobileFilter() {
           <path d="M1.5 3.75H16.5M4.5 9H13.5M7 14.25H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <span>Filter</span>
-        {activeCount > 0 && (
-          <span className={styles["mobile-filter__badge"]}>{activeCount}</span>
-        )}
       </button>
 
       {isOpen && (
@@ -117,56 +70,27 @@ export default function MobileFilter() {
         </div>
 
         <div className={styles["mobile-filter__body"]}>
-          {FILTER_SECTIONS.map((section) => {
-            const isExpanded = openSection === section.key;
-            const sectionSelected = selected[section.key] || [];
-
-            return (
-              <div key={section.key} className={styles["mobile-filter__section"]}>
-                <button
-                  type="button"
-                  className={styles["mobile-filter__section-header"]}
-                  onClick={() => toggleSection(section.key)}
-                  aria-expanded={isExpanded}
+          <div className={styles["mobile-filter__options"]}>
+            {FILTER_OPTIONS.map((option) => {
+              const isChecked = selectedOption === option;
+              return (
+                <label
+                  key={option}
+                  className={styles["mobile-filter__option"]}
                 >
-                  <span>{section.label}</span>
-                  <svg
-                    className={`${styles["mobile-filter__chevron"]} ${isExpanded ? styles["mobile-filter__chevron--up"] : ""}`}
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-
-                {isExpanded && (
-                  <div className={styles["mobile-filter__options"]}>
-                    {section.options.map((option) => {
-                      const isChecked = sectionSelected.includes(option);
-                      return (
-                        <label
-                          key={option}
-                          className={styles["mobile-filter__option"]}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={() => toggleOption(section.key, option)}
-                            className={styles["mobile-filter__checkbox"]}
-                          />
-                          <span className={styles["mobile-filter__checkmark"]} />
-                          <span>{option}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  <input
+                    type="radio"
+                    name="productType"
+                    checked={isChecked}
+                    onChange={() => setSelectedOption(option)}
+                    className={styles["mobile-filter__checkbox"]}
+                  />
+                  <span className={styles["mobile-filter__checkmark"]} />
+                  <span>{option}</span>
+                </label>
+              );
+            })}
+          </div>
         </div>
 
         <div className={styles["mobile-filter__footer"]}>
