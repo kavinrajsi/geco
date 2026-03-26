@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./MobileFilter.module.scss";
 
-const FILTER_OPTIONS = ["All", "Tile Adhesives", "Tile Grouts", "Sealants", "Tapes"];
-
-export default function MobileFilter({ activeCategory }) {
+export default function MobileFilter({ categories = [], activeCategory }) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(activeCategory || "All");
+  const [selectedSlug, setSelectedSlug] = useState(activeCategory || "all");
 
   const toggleDrawer = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -24,12 +24,17 @@ export default function MobileFilter({ activeCategory }) {
   }, []);
 
   const clearAll = useCallback(() => {
-    setSelectedOption("All");
+    setSelectedSlug("all");
   }, []);
 
   const handleApply = useCallback(() => {
     closeDrawer();
-  }, [closeDrawer]);
+    if (selectedSlug === "all") {
+      router.push("/products");
+    } else {
+      router.push(`/products/category/${selectedSlug}`);
+    }
+  }, [closeDrawer, selectedSlug, router]);
 
   return (
     <>
@@ -71,25 +76,30 @@ export default function MobileFilter({ activeCategory }) {
 
         <div className={styles["mobile-filter__body"]}>
           <div className={styles["mobile-filter__options"]}>
-            {FILTER_OPTIONS.map((option) => {
-              const isChecked = selectedOption === option;
-              return (
-                <label
-                  key={option}
-                  className={styles["mobile-filter__option"]}
-                >
-                  <input
-                    type="radio"
-                    name="productType"
-                    checked={isChecked}
-                    onChange={() => setSelectedOption(option)}
-                    className={styles["mobile-filter__checkbox"]}
-                  />
-                  <span className={styles["mobile-filter__checkmark"]} />
-                  <span>{option}</span>
-                </label>
-              );
-            })}
+            <label className={styles["mobile-filter__option"]}>
+              <input
+                type="radio"
+                name="productType"
+                checked={selectedSlug === "all"}
+                onChange={() => setSelectedSlug("all")}
+                className={styles["mobile-filter__checkbox"]}
+              />
+              <span className={styles["mobile-filter__checkmark"]} />
+              <span>All</span>
+            </label>
+            {categories.map((cat) => (
+              <label key={cat.slug} className={styles["mobile-filter__option"]}>
+                <input
+                  type="radio"
+                  name="productType"
+                  checked={selectedSlug === cat.slug}
+                  onChange={() => setSelectedSlug(cat.slug)}
+                  className={styles["mobile-filter__checkbox"]}
+                />
+                <span className={styles["mobile-filter__checkmark"]} />
+                <span>{cat.name}</span>
+              </label>
+            ))}
           </div>
         </div>
 
