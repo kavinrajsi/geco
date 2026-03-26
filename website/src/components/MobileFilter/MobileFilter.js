@@ -1,13 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import styles from "./MobileFilter.module.scss";
 
 export default function MobileFilter({ categories = [], activeCategory }) {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSlug, setSelectedSlug] = useState(activeCategory || "all");
 
   const toggleDrawer = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -22,19 +20,6 @@ export default function MobileFilter({ categories = [], activeCategory }) {
     setIsOpen(false);
     document.body.style.overflow = "";
   }, []);
-
-  const clearAll = useCallback(() => {
-    setSelectedSlug("all");
-  }, []);
-
-  const handleApply = useCallback(() => {
-    closeDrawer();
-    if (selectedSlug === "all") {
-      router.push("/products");
-    } else {
-      router.push(`/products/category/${selectedSlug}`);
-    }
-  }, [closeDrawer, selectedSlug, router]);
 
   return (
     <>
@@ -74,51 +59,30 @@ export default function MobileFilter({ categories = [], activeCategory }) {
           </button>
         </div>
 
-        <div className={styles["mobile-filter__body"]}>
-          <div className={styles["mobile-filter__options"]}>
-            <label className={styles["mobile-filter__option"]}>
-              <input
-                type="radio"
-                name="productType"
-                checked={selectedSlug === "all"}
-                onChange={() => setSelectedSlug("all")}
-                className={styles["mobile-filter__checkbox"]}
-              />
-              <span className={styles["mobile-filter__checkmark"]} />
-              <span>All</span>
-            </label>
+        <nav className={styles["mobile-filter__body"]}>
+          <ul className={styles["mobile-filter__menu"]}>
+            <li>
+              <Link
+                href="/products"
+                className={`${styles["mobile-filter__item"]} ${!activeCategory ? styles["mobile-filter__item--active"] : ""}`}
+                onClick={closeDrawer}
+              >
+                All
+              </Link>
+            </li>
             {categories.map((cat) => (
-              <label key={cat.slug} className={styles["mobile-filter__option"]}>
-                <input
-                  type="radio"
-                  name="productType"
-                  checked={selectedSlug === cat.slug}
-                  onChange={() => setSelectedSlug(cat.slug)}
-                  className={styles["mobile-filter__checkbox"]}
-                />
-                <span className={styles["mobile-filter__checkmark"]} />
-                <span>{cat.name}</span>
-              </label>
+              <li key={cat.slug}>
+                <Link
+                  href={`/products/category/${cat.slug}`}
+                  className={`${styles["mobile-filter__item"]} ${activeCategory === cat.slug ? styles["mobile-filter__item--active"] : ""}`}
+                  onClick={closeDrawer}
+                >
+                  {cat.name}
+                </Link>
+              </li>
             ))}
-          </div>
-        </div>
-
-        <div className={styles["mobile-filter__footer"]}>
-          <button
-            type="button"
-            className={styles["mobile-filter__clear"]}
-            onClick={clearAll}
-          >
-            Clear All
-          </button>
-          <button
-            type="button"
-            className={styles["mobile-filter__apply"]}
-            onClick={handleApply}
-          >
-            Apply
-          </button>
-        </div>
+          </ul>
+        </nav>
       </div>
     </>
   );
