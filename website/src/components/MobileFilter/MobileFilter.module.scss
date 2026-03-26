@@ -1,0 +1,245 @@
+/* ── TRIGGER BUTTON ──────────────────────── */
+
+.mobile-filter__trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1.5px solid #ccc;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f1f1f;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-filter__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10069f;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── OVERLAY ─────────────────────────────── */
+
+.mobile-filter__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+/* ── DRAWER ──────────────────────────────── */
+
+.mobile-filter__drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 85vh;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-filter__drawer--open {
+  transform: translateY(0);
+}
+
+/* ── HEADER ──────────────────────────────── */
+
+.mobile-filter__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 16px;
+  flex-shrink: 0;
+}
+
+.mobile-filter__title {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 0;
+}
+
+.mobile-filter__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f1f1f;
+  padding: 0;
+}
+
+/* ── BODY (scrollable) ───────────────────── */
+
+.mobile-filter__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── SECTION ─────────────────────────────── */
+
+.mobile-filter__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-filter__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 20px;
+  background: #e8e8e8;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f1f1f;
+  text-align: left;
+}
+
+.mobile-filter__chevron {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.mobile-filter__chevron--up {
+  transform: rotate(180deg);
+}
+
+/* ── OPTIONS ─────────────────────────────── */
+
+.mobile-filter__options {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px 8px;
+}
+
+.mobile-filter__option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f1f1f;
+  user-select: none;
+}
+
+/* Hide native checkbox */
+.mobile-filter__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom checkbox */
+.mobile-filter__checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.mobile-filter__checkbox:checked + .mobile-filter__checkmark {
+  background: #10069f;
+  border-color: #10069f;
+}
+
+.mobile-filter__checkbox:checked + .mobile-filter__checkmark::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+/* ── FOOTER ──────────────────────────────── */
+
+.mobile-filter__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 24px 32px;
+  flex-shrink: 0;
+}
+
+.mobile-filter__clear {
+  background: none;
+  border: none;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f1f1f;
+  cursor: pointer;
+  padding: 14px 32px;
+}
+
+.mobile-filter__apply {
+  background: #10069f;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  padding: 14px 48px;
+  transition: background 0.2s ease;
+}
+
+.mobile-filter__apply:active {
+  background: #0c0580;
+}

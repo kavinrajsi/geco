@@ -88,10 +88,14 @@
 
 .product-grid__menu {
   align-items: center;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 16px 24px;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }
 
 /* Product grid (12-col) */

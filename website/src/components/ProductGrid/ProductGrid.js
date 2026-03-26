@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/Button/Button";
+import MobileFilter from "@/components/MobileFilter/MobileFilter";
 import FallbackImage from "@/components/FallbackImage/FallbackImage";
 import { getStrapiMedia } from "@/lib/strapi";
 import styles from "./ProductGrid.module.scss";
@@ -8,6 +9,7 @@ export default function ProductGrid({ products, categories, activeCategory }) {
   return (
     <div className={styles["product-grid"]}>
       <div className={styles["product-grid__filters"]}>
+        <MobileFilter />
         <div className={styles["product-grid__menu"]}>
           <Button
             href="/products"
