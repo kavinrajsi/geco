@@ -46,7 +46,7 @@ function validate(form) {
   return errors;
 }
 
-export default function ContactForm() {
+export default function ContactForm({ title = "Get in touch with us", primarySource = "Geco Website" }) {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
@@ -107,7 +107,7 @@ export default function ContactForm() {
 
   return (
     <div className={styles["contact-form__card"]}>
-      <h2 className={styles["contact-form__title"]}>Get in touch with us</h2>
+      <h2 className={styles["contact-form__title"]}>{title}</h2>
 
       <form
         ref={formRef}
@@ -127,7 +127,7 @@ export default function ContactForm() {
 
         {/* Default values */}
         <input type="hidden" name="Lead Status" value="Raw leads" />
-        <input type="hidden" name="LEADCF18" value="Geco Website" />
+        <input type="hidden" name="LEADCF18" value={primarySource} />
         <input type="hidden" name="Lead Source" value="Website" />
         <input type="hidden" name="LEADCF15" value="GECO" />
 

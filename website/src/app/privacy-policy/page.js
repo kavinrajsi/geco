@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/config";
+import PageHeader from "@/components/PageHeader/PageHeader";
 import styles from "./page.module.scss";
 
 export const metadata = {
@@ -35,8 +36,8 @@ export default function PrivacyPolicyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <PageHeader title="Privacy Policy" />
       <div className={styles["policy"]}>
-      <h1 className={styles["policy__title"]}>Privacy Policy</h1>
       <p className={styles["policy__updated"]}>Last updated: March 2026</p>
 
       <div className={styles["policy__section"]}>
